@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IconSvgProps } from "@/types";
+
 
 export const Logo = ({ size = 36, width, height, ...props }) => (
   <svg
