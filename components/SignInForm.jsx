@@ -1,18 +1,42 @@
 "use client";
-import React, { useState } from "react";
 
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { signIn } from "next-auth/react";
 import { Button, Input, Spacer } from "@nextui-org/react";
-import { signUp } from "@/app/actions/users/signUp";
-const SignUpForm = () => {
+const SignInForm = () => {
+  const router = useRouter();
+  const { status } = useSession();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+
   const handleSubmit = async (e) => {
     setMessage("Please Wait...");
-    e.preventDefault();
-    const message = await signUp(email, password);
-    setMessage(message);
+    try {
+      const signInResponse = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+      if (!signInResponse || signInResponse.ok !== true) {
+        setMessage("Invalid credentials");
+      } else {
+        router.refresh();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.refresh();
+      router.push("/");
+    }
+  }, [status]);
   return (
     <>
       <div className="w-[40%] mx-auto">
@@ -55,4 +79,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default SignInForm;
