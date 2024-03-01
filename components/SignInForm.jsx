@@ -41,7 +41,7 @@ const SignInForm = () => {
     <>
       <div className="w-[40%] mx-auto">
         <div className="text-center">
-          <h1>Sign Up {message}</h1>
+          <h1>Sign Up{message}</h1>
         </div>
         <div className="m-1">
           <div className="m-10 ">
