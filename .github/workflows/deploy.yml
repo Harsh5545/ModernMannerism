@@ -22,6 +22,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          source: '.'
-          target: ${{ secrets.PATH }}
           script: "cd /var/www/ModernM && ./.scripts/deploy.sh"
