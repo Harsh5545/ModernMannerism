@@ -7,7 +7,7 @@ const SignUpForm = () => {
   const [message, setMessage] = useState();
   return (
     <>
-      <div></div> Hello Next js<div></div>
+      <div></div> Hello Next js .......<div></div>
     </>
   );
 };
