@@ -2,7 +2,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>Price</div>
+    <div>Price 1000000000</div>
   )
 }
 
