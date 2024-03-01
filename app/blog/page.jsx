@@ -2,7 +2,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>Testing Ci CD ..........................</div>
+    <div>Welcome to Blog's Page</div>
   )
 }
 
