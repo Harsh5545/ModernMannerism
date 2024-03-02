@@ -12,8 +12,10 @@ const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loading,setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     setMessage("Please Wait...");
     try {
       const signInResponse = await signIn("credentials", {
@@ -41,7 +43,7 @@ const SignInForm = () => {
     <>
       <div className="w-[40%] mx-auto">
         <div className="text-center">
-          <h1>Sign Up{message}</h1>
+          <h1>Sign In{message}</h1>
         </div>
         <div className="m-1">
           <div className="m-10 ">
@@ -69,7 +71,7 @@ const SignInForm = () => {
             <Spacer y={3.5} />
             <div className="text-center">
               <Button color="primary" auto onClick={handleSubmit}>
-                Sign Up
+                Sign In
               </Button>
             </div>
           </div>
