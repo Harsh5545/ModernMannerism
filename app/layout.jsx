@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
     title: "Modern Mannerism",
     description: "Join Modern Mannerism today and embark on a journey of refinement and success. Whether you're looking to enhance your professional image or polish your dining finesse,we are here to guide you every step of the way",
+    openGraph:{ type: "website", url: "https://modernmannerism.com/favicon-32x32.png", title: "My Website", description: "My Website Description", siteName: "My Website"}
 };
 
 export default function RootLayout({ children }) {
