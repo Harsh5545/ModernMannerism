@@ -7,14 +7,9 @@ module.exports = {
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
         "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx,mdx}"
     ],
-    theme: {
-        container: { center: true, padding: { DEFAULT: '1rem', md: '1.5rem', lg: '2rem' } },
-
-    },
     darkMode: "class",
     plugins: [nextui({
         prefix: "nextui",
-
         addCommonColors: true,
         defaultTheme: "light",
         defaultExtendTheme: "light",
