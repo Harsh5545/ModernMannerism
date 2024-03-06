@@ -5,7 +5,7 @@ import { NextUIProvider } from '@nextui-org/react'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 export function Providers({ children }) {
     return (
-        <NextUIProvider >
+        <NextUIProvider>
             <NextThemesProvider attribute="class" defaultTheme="dark" themes={['light', 'dark', 'modern']}>
                 {children}
             </NextThemesProvider>
