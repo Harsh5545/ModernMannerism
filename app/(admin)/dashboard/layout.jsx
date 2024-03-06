@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function DashboardLayout({ children }) {
     return (
-        <html lang="en" class="dark">
+        <html lang="en" >
             <body>
                 <div className="bg-gray-200 min-h-screen max-h-screen">
                     <Sidebar>
