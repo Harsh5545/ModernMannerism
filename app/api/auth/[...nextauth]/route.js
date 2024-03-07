@@ -38,7 +38,7 @@ export const authOptions = {
                     return null;
                 }
 
-                const userPassword = user.passwordHash;
+                const userPassword = user.password;
 
                 const isValidPassword = bcrypt.compareSync(password, userPassword);
 
@@ -56,13 +56,13 @@ export const authOptions = {
     },
     secret: process.env.NEXTAUTH_SECRET,
     jwt: {
-        async encode({ secret, token }) {
+        async encode( secret, token ) {
             if (!token) {
                 throw new Error('No token to encode');
             }
             return jwt.sign(token, secret);
         },
-        async decode({ secret, token }) {
+        async decode( secret, token ) {
             if (!token) {
                 throw new Error('No token to decode');
             }

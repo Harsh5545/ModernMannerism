@@ -29,18 +29,18 @@ const SignInForm = () => {
             } else {
                 router.refresh();
             }
-
+            console.log(signInResponse);
         } catch(err) {
             console.log(err);
         }
-
+        
         setMessage(message);
     };
 
     useEffect(() => {
         if (status === 'authenticated') {
             router.refresh();
-            router.push('/');
+            router.push('/protected/dashboard');
         }
     }, [status,router]);
 
