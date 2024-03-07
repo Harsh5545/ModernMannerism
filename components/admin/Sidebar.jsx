@@ -19,18 +19,18 @@ const Sidebar = ({ children }) => {
                     </Tooltip>
                     <span className="border-b-[1px] border-gray-400 w-full p-2"></span>
                     <Tooltip content="Dashboard" placement="top" color="success" offset={-7}>
-                    <Link href='/dashboard'>
-                        <div className="bg-gray-300 hover:bg-gray-400 p-3 cursor-pointer my-4 rounded-lg inline-block">
-                            <RxDashboard size={20} />
-                        </div>
-                    </Link>
+                        <Link href='/protected/dashboard'>
+                            <div className="bg-gray-300 hover:bg-gray-400 p-3 cursor-pointer my-4 rounded-lg inline-block">
+                                <RxDashboard size={20} />
+                            </div>
+                        </Link>
                     </Tooltip>
                     <Tooltip content="Blogs" placement="top" color="success" offset={-7}>
-                    <Link href='/dashboard/blogs'>
-                        <div className="bg-gray-300 hover:bg-gray-400 p-3 cursor-pointer my-4 rounded-lg inline-block">
-                            <FaBlog size={20} />
-                        </div>
-                    </Link>
+                        <Link href='/protected/dashboard/blogs'>
+                            <div className="bg-gray-300 hover:bg-gray-400 p-3 cursor-pointer my-4 rounded-lg inline-block">
+                                <FaBlog size={20} />
+                            </div>
+                        </Link>
                     </Tooltip>
                 </div>
             </div>

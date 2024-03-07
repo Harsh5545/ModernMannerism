@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Button} from "@nextui-org/react";
+import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Button } from "@nextui-org/react";
 import { signUp } from '@/app/actions/users/signUp';
 
 
@@ -18,12 +18,10 @@ const SignUpForm = () => {
     };
 
     return (
-        <div className='flex flex-col gap-4 bg-gray-400 p-4'>
+        <div className='flex flex-col gap-4 bg-gray-400 p-4 w-[90%] mx-auto '>
             <input type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
             <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
-
             <Button onClick={handleSubmit}>Sign up</Button>
-
             <p>{message}</p>
         </div>
     );

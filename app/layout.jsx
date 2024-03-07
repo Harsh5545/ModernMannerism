@@ -1,10 +1,8 @@
 import { Inter } from "next/font/google";
-import "../globals.css";
-
-import Link from "next/link";
-import { Providers } from "../Provider";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
+import "./globals.css";
 import Navbar from "@/components/client/Navbar/Navbar";
+import { Providers } from "./Provider";
+import AuthProvider from "./AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,12 +23,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body className={inter.className}>
                 <Providers>
-                    <Navbar />
-                    <main>{children}</main>
-                    <div className="h-[100vh]">harshad</div>
+                    
+                    <AuthProvider>{children}</AuthProvider>
                 </Providers>
             </body>
         </html>
