@@ -1,8 +1,9 @@
 "use client";
+
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import "./Navbar.css";
-import Link from "next/link";
+import {Link} from "@nextui-org/react";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import Image from "next/image";
 
@@ -17,7 +18,7 @@ function NavbarDefault() {
 
     return (
         <div className="flex z-[999] absolute  w-full justify-center items-center ">
-            <div className="flex-col md:flex-row bg-rose-300 dark:bg-indigo-200 flex justify-between px-1 md:px-10 rounded-md w-[90%]  items-center backdrop-filter backdrop-blur-md py-1 mt-4 ">
+            <div className="flex-col md:flex-row flex justify-between px-1 md:px-10 rounded-md w-[90%]  items-center backdrop-filter backdrop-blur-md py-1 mt-4 border border-zinc-500">
                 <div className="flex justify-between  items-center w-full md:w-0">
                     <span className="text-xl">
                         <Image
@@ -54,7 +55,7 @@ function NavbarDefault() {
                         <li>
                             <Link
                                 href="/"
-                                className=" hover:text-black"
+                               color="primary"
                                 onClick={toggleMobileMenu}
                             >
                                 Home
@@ -63,7 +64,8 @@ function NavbarDefault() {
                         <li>
                             <Link
                                 href="/about"
-                                className=" hover:text-black"
+                                color="primary"
+                                
                                 onClick={toggleMobileMenu}
                             >
                                 About Us
@@ -72,7 +74,8 @@ function NavbarDefault() {
                         <li>
                             <Link
                                 href="/courses"
-                                className="hover:text-black"
+                                color="primary"
+                                
                                 onClick={toggleMobileMenu}
                             >
                                 Course
@@ -81,7 +84,8 @@ function NavbarDefault() {
                         <li>
                             <Link
                                 href="/student-project"
-                                className=" hover:text-black"
+                                color="primary"
+                                
                                 onClick={toggleMobileMenu}
                             >
                                 Blogs

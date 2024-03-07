@@ -2,12 +2,12 @@
 import  { useState } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
-
 import "./Navbar.css"
 import { Button } from "@nextui-org/react";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
-import Link from "next/link";
+import {Link} from "@nextui-org/react";
 import Image from "next/image";
+
 const navVariants = {
   initial: {
     y: "-50%",
@@ -47,12 +47,12 @@ function NavbarFixed() {
       animate="animate"
       exit="exit"
       variants={navVariants}
-      className="fixed z-[999] nav top-2 left-1/2 -translate-x-1/2 rounded-xl p-2 flex-col backdrop-blur-lg border justify-around flex md:flex-row items-center"
+      className="fixed z-[999] nav top-2 left-1/2 -translate-x-1/2 rounded-xl p-2 flex-col backdrop-blur-lg border justify-around flex md:flex-row items-center  border-zinc-600"
       style={{ width: "85%" }}
     >
       <div className="flex justify-between items-center w-full md:w-0 text-inherit">
         <span className="text-xl">
-          <Image src="/assets/logo.png" height={100} width={100} className="md:max-w-20 max-w-10" alt="HarikrushnaMultimedia institue logo" />
+          <Image src="/assets/logo.png" height={200} width={200} className="md:max-w-20 max-w-10" alt="HarikrushnaMultimedia institue logo" />
         </span>
         <div className="md:hidden">
           <label className="hamburger">
@@ -70,27 +70,27 @@ function NavbarFixed() {
 
       <div className="flex flex-col items-start">
         <ul
-          className={`flex flex-col md:flex-row font-poppins items-center gap-8 md:gap-4 h-[20rem] md:h-0 justify-center text-black dark:text-white font-medium font-jakarta ${
+          className={`flex flex-col md:flex-row font-poppins items-center gap-8 md:gap-4 h-[20rem] md:h-0 justify-center font-medium font-jakarta ${
             isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
           }`}
         >
           <li>
-            <Link href="/" className=" hover:text-black" >
+            <Link href="/" color="primary" className=" " >
               Home
             </Link>
           </li>
           <li>
-            <Link href="/about" className=" hover:text-black" >
+            <Link href="/about" color="primary" className=" " >
               About Us
             </Link>
           </li>
           <li>
-            <Link href="/courses" className="hover:text-black" >
+            <Link href="/courses" color="primary" className="" >
               Course
             </Link>
           </li>
           <li>
-            <Link href="/student-project" className=" hover:text-black" >
+            <Link href="/student-project" color="primary" className="" >
               Blogs
             </Link>
           </li>

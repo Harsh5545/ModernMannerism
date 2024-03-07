@@ -8,23 +8,15 @@ module.exports = {
         "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx,mdx}"
     ],
     darkMode: "class",
-    plugins: [nextui({
-        prefix: "nextui",
-        addCommonColors: true,
-        defaultTheme: "light",
-        defaultExtendTheme: "light",
-        layout: {},
-        themes: {
-            light: {
-                layout: {},
-                colors: {},
-            },
-            dark: {
-                layout: {},
-                colors: {},
-            },
-           
-        },
-    }),
-    ],
+    theme: {
+        container: {
+            center: true,
+            padding: {
+                DEFAULT: '1rem',
+                md: '1.5rem',
+                lg: '2rem'
+            }
+        }
+    },
+    plugins: [nextui()],
 };
