@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const SignInForm = () => {
     const router = useRouter();
@@ -50,7 +51,7 @@ const SignInForm = () => {
             <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
 
             <button onClick={handleSubmit}>Sign in</button>
-
+            <Link href="/auth/signup">Sign Up</Link>
             <p>{message}</p>
         </div>
     );
