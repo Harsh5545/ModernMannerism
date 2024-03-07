@@ -2,6 +2,7 @@ import ToastProvider from "@/components/ToastProvider";
 import Header from "@/components/admin/Header";
 import Sidebar from "@/components/admin/Sidebar";
 import "../globals.css";
+import { Providers } from "../Provider";
 
 export const metadata = {
     title: "Dashboard",
@@ -11,15 +12,17 @@ export const metadata = {
 
 export default function DashboardLayout({ children }) {
     return (
-        <html lang="en">
-            <body>
-                <div className="bg-gray-200 min-h-screen max-h-screen">
-                    <Sidebar>
-                        <Header title={metadata.title} />
-                        <ToastProvider />
-                        {children}
-                    </Sidebar>
-                </div>
+        <html lang="en" class="light">
+            <body className="dark:bg-black dark:text-white text-black bg-blue-100">
+                <Providers>
+                    <div className="min-h-screen max-h-screen">
+                        <Sidebar>
+                            <Header title={metadata.title} />
+                            <ToastProvider />
+                            {children}
+                        </Sidebar>
+                    </div>
+                </Providers>
             </body>
         </html>
     );
