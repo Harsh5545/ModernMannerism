@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function DashboardLayout({ children }) {
     return (
-        <html lang="en" class="light">
+        <html lang="en" >
             <body className="dark:bg-black dark:text-white text-black bg-blue-100">
                 <Providers>
                     <div className="min-h-screen max-h-screen">
