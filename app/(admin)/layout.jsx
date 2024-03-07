@@ -1,7 +1,7 @@
 import ToastProvider from "@/components/ToastProvider";
 import Header from "@/components/admin/Header";
 import Sidebar from "@/components/admin/Sidebar";
-
+import "../globals.css";
 
 export const metadata = {
     title: "Dashboard",
@@ -11,11 +11,11 @@ export const metadata = {
 
 export default function DashboardLayout({ children }) {
     return (
-        <html lang="en" >
+        <html lang="en">
             <body>
                 <div className="bg-gray-200 min-h-screen max-h-screen">
                     <Sidebar>
-                        <Header title={metadata.title}/>
+                        <Header title={metadata.title} />
                         <ToastProvider />
                         {children}
                     </Sidebar>
