@@ -7,6 +7,7 @@ import "./Navbar.css"
 import { Button } from "@nextui-org/react";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import Link from "next/link";
+import Image from "next/image";
 const navVariants = {
   initial: {
     y: "-50%",
@@ -49,9 +50,9 @@ function NavbarFixed() {
       className="fixed z-[999] nav top-2 left-1/2 -translate-x-1/2 rounded-xl p-2 flex-col backdrop-blur-lg border justify-around flex md:flex-row items-center"
       style={{ width: "85%" }}
     >
-      <div className="flex justify-between items-center w-full md:w-0">
+      <div className="flex justify-between items-center w-full md:w-0 text-inherit">
         <span className="text-xl">
-          <img src="/assets/logo.png" className="md:max-w-20 max-w-10" alt="HarikrushnaMultimedia institue logo" />
+          <Image src="/assets/logo.png" height={100} width={100} className="md:max-w-20 max-w-10" alt="HarikrushnaMultimedia institue logo" />
         </span>
         <div className="md:hidden">
           <label className="hamburger">
@@ -90,7 +91,7 @@ function NavbarFixed() {
           </li>
           <li>
             <Link href="/student-project" className=" hover:text-black" >
-              Blog's
+              Blogs
             </Link>
           </li>
         </ul>
