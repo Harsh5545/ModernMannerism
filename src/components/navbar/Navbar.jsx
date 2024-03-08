@@ -1,6 +1,6 @@
 "use client";
 
-import Links from "./links/Links.jsx";
+import Links from "./Links/Links";
 import styles from "./navbar.module.css";
 
 const Navbar = () => {
