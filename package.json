@@ -1,5 +1,5 @@
 {
-  "name": "new-m-m",
+  "name": "modern-m",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,15 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nextui-org/react": "^2.2.10",
-    "@prisma/client": "^5.10.2",
-    "chart.js": "^4.4.2",
-    "framer-motion": "^11.0.8",
-    "next": "14.1.2",
-    "next-themes": "^0.2.1",
     "react": "^18",
-    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
+<<<<<<< HEAD
     "react-icons": "^5.0.1",
     "react-responsive": "^9.0.2",
     "react-toastify": "^10.0.4",
@@ -25,13 +19,15 @@
     "lodash": "^4.17.21",
     "next-auth": "^4.22.3",
     "jsonwebtoken": "^9.0.1"
+=======
+    "next": "14.1.3"
+>>>>>>> 375b4d8 (new changes in code)
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.2",
     "postcss": "^8",
-    "prisma": "^5.10.2",
-    "tailwindcss": "^3.3.0"
+    "tailwindcss": "^3.3.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.3"
   }
 }

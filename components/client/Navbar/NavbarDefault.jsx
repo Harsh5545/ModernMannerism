@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import { useState } from "react";
@@ -106,3 +107,5 @@ function NavbarDefault() {
 }
 
 export default NavbarDefault;
+=======
+>>>>>>> 375b4d8 (new changes in code)
