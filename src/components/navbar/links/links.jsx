@@ -7,7 +7,7 @@ import Image from "next/image";
 
 
 
-const Links = () => {
+const AllLinks = () => {
     const [open, setOpen] = useState(false);
 
 
@@ -60,4 +60,4 @@ const Links = () => {
     );
 };
 
-export default Links;
+export default AllLinks;

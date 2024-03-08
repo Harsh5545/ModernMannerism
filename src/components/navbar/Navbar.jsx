@@ -1,6 +1,6 @@
 "use client";
 
-import Links from "./Links/Links";
+import AllLinks from "./Links/Links";
 import styles from "./navbar.module.css";
 
 const Navbar = () => {
@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className={styles.container}>
             <div className={styles.logo}>Logo</div>
             <div>
-                <Links />
+                <AllLinks />
             </div>
         </div>
     );
