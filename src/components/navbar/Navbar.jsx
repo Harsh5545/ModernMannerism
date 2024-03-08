@@ -1,6 +1,7 @@
 "use client";
 
-import AllLinks from "./Links/Links";
+
+import AllLinks from "./links/AllLinks";
 import styles from "./navbar.module.css";
 
 const Navbar = () => {
