@@ -1,6 +1,7 @@
 
 
-import Links from "./links/Links";
+
+import Links from "./Links/Links";
 import styles from "./navbar.module.css";
 
 const Navbar = () => {
