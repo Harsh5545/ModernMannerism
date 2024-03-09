@@ -10,3 +10,15 @@ const posts = [
   { id: 3, title: "Post 3", body: "......", userId: 2 },
   { id: 4, title: "Post 4", body: "......", userId: 2 },
 ];
+
+export const getUsers = async () => {
+  return users;
+};
+
+export const getPosts = async () => {
+  return posts;
+};
+
+export const getPost = async (id) => {
+  return posts.find((post) => post.id === id);
+};
