@@ -1,6 +1,7 @@
 
 import { Suspense } from "react";
 import styles from "./singlePost.module.css"
+import Image from "next/image";
 
 const getData = async (slug) => {
     const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`);
