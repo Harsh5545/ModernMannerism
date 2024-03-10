@@ -21,7 +21,7 @@ const SinglePostPage = async ({ params }) => {
     const slug = params.slug;
 
     const post = await getPost(slug);
-    console.log(post);
+   
 
     return (
         <div className={styles.container}>
