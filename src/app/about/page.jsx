@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./about.module.css";
-import prisma from "../../../database/db";
+
 
 export const metadata = {
     title: "About Page",
