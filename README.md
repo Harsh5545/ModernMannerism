@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Modern
 
-## Getting Started
+The Modern App.
 
-First, run the development server:
+## Clone This Repo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+cd ModernM
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Use the package manager [npm](https://nodejs.com/download) to install Modern.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
 
-## Learn More
+npm install
 
-To learn more about Next.js, take a look at the following resources:
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Database Connection
+Use the Xampp  [XAMPP](https://www.bing.com/ck/a?!&&p=176132ae6e2aa8aaJmltdHM9MTcwOTk0MjQwMCZpZ3VpZD0xMTM3NDZiZi1iNzE5LTZlNTMtMjg1MS01NTRkYjZjYzZmMGEmaW5zaWQ9NTU2NA&ptn=3&ver=2&hsh=3&fclid=113746bf-b719-6e53-2851-554db6cc6f0a&psq=xampp+download&u=a1aHR0cHM6Ly93d3cuYXBhY2hlZnJpZW5kcy5vcmcvZG93bmxvYWQuaHRtbA&ntb=1) .
+Then Run Your Xamapp Server And If Xamapp is not Available Install it
+```bash
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+npx prisma migrate dev --name init
 
-## Deploy on Vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
