@@ -25,8 +25,8 @@ model User {
   isActive       Boolean  @default(false)
   isVerified     Boolean  @default(false) // Corrected the naming to follow the convention
   posts          Post[]
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  createdAt      DateTime  @default(now()) @db.Timestamp()
+  updatedAt      DateTime  @updatedAt @db.Timestamp() @default(now())
 }
 
 enum Visibility {
@@ -37,12 +37,13 @@ enum Visibility {
 model Post {
   id         Int         @id @default(autoincrement())
   title      String
-  slug       String
+  slug       String      @unique
   body       String
+  image      String
   visibility Visibility   @default(Inactive)  // Renamed the enum to 'Visibility' for clarity
   authorId   Int
   author     User        @relation(fields: [authorId], references: [id])
-  createdAt  DateTime    @default(now())
-  updatedAt  DateTime    @updatedAt
+  createdAt  DateTime    @default(now()) @db.Timestamp()
+  updatedAt  DateTime    @updatedAt      @db.Timestamp() @default(now())
 }
 

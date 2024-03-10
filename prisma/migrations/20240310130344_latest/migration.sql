@@ -10,8 +10,8 @@ CREATE TABLE `User` (
     `profilePicture` VARCHAR(191) NOT NULL,
     `isActive` BOOLEAN NOT NULL DEFAULT false,
     `isVerified` BOOLEAN NOT NULL DEFAULT false,
-    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `updatedAt` DATETIME(3) NOT NULL,
+    `createdAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     UNIQUE INDEX `User_email_key`(`email`),
     UNIQUE INDEX `User_mobileNumber_key`(`mobileNumber`),
@@ -26,8 +26,8 @@ CREATE TABLE `Post` (
     `body` VARCHAR(191) NOT NULL,
     `visibility` ENUM('Active', 'Inactive') NOT NULL DEFAULT 'Inactive',
     `authorId` INTEGER NOT NULL,
-    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `updatedAt` DATETIME(3) NOT NULL,
+    `createdAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
