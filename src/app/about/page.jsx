@@ -10,7 +10,6 @@ export const metadata = {
 
 const AboutPage = async () => {
 
-    console.log(allUsers);
     return (
         <div className={styles.container}>
             <div className={styles.textContainer}>
