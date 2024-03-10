@@ -10,7 +10,6 @@ export const metadata = {
 
 const AboutPage = async () => {
 
-    const allUsers = await prisma.user.findMany();
     console.log(allUsers);
     return (
         <div className={styles.container}>
