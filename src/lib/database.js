@@ -4,7 +4,7 @@ import { createPool } from 'mysql2/promise';
 const pool = createPool({
   host: 'localhost',
   user: 'root',
-  password: '',
+  password: 'Harshad@5545',
   database: 'modern-mannerism',
   connectionLimit: 10, 
 });
