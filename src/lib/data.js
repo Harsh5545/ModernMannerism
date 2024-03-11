@@ -1,4 +1,5 @@
 import pool from "./database";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const getUsers = async () => {
   try {
@@ -16,7 +17,7 @@ export const getPosts = async () => {
     return rows;
   } catch (error) {
     console.error(error);
-   
+
   }
 };
 
@@ -31,6 +32,7 @@ export const getPost = async (slug) => {
 };
 
 export const getUser = async (id) => {
+  noStore();
   try {
     const [rows] = await pool.query('SELECT * FROM user WHERE id = ?', [id]);
     return rows[0];
@@ -39,3 +41,4 @@ export const getUser = async (id) => {
     throw new Error(error);
   }
 };
+

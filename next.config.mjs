@@ -13,7 +13,11 @@ const withPWA = withPWAInit({
     }
 
 });
-const nextConfig = {};
+const nextConfig = {
+    images: {
+        domains: ['avatars.githubusercontent.com'],
+    },
+};
 
 export default withPWA(nextConfig);
 
