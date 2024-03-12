@@ -11,8 +11,11 @@ export const metadata = {
     default: "Modern Mannerism",
     template: "%s | Modern Mannerism",
   },
-  description:
-    "Elevate your social grace with our specialized etiquette courses. From dining decorum to professional protocol, our classes provide practical insights and hands-on learning experiences to ensure you navigate any social setting with finesse.",
+  description:"Elevate your social grace with our specialized etiquette courses. From dining decorum to professional protocol, our classes provide practical insights and hands-on learning experiences to ensure you navigate any social setting with finesse.",
+  verification: {
+    google: 'OHVM3XPAXIWBSVvyZS31w7VGFRXbjD05MblzRaM01WE',
+    
+  },
 };
 
 export const viewport = {
