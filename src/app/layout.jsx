@@ -2,7 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
-
+import Head from "next/head";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -28,6 +28,10 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
           <Footer />
+<Head>
+        
+        <meta name="google-site-verification" content="OHVM3XPAXIWBSVvyZS31w7VGFRXbjD05MblzRaM01WE" />
+      </Head>
         </div>
       </body>
     </html>
