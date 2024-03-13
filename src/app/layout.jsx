@@ -15,7 +15,7 @@ export const metadata = {
     google: 'OHVM3XPAXIWBSVvyZS31w7VGFRXbjD05MblzRaM01WE',
   },
   alternates:{
-    canonical:"https://modernmannerism.com"
+    canonical:"/"
   }
 };
 
