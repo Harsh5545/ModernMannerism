@@ -42,13 +42,14 @@ export const commonServices = {
     
     createEntry: async (table, data) => {
         try {
+            console.log(data);
 
             const keys = Object.keys(data).join(', ');
             const values = Object.values(data).map(value => '?').join(', ');
             const sql = `INSERT INTO ${table} (${keys}) VALUES (${values})`;
             const result = await pool.query(sql, Object.values(data));
-
-            return result;
+            console.log(values)
+            return result[0];
 
         } catch (error) {
             console.error('Database error:', error);
