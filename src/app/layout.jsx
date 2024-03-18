@@ -8,12 +8,13 @@ export const metadata = {
   manifest: "/manifest.json",
   title: {
     default: "Modern Mannerism",
-    template: "%s | Modern Mannerism",
+    template: "Modern Mannerism | %s",
   },
   description:"Elevate your social grace with our specialized etiquette courses. From dining decorum to professional protocol, our classes provide practical insights and hands-on learning experiences to ensure you navigate any social setting with finesse.",
   verification: {
     google: 'OHVM3XPAXIWBSVvyZS31w7VGFRXbjD05MblzRaM01WE',
   },
+  keywords: ['social', 'grace', 'professional','dining','classes','learning'],
   alternates:{
     canonical:"/"
   }
