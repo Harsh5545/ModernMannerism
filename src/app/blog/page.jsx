@@ -5,7 +5,10 @@ import { getPosts } from "@/lib/data";
 
 
 export const metadata = {
-  title: "Blog"
+  title: "Blog",
+  alternates:{
+    canonical:"/blog"
+  }
 };
 
 // FETCH DATA WITH AN API
