@@ -3,7 +3,7 @@ import styles from "./about.module.css";
 
 
 export const metadata = {
-    title: "About Page",
+    title: "About",
     description: "About description",
     alternates:{
     canonical:"/about"
