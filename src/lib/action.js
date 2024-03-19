@@ -1,37 +1,43 @@
 "use server"
 import { signIn, signOut } from "./auth"
-import pool from "./database"
 import { commonServices } from "./services/common"
 
 export const handleGithubLogin = async () => {
 
-  await signIn("github")
+  await signIn("github");
+
 }
 
 
 export const handleLogout = async () => {
-  await signOut()
+
+  await signOut();
+
 }
 
 export const Register = async (formData) => {
+
   const { firstName, lastName, email, mobileNumber, password, cpassword } = Object.fromEntries(formData);
 
   if (password !== cpassword) {
     return { message: 'Password and confirm password did not match.' };
   }
 
-  const [rows] = await pool.query('SELECT * FROM user WHERE email = ?', [email]);
-
-  if (rows[0]) {
+  const user = await commonServices.readSingleData('user', 'id', { "email": email })
+ 
+  if (user[0]) {
     return { message: "Email already exists. Please use another email." };
   }
+
   try {
+
     const user = { firstName, lastName, email, mobileNumber, password };
-    // const result = await pool.query('INSERT INTO user SET ?', user);
-    const NewUser = await commonServices.createEntry('user',user)
+    const NewUser = await commonServices.createEntry('user', user)
     console.log(NewUser)
     return { message: "Registered successfully." };
+    
   } catch (error) {
+
     console.error(error);
 
   }

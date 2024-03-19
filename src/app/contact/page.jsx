@@ -4,8 +4,12 @@ import styles from "./contact.module.css";
 
 
 export const metadata = {
-  title: "Contact Page",
-  description: "Contact description",
+  title: "Contact",
+  description:"Elevate your social grace with our specialized etiquette courses. From dining decorum to professional protocol, our classes provide practical insights and hands-on learning experiences to ensure you navigate any social setting with finesse.",
+  keywords: ['social', 'grace', 'professional','dining','classes','learning'],
+  alternates:{
+    canonical:"https://modernmannerism.com/contact"
+  }
 };
 
 const ContactPage = () => {

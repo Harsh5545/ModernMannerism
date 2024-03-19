@@ -6,8 +6,10 @@ import { getPosts } from "@/lib/data";
 
 export const metadata = {
   title: "Blog",
-  alternates:{
-    canonical:"/blog"
+  description: "Elevate your social grace with our specialized etiquette courses. From dining decorum to professional protocol, our classes provide practical insights and hands-on learning experiences to ensure you navigate any social setting with finesse.",
+  keywords: ['social', 'grace', 'professional', 'dining', 'classes', 'learning'],
+  alternates: {
+    canonical: "https://modernmannerism.com/blog"
   }
 };
 
