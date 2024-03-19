@@ -1,5 +1,7 @@
-User-Agent: *
+User-Agent: Googlebot
 Allow: /
-Disallow: /private/
-
+User-Agent: Applebot
+Allow: /
+User-Agent: Bingbot
+Allow: /
 Sitemap: https://modernmannerism.com/sitemap.xml
