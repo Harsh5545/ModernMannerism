@@ -7,6 +7,7 @@ import "./Header.css"
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import AllLinks from "./links/AllLinks";
+import { ThemeSwitcher } from "../theme/ThemeSwitcher";
 
 function HeaderDefault({session}) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -70,6 +71,7 @@ function HeaderDefault({session}) {
               toggleMobileMenu;
             }}
           />
+          <ThemeSwitcher />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import  { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 // import Button from "../Button/Button";
@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import AllLinks from "./links/AllLinks";
+import { ThemeSwitcher } from "../theme/ThemeSwitcher";
 
 const navVariants = {
   initial: {
@@ -28,7 +29,7 @@ const navVariants = {
   },
 };
 
-function HeaderFixed({session}) {
+function HeaderFixed({ session }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [navInput, setNavInput] = useState(false);
 
@@ -40,10 +41,10 @@ function HeaderFixed({session}) {
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
   const handleNavLinkClick = () => {
-      window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     toggleMobileMenu();
   };
- const router = useRouter()
+  const router = useRouter()
 
   return (
     <motion.div
@@ -74,32 +75,26 @@ function HeaderFixed({session}) {
 
       <div className="flex flex-col items-start">
         <div
-          className={`flex flex-col md:flex-row font-poppins items-center gap-8 md:gap-4 h-[20rem] md:h-0 justify-center text-black font-medium font-jakarta ${
-            isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
-          }`}
+          className={`flex flex-col md:flex-row font-poppins items-center gap-8 md:gap-4 h-[20rem] md:h-0 justify-center text-black font-medium font-jakarta ${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
+            }`}
         >
-        
-            {/* <Link href="/" className=" hover:text-black" onClick={() => handleNavLinkClick("/")}>
-              Home
-            </Link> */}
-                 <AllLinks session={session} />
-
-        
+          <AllLinks session={session} />
         </div>
       </div>
 
-      <div className={`${
-        isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
-      }`}>
+      <div className={`${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
+        }`}>
         <button
-            value={"Free Consultation"}
-            className="
+          value={"Free Consultation"}
+          className="
               buttonn "
-            onClick={() => {
-              router.push("/contact");
-              toggleMobileMenu;
-            }}
-          />
+          onClick={() => {
+            router.push("/contact");
+            toggleMobileMenu;
+          }}
+        ></button>
+        <ThemeSwitcher />
+
       </div>
     </motion.div>
   );
