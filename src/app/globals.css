@@ -19,7 +19,7 @@ body {
     background-color: var(--bg);
     color: var(--text);
 }
-
+/* 
 .container {
     width: 1536px;
     margin: auto;
@@ -29,9 +29,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
+} */
 
-a {
+/* a {
     text-decoration: none;
     color: inherit;
 }
@@ -78,11 +78,11 @@ a {
     .container {
         width: 380px;
     }
-}
+} */
 
-/* @tailwind base;
+ @tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities; 
 
 /* @media (prefers-color-scheme: dark) {
     :root {

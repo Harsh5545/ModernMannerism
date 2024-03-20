@@ -1,8 +1,8 @@
-
-
 import { auth } from "@/lib/auth";
 import AllLinks from "./links/AllLinks";
-import styles from "./navbar.module.css";
+
+import Header from "./Header";
+
 
 const Navbar = async () => {
     
@@ -10,13 +10,18 @@ const Navbar = async () => {
 
   console.log(session);
 
+     
+
+  
     return (
-        <div className={styles.container}>
-            <div className={styles.logo}>Logo</div>
+        <div    >
+            {/* <div className={styles.logo}>Logo</div>
             <div>
                 <AllLinks session={session} />
-            </div>
+            </div> */}
+        <Header session={session}/>
         </div>
+     
     );
 };
 
