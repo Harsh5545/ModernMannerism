@@ -5,23 +5,18 @@ import Image from "next/image";
 import PostUser from "@/components/postUser/postUser";
 import { getPost } from "@/lib/data";
 
-// const getData = async (slug) => {
-//     const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`);
 
-//     if (!response.ok) {
-//         console.log(Error)
-//     }
-//     const data = await response.json();
-//     console.log(data)
-//     return data;
-// };
-
-
-const SinglePostPage = async ({ params }) => {
-    const slug = params.slug;
-
+export const generateMetadata = async ({ params }) => {
+    const { slug } = params;
     const post = await getPost(slug);
-   
+    return {
+        title: post.title,
+        description: post.body
+    };
+}
+const SinglePostPage = async ({ params }) => {
+    const { slug } = params;
+    const post = await getPost(slug);
 
     return (
         <div className={styles.container}>
@@ -35,13 +30,13 @@ const SinglePostPage = async ({ params }) => {
                 <div className={styles.detail}>
                     {post && (
                         <Suspense fallback={<div>Loading...</div>}>
-                            <PostUser userId={post.authorId}/>
+                            <PostUser userId={post.authorId} />
                         </Suspense>
                     )}
                     <div className={styles.detailText}>
                         <span className={styles.detailTitle}>Published</span>
                         <span className={styles.detailValue}>
-                            {/* {post?.createdAt.toString().slice(4, 16)} */}
+                            {post?.createdAt.toString().slice(4, 16)}
                         </span>
                     </div>
                 </div>

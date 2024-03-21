@@ -4,35 +4,38 @@ import { useState } from "react";
 import StyleSheet from "./links.module.css";
 import Navlink from "../navlink/Navlink";
 import Image from "next/image";
+import { handleLogout } from "@/lib/action";
 
 
 
-const AllLinks = () => {
+const AllLinks =  ({session}) => {
     const [open, setOpen] = useState(false);
-
 
     const links = [
         { title: "Home", path: "/", },
         { title: "About", path: "/about", },
-        { title: "Contact", path: "/contact", },
+        { title:"Course", path:"/course"},
         { title: "Blog", path: "/blog", },
     ];
-    const session = true;
+    
     const isAdmin = true;
 
     return (
-        <div className={StyleSheet.container}>
-            <div className={StyleSheet.links}>
+        <div >
+            <div className="flex  md:flex-row flex-col" >
                 {links.map((link, i) => (<Navlink item={link} key={i} />))}
                 {
                     session ?
                         (
                             <>
                                 {
-                                    isAdmin && (
+                                    session.user?.isAdmin && (
                                         <Navlink item={{ title: "Admin", path: "/admin" }} />
                                     )
-                                } <button className={StyleSheet.logout}>Logout</button>
+                                } 
+                                <form action={handleLogout}>  
+                                <button className={StyleSheet.logout}>Logout</button>
+                                </form>
                             </>
                         ) :
                         (
@@ -40,21 +43,9 @@ const AllLinks = () => {
                         )
                 }
             </div>
-            <Image
-                className={StyleSheet.menuButton}
-                src="/menu.png"
-                alt=""
-                width={30}
-                height={30}
-                onClick={() => setOpen((prev) => !prev)}
-            />
-            {
-                open && (
-                    <div className={StyleSheet.mobileLinks}>
-                        {links.map((link) => (<Navlink item={link} key={link.title} />))}
-                    </div>
-                )
-            }
+    
+    
+            
 
         </div>
     );

@@ -1,6 +1,12 @@
-const Register = ()=> {
+import RegisterForm from "@/components/auth/registerForm/RegisterForm"
+import styles from "./register.module.css"
+const Register = () => {
   return (
-    <div>Register</div>
+    <div className={styles.container}>
+      <div className={styles.wrapper}>
+        <RegisterForm />
+      </div>
+    </div>
   )
 }
 export default Register

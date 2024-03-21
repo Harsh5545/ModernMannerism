@@ -1,20 +1,19 @@
-// "use client";
+
 import Image from "next/image";
 import styles from "./contact.module.css";
-// import dynamic from "next/dynamic";
-// import HydrationTest from "@/components/hydrationTest";
 
-// const HydrationTestNoSSR = dynamic(()=>import("@/components/hydrationTest"), {ssr: false})
 
 export const metadata = {
-  title: "Contact Page",
-  description: "Contact description",
+  title: "Contact",
+  description:"Elevate your social grace with our specialized etiquette courses. From dining decorum to professional protocol, our classes provide practical insights and hands-on learning experiences to ensure you navigate any social setting with finesse.",
+  keywords: ['social', 'grace', 'professional','dining','classes','learning'],
+  alternates:{
+    canonical:"https://modernmannerism.com/contact"
+  }
 };
 
 const ContactPage = () => {
-  // const a = Math.random();
 
-  // console.log(a);
 
   return (
     <div className={styles.container}>
@@ -22,8 +21,6 @@ const ContactPage = () => {
         <Image src="/contact.png" alt="" fill className={styles.img} />
       </div>
       <div className={styles.formContainer}>
-        {/* <HydrationTestNoSSR/> */}
-        {/* <div suppressHydrationWarning>{a}</div> */}
         <form action="" className={styles.form}>
           <input type="text" placeholder="Name and Surname" />
           <input type="text" placeholder="Email Address" />
