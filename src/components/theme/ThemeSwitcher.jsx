@@ -20,7 +20,7 @@ export function ThemeSwitcher() {
     if (!mounted) return null;
 
     return (
-        <div className="bg-indigo-800">
+        <div className="p-1 bg-[#000]">
             <button onClick={toggleTheme}>
                 {theme === "light" ? <SunIcon /> : <MoonIcon />}
             </button>

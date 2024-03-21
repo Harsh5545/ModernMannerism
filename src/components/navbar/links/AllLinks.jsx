@@ -22,7 +22,7 @@ const AllLinks =  ({session}) => {
 
     return (
         <div >
-            <div className="flex md:flex-row flex-col" >
+            <div className="flex  md:flex-row flex-col" >
                 {links.map((link, i) => (<Navlink item={link} key={i} />))}
                 {
                     session ?
