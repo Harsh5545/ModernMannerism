@@ -29,13 +29,11 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en" >
             <body className={inter.className}>
-                <div>
-                    <Providers>
-                        <Navbar />
-                        <div >{children}</div>
-                        <Footer />
-                    </Providers>
-                </div>
+                <Providers>
+                    <Navbar />
+                    <div style={{ paddingTop: '50px' }}>{children}</div>
+                    <Footer />
+                </Providers>
             </body>
         </html>
     );
