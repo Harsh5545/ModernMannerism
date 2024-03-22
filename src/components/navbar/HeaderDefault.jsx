@@ -6,11 +6,11 @@ import { useMediaQuery } from "react-responsive";
 import "./navbar.module.css";
 import "./Header.css"
 import Image from "next/image";
-// import { Inter } from "next/font/google";
+
 import { useRouter } from "next/navigation";
 import AllLinks from "./links/AllLinks";
 import { ThemeSwitcher } from "../theme/ThemeSwitcher";
-// const inter = Inter({ subsets: ["Montserrat"] });
+
 
 
 function HeaderDefault({session}) {
