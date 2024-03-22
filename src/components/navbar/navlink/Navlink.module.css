@@ -6,7 +6,12 @@
   text-align: center;
 }
 
-.active{
+.darkActive{
   background-color: var(--text);
   color: var(--bg);
+}
+
+.lightActive{
+ background-color: var(--bg);
+  color: var(--text);
 }

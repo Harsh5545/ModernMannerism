@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -20,8 +20,8 @@ export function ThemeSwitcher() {
     if (!mounted) return null;
 
     return (
-        <div className="p-1 bg-[#000]">
-            <button onClick={toggleTheme}>
+        <div className="">
+            <button onClick={toggleTheme} className={`text-${theme === "light" ? "[#0D0C22]" : "white"} text-2xl`}>
                 {theme === "light" ? <SunIcon /> : <MoonIcon />}
             </button>
         </div>

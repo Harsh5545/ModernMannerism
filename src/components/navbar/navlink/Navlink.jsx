@@ -3,12 +3,14 @@
 import Link from "next/link";
 import StyleSheet from "./Navlink.module.css"
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 const Navlink = ({ item }) => {
-
+   const { theme } = useTheme();
  const pathName = usePathname();
+  const isActive = pathName === item.path;
     return (
-        <Link href={item.path} className={`${StyleSheet.container} ${pathName === item.path && StyleSheet.active}`}>{item.title}</Link>
+        <Link href={item.path} className={`${StyleSheet.container} ${isActive && theme === "dark" ? StyleSheet.darkActive : isActive ? StyleSheet.lightActive : ""}`}>{item.title}</Link>
     )
 }
 
