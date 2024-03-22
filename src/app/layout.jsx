@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
             <body className={inter.className}>
                 <Providers>
                     <Navbar />
-                    <div style={{ paddingTop: '50px' }}>{children}</div>
+                    <div style={{  }}>{children}</div>
                     <Footer />
                 </Providers>
             </body>

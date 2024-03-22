@@ -7,7 +7,7 @@ import HeroCarosel from "./HeroCarousel";
 const Hero = () => {
     return (
         <>
-            <section id="home" className="flex pt-28 px-2 md:px-8 md:flex-row justify-between items-center flex-col bg-white">
+            {/* <section id="home" className="flex pt-28 px-2 md:px-8 md:flex-row justify-between items-center flex-col bg-white">
                 <div className="container flex-1 flex flex-wrap items-center justify-center mx-auto mt-10 md-flex-row">
                     <div className="mb-14 lg:mb-0 ">
                         <h1 className="max-w-xl text-[2.9rem] leading-none text-gray-900 font-extrabold font-sans text-center lg:text-5xl lg:text-left lg:leading-tight mb-5">
@@ -27,7 +27,7 @@ const Hero = () => {
                 <div className="flex flex-1 justify-center items-center overflow-hidden">
                     <Image className="rounded-full" src="/assets/manasikadam.png" width={550} height={550} alt="image manasi kadam" />
                 </div>
-            </section>
+            </section> */}
             <HeroCarosel />
         </>
     );
