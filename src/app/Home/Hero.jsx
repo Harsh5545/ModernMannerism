@@ -9,7 +9,7 @@ const Hero = () => {
      <div className="flex flex-1 flex-col justify-center items-center">
 <h1 className="md:p-10 p-2 text-black dark:text-white font-bold text-center text-2xl md:text-4xl ">A sophisticated guide to cultural
 etiquette & manners.</h1>
-<Button />
+ <Button className="mt-4" ghost>Signup</Button>
 </div>
 <div className="flex-1 flex justify-center items-end"> <Image
         src="/assets/ManasiKadamPic.png"
