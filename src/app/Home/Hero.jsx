@@ -14,7 +14,7 @@ const Hero = () => {
                             A sophisticated guide to cultural etiquette & manners.
                         </h1>
                         <p className="max-w-xl text-center text-gray-500 lg:text-left lg:max-w-md">
-                            We're different. ModernaMannerism is the only.
+                            We re different. ModernaMannerism is the only.
                         </p>
                         <p className="max-w-xl text-center text-gray-500 lg:text-left lg:max-w-md">
                             PERSONALITY DEVELOPMENT CLASSES AND MANY MORE LIKE ETIQUETTE N ALL ALSO
