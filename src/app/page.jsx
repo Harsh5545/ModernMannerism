@@ -1,13 +1,15 @@
 import Image from "next/image";
 import styles from "./home.module.css";
 import Hero from "./Home/Hero";
+import CardComponent from "./Home/CardComponent";
 
 const Home = () => {
 
   return (
-    <div className={styles.container}>
+    <div >
 
         <Hero/>
+        <CardComponent/>
       {/* <div className={styles.textContainer}>
         <h1 className={styles.title}>Creative Thoughts Agency.</h1>
         <p className={styles.desc}>

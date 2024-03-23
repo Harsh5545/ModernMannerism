@@ -45,7 +45,7 @@ const HeroCarosel = () => {
         overlay: `absolute inset-0 bg-[#d664b6] opacity-25`, // Overlay to darken the image
         content: `absolute left-0 w-full z-10 p-4`, // Adjusted positioning
         text: ` text-2xl font-bold sm:text-5xl text-black`, // Adjusted font size
-        button: `px-8 py-4  bg-black  w-[20%] text-white rounded-full mt-4 sm:mt-10`, // Adjusted margin
+        button: `px-8 py-4  bg-black  w-[50%] md:w-[25%] text-white rounded-full mt-4 sm:mt-10`, // Adjusted margin
     };
 
     return (
