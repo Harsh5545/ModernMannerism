@@ -28,11 +28,11 @@ const courses = [
 const CardComponent = () => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center ">
-        <div><h1 className="py-5 text-4xl font-bold">Course</h1></div>
+        <div><h1 className="py-10 text-4xl font-bold">Course <hr className="bg-[#d664b6] h-1"/> </h1> </div>
 
       <div className="flex flex-col justify-center space-y-4 gap-10 py-16 w-full  h-[25rem] md:flex-row md:space-y-0 md:space-x-4">
         {courses.map((course, index) => (
-          <div class=" h-[25rem] w-[25%] bg-neutral-800 rounded-3xl text-neutral-300 p-4 flex flex-col items-start justify-center gap-3 hover:bg-gray-900 hover:shadow-2xl hover:shadow-sky-400 transition-shadow">
+          <div class=" h-[30rem] w-[25%] bg-neutral-800 rounded-3xl text-neutral-300 p-4 flex flex-col items-start justify-center gap-3 hover:bg-gray-900 hover:shadow-2xl hover:shadow-pink-500 transition-shadow">
             <div class=" bg-sky-300 rounded-2xl">  
             <Image
               alt={course.title}
@@ -40,13 +40,13 @@ const CardComponent = () => {
               className="object-cover"
               height={200}
              src={course.image}
-             width={200}
+             width={300}
           /></div>
             <div class="">
               <p class="font-extrabold">{course.title}</p>
               <p class="">{course.description}</p>
             </div>
-            <button class="bg-sky-700 font-extrabold p-2 px-6 rounded-xl hover:bg-sky-500 transition-colors">
+            <button class="bg-sky-700 text-center font-extrabold p-2 px-6 rounded-xl hover:bg-sky-500 transition-colors">
               See more
             </button>
           </div>
