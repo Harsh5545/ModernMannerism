@@ -10,6 +10,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import AllLinks from "./links/AllLinks";
 import { ThemeSwitcher } from "../theme/ThemeSwitcher";
+import { Button } from "@nextui-org/react";
 
 
 
@@ -25,9 +26,9 @@ function HeaderDefault({session}) {
   const router = useRouter()
     
   return (
-    <div className="flex z-[999] absolute w-full justify-center items-center ">
-      <div className="flex-col bg-white dark:bg-[#0D0C22]  md:flex-row flex justify-between px-2 py-2 md:px-10 rounded-md w-[90%]  items-center backdrop-filter backdrop-blur-md bg-white py-1 mt-4 ">
-        <div className="flex justify-between  items-center w-full md:w-0">
+    <div className="flex z-[999] absolute  w-full justify-center items-center ">
+      <div className="flex-col bg-white dark:bg-opacity-30 bg-opacity-30 dark:bg-[#0D0C22]  md:flex-row flex justify-between px-2 py-2 md:px-10 rounded-md w-[90%]  items-center backdrop-filter backdrop-blur-md  py-1 mt-4 ">
+        <div className="flex justify-between items-center w-full md:w-0">
           <span className="text-xl ">
             <Image
               src="/assets/logo.png"
@@ -66,15 +67,15 @@ function HeaderDefault({session}) {
             isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
           } flex flex-col md:flex-row items-center justify-center`}
         >
-          <button
-            value={"Free Consultation"}
+          <Button
+           
             className="
-              buttonn text-[#0D0C22] dark:text-white "
+                bg-fuchsia-900 text-white "
             onClick={() => {
               router.push('/contact')
               toggleMobileMenu;
             }}
-          />
+          >Contact Us</Button>
           <ThemeSwitcher />
         </div>
       </div>
