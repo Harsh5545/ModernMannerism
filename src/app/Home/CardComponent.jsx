@@ -44,11 +44,11 @@ const CardComponent = () => {
                 Best Selling
               </div>
             )}
-            <div className="bg-sky-300 flex justify-center items-center rounded-2xl overflow-hidden">
+            <div className="bg-pink-500  flex justify-center items-center rounded-2xl overflow-hidden">
               <Image
                 alt={course.title}
                 className="object-cover relative"
-                height={200}
+                height={100}
                 src={course.image}
                 width={300}
               />
