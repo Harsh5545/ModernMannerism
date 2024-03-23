@@ -21,8 +21,8 @@ const HeroCarosel = () => {
         {
             id: 1,
             image: "/assets/image1.jpg",
-            text: "Welcome to our Luxury",
-            button: "Enter",
+            text: "Sigh Up Now To Become The Polished Professional",
+            button: "Sign Up Now",
         },
         {
             id: 2,
@@ -42,10 +42,10 @@ const HeroCarosel = () => {
         container: `h-screen w-full bg-cover z-0 relative`,
         slide: `h-screen w-full relative`,
         image: `object-cover w-full md:h-full md:cover h-[50vh]`,
-        overlay: `absolute inset-0 bg-black  opacity-50`, // Overlay to darken the image
+        overlay: `absolute inset-0 bg-[#d664b6] opacity-25`, // Overlay to darken the image
         content: `absolute left-0 w-full z-10 p-4`, // Adjusted positioning
-        text: `text-white text-2xl sm:text-5xl dark:text-black`, // Adjusted font size
-        button: `px-8 py-4 bg-white dark:bg-black dark:text-white w-[20%] text-black rounded-full mt-4 sm:mt-10`, // Adjusted margin
+        text: ` text-2xl font-bold sm:text-5xl text-black`, // Adjusted font size
+        button: `px-8 py-4  bg-black  w-[20%] text-white rounded-full mt-4 sm:mt-10`, // Adjusted margin
     };
 
     return (
@@ -74,7 +74,7 @@ const HeroCarosel = () => {
                                
                             />
                             <div className={styles.overlay}></div> {/* Overlay */}
-                            <div className="absolute flex flex-col justify-center h-full z-10 p-8">
+                            <div className="absolute flex flex-col md:w-[50%]  text-center items-center justify-center h-full z-10 p-8">
                                 <h1 className={styles.text}>{slide.text}</h1>
                                 <Button className={styles.button}>{slide.button}</Button>
                             </div>

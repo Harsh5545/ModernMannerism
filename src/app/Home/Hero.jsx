@@ -2,6 +2,7 @@ import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
 import HeroCarosel from "./HeroCarousel";
+import CardCoponent from "./CardComponent";
 
 
 const Hero = () => {
@@ -29,6 +30,7 @@ const Hero = () => {
                 </div>
             </section> */}
             <HeroCarosel />
+            <CardCoponent/>
         </>
     );
 };

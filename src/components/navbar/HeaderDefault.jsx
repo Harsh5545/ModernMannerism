@@ -70,7 +70,7 @@ function HeaderDefault({session}) {
           <Button
            
             className="
-                bg-fuchsia-900 text-white "
+                bg-[#AB3B8C] text-white "
             onClick={() => {
               router.push('/contact')
               toggleMobileMenu;
