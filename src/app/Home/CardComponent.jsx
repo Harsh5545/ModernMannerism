@@ -1,44 +1,43 @@
 import React from "react";
 import Image from "next/image";
 
-
-
 const CardComponent = () => {
-const courses = [
-  {
-    image: "/assets/course3.jpg",
-    title: "Personality Enhancement Programme",
-    description:
-      "Unlock your full potential with our Personality Enhancement Programme.",
-    isBestSelling: false,
-  },
-  {
-    image: "/assets/course2.jpg",
-    title: "Business Etiquette & Corporate Image Programme",
-    description:
-      "Master the art of business etiquette and elevate your corporate image.",
-    isBestSelling: true,
-  },
-  {
-    image: "/assets/course1.jpg",
-    title: "Children’s Etiquette Programme",
-    description:
-      "Teach your children essential etiquette skills in a fun and engaging way.",
-    isBestSelling: false,
-  },
-];
+  const courses = [
+    {
+      image: "/assets/course3.jpg",
+      title: "Personality Enhancement Programme",
+      description:
+        "Unlock your full potential with our Personality Enhancement Programme.",
+      isBestSelling: false,
+    },
+    {
+      image: "/assets/course2.jpg",
+      title: "Business Etiquette & Corporate Image Programme",
+      description:
+        "Master the art of business etiquette and elevate your corporate image.",
+      isBestSelling: true,
+    },
+    {
+      image: "/assets/course1.jpg",
+      title: "Children’s Etiquette Programme",
+      description:
+        "Teach your children essential etiquette skills in a fun and engaging way.",
+      isBestSelling: false,
+    },
+  ];
+
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div>
         <h1 className="py-10 text-4xl font-bold">
-          Explore Course's <hr className="bg-[#d664b6] h-1" />{" "}
+          Explore Course&apos;s <hr className="bg-[#d664b6] h-1" />{" "}
         </h1>
       </div>
       <div className="flex flex-col justify-center items-center gap-10 py-16 w-full md:flex-row md:space-y-0 md:space-x-4">
         {courses.map((course, index) => (
           <div
             key={index}
-            className="w-full md:w-[25%] bg-neutral-800 rounded-3xl text-neutral-300 p-4 text-center  flex flex-col items-center justify-center gap-3 hover:bg-gray-900 hover:shadow-2xl hover:shadow-pink-500 transition-shadow"
+            className="relative w-[90%] md:w-[25%] bg-neutral-800 rounded-3xl text-neutral-300 md:p-4 p-2 text-center flex flex-col items-center justify-center gap-3 hover:bg-gray-900 hover:shadow-2xl hover:shadow-pink-500 transition-shadow"
           >
             {course.isBestSelling && (
               <div className="absolute top-2 left-2 bg-red-500 text-white py-1 px-3 rounded-lg z-10">
