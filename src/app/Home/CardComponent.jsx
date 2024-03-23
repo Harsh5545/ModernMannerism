@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image";
 
+
+
+const CardComponent = () => {
 const courses = [
   {
     image: "/assets/course3.jpg",
@@ -24,8 +27,6 @@ const courses = [
     isBestSelling: false,
   },
 ];
-
-const CardComponent = () => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
       <div>
@@ -54,15 +55,15 @@ const CardComponent = () => {
               />
             </div>
             <div>
-              <p className="font-extrabold">{course.title}</p>{" "}
-              <p className="">{course.description}</p>{" "}
-            </div>{" "}
+              <p className="font-extrabold">{course.title}</p>
+              <p className="">{course.description}</p>
+            </div>
             <button className="bg-[#AB3B8C] text-center font-extrabold p-2 px-6 rounded-xl hover:bg-[#d664b6]  transition-colors">
-              See more{" "}
-            </button>{" "}
+              See more
+            </button>
           </div>
-        ))}{" "}
-      </div>{" "}
+        ))}
+      </div>
     </div>
   );
 };
