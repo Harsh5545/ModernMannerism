@@ -37,10 +37,10 @@ const CardComponent = () => {
         {courses.map((course, index) => (
           <div
             key={index}
-            className="relative w-[90%] md:w-[25%] bg-neutral-800 rounded-3xl text-neutral-300 md:p-4 p-2 text-center flex flex-col items-center justify-center gap-3 hover:bg-gray-900 hover:shadow-2xl hover:shadow-pink-500 transition-shadow"
+            className="relative w-[90%] md:w-[25%] bg-[#AB3B8C] bg-opacity-25 dark:bg-neutral-800 rounded-3xl text-black md:p-4 p-2 text-center flex flex-col items-center justify-center gap-3 dark:hover:bg-gray-900  shadow-2xl hover:shadow-lg hover:shadow-pink-500  dark:hover:shadow-pink-200 transition-shadow"
           >
             {course.isBestSelling && (
-              <div className="absolute top-2 left-2 bg-red-500 text-white py-1 px-3 rounded-lg z-10">
+              <div className="absolute top-2 left-2 bg-red-500 text-black dark:text-white py-1 px-3 rounded-lg z-10">
                 Best Selling
               </div>
             )}
@@ -57,7 +57,7 @@ const CardComponent = () => {
               <p className="font-extrabold">{course.title}</p>
               <p className="">{course.description}</p>
             </div>
-            <button className="bg-[#AB3B8C] text-center font-extrabold p-2 px-6 rounded-xl hover:bg-[#d664b6]  transition-colors">
+            <button className="bg-[#AB3B8C] text-center text-white font-extrabold p-2 px-6 rounded-xl hover:bg-[#d664b6]  transition-colors">
               See more
             </button>
           </div>
