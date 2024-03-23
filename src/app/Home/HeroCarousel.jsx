@@ -41,11 +41,11 @@ const HeroCarosel = () => {
     const styles = {
         container: `h-screen w-full bg-cover z-0 relative`,
         slide: `h-screen w-full relative`,
-        image: `object-cover w-full h-full`,
+        image: `object-cover w-full md:h-full md:cover h-[50vh]`,
         overlay: `absolute inset-0 bg-black  opacity-50`, // Overlay to darken the image
-        content: `absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 text-center z-10`,
-        text: `text-white text-5xl dark:text-black`, // Text color changed to white
-        button: `px-8 py-4 bg-white dark:bg-black dark:text-white text-black rounded-full mt-10`, // Button color changed to black
+        content: `absolute left-0 w-full z-10 p-4`, // Adjusted positioning
+        text: `text-white text-2xl sm:text-5xl dark:text-black`, // Adjusted font size
+        button: `px-8 py-4 bg-white dark:bg-black dark:text-white w-[20%] text-black rounded-full mt-4 sm:mt-10`, // Adjusted margin
     };
 
     return (
@@ -71,10 +71,10 @@ const HeroCarosel = () => {
                                 alt={slide.text}
                                 className={styles.image}
                                 layout="fill"
-                                objectFit="cover"
+                               
                             />
                             <div className={styles.overlay}></div> {/* Overlay */}
-                            <div className={styles.content}>
+                            <div className="absolute flex flex-col justify-center h-full z-10 p-8">
                                 <h1 className={styles.text}>{slide.text}</h1>
                                 <Button className={styles.button}>{slide.button}</Button>
                             </div>
