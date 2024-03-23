@@ -24,7 +24,7 @@ const courses = [
     isBestSelling: false,
   },
 ];
- 
+
 const CardComponent = () => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
@@ -33,36 +33,36 @@ const CardComponent = () => {
           Explore Course's <hr className="bg-[#d664b6] h-1" />{" "}
         </h1>
       </div>
-      <div className="flex flex-col justify-center items-center gap-10 mx-5 py-16 w-full md:flex-row md:space-y-0 md:space-x-4">
+      <div className="flex flex-col justify-center items-center gap-10 py-16 w-full md:flex-row md:space-y-0 md:space-x-4">
         {courses.map((course, index) => (
           <div
             key={index}
-            className="w-[90%] md:w-[25%] bg-neutral-800 rounded-3xl text-neutral-300 p-4 text-center relative hover:bg-gray-900 hover:shadow-2xl hover:shadow-pink-500 transition-shadow"
+            className="w-full md:w-[25%] bg-neutral-800 rounded-3xl text-neutral-300 p-4 text-center  flex flex-col items-center justify-center gap-3 hover:bg-gray-900 hover:shadow-2xl hover:shadow-pink-500 transition-shadow"
           >
             {course.isBestSelling && (
               <div className="absolute top-2 left-2 bg-red-500 text-white py-1 px-3 rounded-lg z-10">
                 Best Selling
               </div>
             )}
-            <div className="bg-pink-500 flex justify-center items-center rounded-2xl overflow-hidden h-[200px]">
+            <div className="bg-sky-300 flex justify-center items-center rounded-2xl overflow-hidden">
               <Image
                 alt={course.title}
-                className=" "
-width={400} height={400}
-               
+                className="object-cover relative"
+                height={200}
                 src={course.image}
+                width={300}
               />
             </div>
-            <div className="mt-4">
-              <p className="font-extrabold">{course.title}</p>
-              <p className="">{course.description}</p>
-            </div>
-            <button className="bg-[#AB3B8C] text-center font-extrabold p-2 px-6 rounded-xl hover:bg-[#d664b6]  transition-colors mt-4">
-              See more
-            </button>
+            <div>
+              <p className="font-extrabold">{course.title}</p>{" "}
+              <p className="">{course.description}</p>{" "}
+            </div>{" "}
+            <button className="bg-[#AB3B8C] text-center font-extrabold p-2 px-6 rounded-xl hover:bg-[#d664b6]  transition-colors">
+              See more{" "}
+            </button>{" "}
           </div>
-        ))}
-      </div>
+        ))}{" "}
+      </div>{" "}
     </div>
   );
 };
