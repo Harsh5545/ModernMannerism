@@ -12,8 +12,8 @@ const LoginPage = async () => {
 
 
     return (
-        <>
-            <Card isFooterBlurred className="md:max-w-[40%] w-[90%]  mx-auto  mt-32" >
+        <div className="h-[100vh] flex items-center justify-center">
+            <Card isFooterBlurred className="md:max-w-[40%] absolute w-[90%] mx-auto " >
                 <CardHeader className="flex flex-col justify-center text-center">
                     <Image
                         alt="nextui logo"
@@ -57,7 +57,7 @@ const LoginPage = async () => {
                     </Link>
                 </CardFooter>
             </Card>
-        </>
+        </div>
     )
 }
 export default LoginPage
