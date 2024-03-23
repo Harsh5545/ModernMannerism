@@ -28,7 +28,7 @@ const courses = [
 const CardComponent = () => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center ">
-        <div><h1 className="py-10 text-4xl font-bold">Course <hr className="bg-[#d664b6] h-1"/> </h1> </div>
+        <div><h1 className="py-10 text-4xl font-bold"> Explore Course's <hr className="bg-[#d664b6] h-1"/> </h1> </div>
 
       <div className="flex flex-col justify-center space-y-4 gap-10 py-16 w-full  h-[25rem] md:flex-row md:space-y-0 md:space-x-4">
         {courses.map((course, index) => (
