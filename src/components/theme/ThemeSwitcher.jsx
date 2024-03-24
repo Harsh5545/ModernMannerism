@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import style from "./theme.module.css";
@@ -17,10 +19,11 @@ export function ThemeSwitcher() {
     if (!mounted) return null;
 
     return (
-        <div className="w-8 h-8">
-            <button onClick={toggleTheme} className={`text-${theme === "light" ? "[#0D0C22]" : "white"} `}>
-                {theme === "light" ? <SunIcon className="w-8 h-8"/> : <MoonIcon className="w-8 h-8" />}
-            </button>
-        </div>
-    );
+        <div className={style.checkboxWrapper5}>
+            <div className={style.check}>
+                <input checked={theme === "light"} id="check-5" type="checkbox" />
+                <label htmlFor="check-5" onClick={toggleTheme}></label>
+            </div>
+        </div>
+    );
 }
