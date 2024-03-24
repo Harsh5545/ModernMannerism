@@ -1,32 +1,87 @@
 "use client";
 
-import styles from "./registerForm.module.css";
-import Link from "next/link";
-import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Register } from "@/lib/action";
+import React, { useState } from "react";
 
-const RegisterForm = () => {
+const UserForm = () => {
+  const router = useRouter();
+  const [formData, setFormData] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
 
-    // const router = useRouter();
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
-    // useEffect(() => {
-    //     router.push("/login");
-    // }, [router]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMessage("");
+    const res = await fetch("/api/user", {
+      method: "POST",
+      body: JSON.stringify({ formData }),
+      "content-type": "application/json",
+    });
 
-    return (
-        <div>
-            <form className={styles.form} action={Register}>
-                <input type="text" placeholder="First Name" name="firstName" />
-                <input type="text" placeholder="Last Name" name="lastName" />
-                <input type="email" placeholder="email" name="email" />
-                <input type="tel" placeholder="Mobile Number" name="mobileNumber" />
-                <input type="password" placeholder="Password" name="password" />
-                <input type="password" placeholder="Confirm Password" name="cpassword" />
-                <button>Register</button>
-            </form>
-        </div>
-    )
-}
+    if (!res.ok) {
+      const response = await res.json();
+      setErrorMessage(response.message);
+    } else {
+      router.refresh();
+      router.push("/");
+    }
+  };
 
-export default RegisterForm
+  return (
+    <>
+      <form
+        onSubmit={handleSubmit}
+        method="post"
+        className="flex flex-col gap-3 w-[90%] mx-auto"
+      >
+        <h1>Create New User</h1>
+        <label>Full Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          onChange={handleChange}
+          required={true}
+          value={formData.name}
+          className="m-2 bg-slate-400 rounded"
+        />
+        <label>Email</label>
+        <input
+          id="email"
+          name="email"
+          type="text"
+          onChange={handleChange}
+          required={true}
+          value={formData.email}
+          className="m-2 bg-slate-400 rounded"
+        />
+        <label>Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          onChange={handleChange}
+          required={true}
+          value={formData.password}
+          className="m-2 bg-slate-400 rounded"
+        />
+        <input
+          type="submit"
+          value="Create User"
+          className="bg-blue-300 hover:bg-blue-100"
+        />
+      </form>
+      <p className="text-red-500">{errorMessage}</p>
+    </>
+  );
+};
+
+export default UserForm;

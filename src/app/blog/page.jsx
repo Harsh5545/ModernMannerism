@@ -30,7 +30,7 @@ const BlogPage = async () => {
   const posts = await getPosts();
 
   return (
-    <div className={styles.container}>
+    <div className={`styles.container mt-32 w-[90%] mx-auto`}>
       {posts.map((post) => (
         <div className={styles.post} key={post.id}>
           <PostCard post={post} />

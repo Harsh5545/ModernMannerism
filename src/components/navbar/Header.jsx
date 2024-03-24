@@ -8,7 +8,7 @@ import HeaderFixed from "./HeaderFixed.jsx";
 import HeaderDefault from "./HeaderDefault.jsx";
 
 
-function Header( {session}) {
+function Header() {
   const [isScrollPast, setIsScrollPast] = useState(false);
 
   const handleScroll = () => {
@@ -30,7 +30,7 @@ function Header( {session}) {
   return (
     <>
       <AnimatePresence>
-        {isScrollPast ? <HeaderFixed session={session} key="navbar-fixed" /> : <HeaderDefault session={session} />}
+        {isScrollPast ? <HeaderFixed  key="navbar-fixed"  /> : <HeaderDefault  />}
       </AnimatePresence>
     </>
   );

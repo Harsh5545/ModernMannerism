@@ -4,58 +4,58 @@ import { commonServices } from "./services/common";
 
 export const getUsers = async () => {
 
-  try {
+    try {
 
-    const [rows] = await pool.query('SELECT * FROM user');
-    return rows;
+        const [rows] = await pool.query('SELECT * FROM user');
+        return rows;
 
-  } catch (error) {
+    } catch (error) {
 
-    console.error(error);
+        console.error(error);
 
-  }
+    }
 };
 
 export const getPosts = async () => {
 
-  try {
+    try {
 
-    const posts = await commonServices.readAllData('post','*');
-    return posts;
+        const posts = await commonServices.readAllData('post', '*');
+        return posts;
 
-  } catch (error) {
+    } catch (error) {
 
-    console.error(error);
+        console.error(error);
 
-  }
+    }
 };
 
 export const getPost = async (slug) => {
 
-  try {
+    try {
 
-    const post = await commonServices.readSingleData('post', '*', { "slug": slug })
-    return post[0];
+        const post = await commonServices.readSingleData('post', '*', { "slug": slug })
+        return post[0];
 
-  } catch (error) {
+    } catch (error) {
 
-    console.error(error);
+        console.error(error);
 
-  }
+    }
 };
 
 export const getUser = async (id) => {
-  noStore();
+    noStore();
 
-  try {
+    try {
 
-    const user = await commonServices.readSingleData('user','firstName,lastName,profilePicture,email', { "id": id })
-    return user[0]
+        const user = await commonServices.readSingleData('user', 'firstName,lastName,profilePicture,email', { "id": id })
+        return user[0]
 
-  } catch (error) {
+    } catch (error) {
 
-    console.error(error);
+        console.error(error);
 
-  }
+    }
 };
 

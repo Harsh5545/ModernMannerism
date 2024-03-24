@@ -1,27 +1,17 @@
-import { auth } from "@/lib/auth";
-import AllLinks from "./links/AllLinks";
 
+import { getServerSession } from "next-auth";
 import Header from "./Header";
+import { options } from "@/app/api/auth/[...nextauth]/options";
 
 
 const Navbar = async () => {
-    
-  const session = await auth();
+   
 
-  console.log(session);
-
-     
-
-  
     return (
-        <div    >
-            {/* <div className={styles.logo}>Logo</div>
-            <div>
-                <AllLinks session={session} />
-            </div> */}
-        <Header session={session}/>
+        <div>
+            <Header  />
         </div>
-     
+
     );
 };
 

@@ -15,7 +15,19 @@ const withPWA = withPWAInit({
 });
 const nextConfig = {
     images: {
-        domains: ['avatars.githubusercontent.com'],
+
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'lh3.googleusercontent.com', // Gmail profile picture URL pattern
+            },
+            {
+                hostname: 'https://scontent.xx.fbcdn.net/*', // Facebook profile picture URL pattern
+            },
+            {
+                hostname: 'https://avatars.githubusercontent.com/*', // GitHub profile picture URL pattern
+            },
+        ],
     },
 };
 

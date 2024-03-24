@@ -11,9 +11,11 @@ import AllLinks from "./links/AllLinks";
 import { ThemeSwitcher } from "../theme/ThemeSwitcher";
 import { Button } from "@nextui-org/react";
 
-function HeaderDefault({ session }) {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(true);
-  const [navInput, setNavInput] = useState(false);
+
+
+function HeaderDefault() {
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [navInput,setNavInput]=useState(false)
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
@@ -66,15 +68,16 @@ function HeaderDefault({ session }) {
             ${
               isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
             }`}
-          >
-            <AllLinks session={session} />
+          > 
+            <AllLinks  />
+         
           </div>
         </div>
 
         <div
           className={`${
             isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
-          } flex gap-2 flex-col-reverse md:flex-row items-center justify-center`}
+          } flex flex-col md:flex-row items-center justify-center gap-2`}
         >
           <ThemeSwitcher />
           <Button
@@ -84,9 +87,8 @@ function HeaderDefault({ session }) {
               router.push("/contact");
               toggleMobileMenu;
             }}
-          >
-            Contact Us
-          </Button>
+          >Contact Us</Button>
+          <div className=""><ThemeSwitcher /></div>
         </div>
       </div>
     </div>
