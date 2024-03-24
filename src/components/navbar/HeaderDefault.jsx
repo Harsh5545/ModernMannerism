@@ -1,10 +1,9 @@
+"use client";
 
-"use client"
-
-import  { useState } from "react";
+import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import "./navbar.module.css";
-import "./Header.css"
+import "./Header.css";
 import Image from "next/image";
 
 import { useRouter } from "next/navigation";
@@ -12,19 +11,17 @@ import AllLinks from "./links/AllLinks";
 import { ThemeSwitcher } from "../theme/ThemeSwitcher";
 import { Button } from "@nextui-org/react";
 
-
-
-function HeaderDefault({session}) {
+function HeaderDefault({ session }) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [navInput,setNavInput]=useState(false)
+  const [navInput, setNavInput] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
-    setNavInput((prev) => !prev)
+    setNavInput((prev) => !prev);
   };
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-  const router = useRouter()
-    
+  const router = useRouter();
+
   return (
     <div className="flex z-[999] absolute  w-full justify-center items-center ">
       <div className="flex-col bg-white dark:bg-opacity-30 bg-opacity-30 dark:bg-[#06273A]  md:flex-row flex justify-between px-2 py-2 md:px-10 rounded-md w-[90%]  items-center backdrop-filter backdrop-blur-md  py-1 mt-4 ">
@@ -32,14 +29,19 @@ function HeaderDefault({session}) {
           <span className="text-xl ">
             <Image
               src="/assets/logo.png"
-              width={100} height={100}
+              width={100}
+              height={100}
               className="md:max-w-[6rem] max-w-[6rem]"
               alt="HarikrushnaMultimedia institue logo"
             />
           </span>
           <div className="md:hidden">
             <label className="hamburger">
-              <input type="checkbox" onChange={toggleMobileMenu} checked={navInput} />
+              <input
+                type="checkbox"
+                onChange={toggleMobileMenu}
+                checked={navInput}
+              />
               <svg viewBox="0 0 32 32">
                 <path
                   className="line line-top-bottom"
@@ -56,9 +58,8 @@ function HeaderDefault({session}) {
             className={`flex flex-col text-[#0D0C22] dark:text-white font-poppins md:flex-row items-center gap-8 md:gap-10 h-[20rem] md:h-0 justify-center text-black ${
               isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
             }`}
-          > 
+          >
             <AllLinks session={session} />
-         
           </div>
         </div>
 
@@ -66,17 +67,19 @@ function HeaderDefault({session}) {
           className={`${
             isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
           } flex flex-col-reverse md:flex-row items-center justify-center`}
-        > <ThemeSwitcher />
+        >
+          {" "}
+          <ThemeSwitcher />
           <Button
-           
             className="
                 bg-[#AB3B8C] text-white "
             onClick={() => {
-              router.push('/contact')
+              router.push("/contact");
               toggleMobileMenu;
             }}
-          >Contact Us</Button>
-         
+          >
+            Contact Us
+          </Button>
         </div>
       </div>
     </div>

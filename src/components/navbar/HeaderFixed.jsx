@@ -76,7 +76,7 @@ function HeaderFixed({ session }) {
 
       <div className="flex flex-col items-start">
         <div
-          className={`flex flex-col text-[#0D0C22] dark:text-white md:flex-row font-poppins items-center gap-8 md:gap-4 h-[20rem] md:h-0 justify-center text-black font-medium font-jakarta ${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
+          className={`flex flex-col-reverse text-[#0D0C22] dark:text-white md:flex-row font-poppins items-center gap-8 md:gap-4 h-[20rem] md:h-0 justify-center  font-medium ${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
             }`}
         >
           <AllLinks session={session} />
@@ -84,7 +84,7 @@ function HeaderFixed({ session }) {
       </div>
 
       <div className={`${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
-        }`}>
+        }`}><ThemeSwitcher />
          <Button
            
             className="
@@ -94,7 +94,7 @@ function HeaderFixed({ session }) {
               toggleMobileMenu;
             }}
           >Contact Us</Button>
-        <ThemeSwitcher />
+        
 
       </div>
     </motion.div>
