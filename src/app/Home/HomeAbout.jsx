@@ -7,7 +7,7 @@ import FlagCircleIcon from '@mui/icons-material/FlagCircle';
 
 const HomeAbout = () => {
   return (
-    <div className="flex mt-10 gap-10 justify-center flex-col md:flex-row items-center">
+    <div className="flex my-10 gap-10 justify-center flex-col md:flex-row items-center">
       <div className="flex-1 flex justify-center items-center">
         <div className="bg-[#06273A] rounded-xl pl-2 pb-2">
           <Image
@@ -25,7 +25,7 @@ const HomeAbout = () => {
           <h1 className="text-black dark:text-white text-center text-4xl font-bold  ">ABOUT OUR COMPANY</h1>
           <hr className="h-1 bg-[#d664b6] w-16" />
         </div>
-        <p className=" text-gray-800 dark:text-white-200 p-2 text-center">
+        <p className=" text-gray-800 dark:text-white p-2 text-center">
           About Modern Mannerism Modern Mannerism provides professional-quality
           training and learning globally. We help professionals, corporates, and
           organizations to embrace transformation and accomplish breakthrough
@@ -35,20 +35,20 @@ const HomeAbout = () => {
         <Divider className="my-4" />
         <div className="flex justify-around items-center w-full">
           <div className="p-1 flex items-center flex-col gap-4">
-            <StarOutlineIcon />
-            <h2>Vision</h2>
+            <StarOutlineIcon style={{ fontSize: 40, color:'#AB3B8C' }} /> {/* Adjust icon size */}
+            <h2 className="font-semibold dark:text-white md:text-2xl text-xl text-[#06273A]">Vision</h2>
           </div>
-          <Divider orientation="vertical" />
+          <Divider orientation="vertical" style={{ height: 60, width:3 }} /> {/* Adjust height */}
           <div className="p-1 flex items-center flex-col gap-4">
-            <WorkspacePremiumIcon />
-            <h2>Missions</h2>
+            <WorkspacePremiumIcon style={{ fontSize: 40, color:'#AB3B8C' }} /> {/* Adjust icon size */}
+            <h2 className="font-semibold dark:text-white md:text-2xl text-xl text-[#06273A]">Missions</h2>
           </div>
-          <Divider orientation="vertical" />
+          <Divider orientation="vertical" style={{ height: 60, width:3 }} /> {/* Adjust height */}
           <div className="p-1 flex items-center flex-col gap-4">
-            <FlagCircleIcon />
-            <h2>Goals</h2>
+            <FlagCircleIcon style={{ fontSize: 40, color:'#AB3B8C' }} /> {/* Adjust icon size */}
+            <h2 className="font-semibold dark:text-white md:text-2xl text-xl text-[#06273A]">Goals</h2>
           </div>
-          <Divider className="w-1" orientation="vertical" />
+       
         </div>
       </div>
     </div>
