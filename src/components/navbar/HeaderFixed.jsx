@@ -74,23 +74,31 @@ function HeaderFixed() {
                 </div>
             </div>
 
-            <div className="flex flex-col items-start">
-                <div
-                    className={`flex flex-col text-[#0D0C22] dark:text-white md:flex-row font-poppins items-center gap-8 md:gap-4 h-[20rem] md:h-0 justify-center text-black font-medium font-jakarta ${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
-                        }`}
-                >
-                    <AllLinks />
-                </div>
-            </div>
+      <div className="flex flex-col items-start">
+        <div
+          className={`flex flex-col-reverse text-[#0D0C22] dark:text-white md:flex-row font-poppins items-center gap-8 md:gap-4 h-[20rem] md:h-0 justify-center  font-medium ${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
+            }`}
+        >
+          <AllLinks session={session} />
+        </div>
+      </div>
 
-            <div className={`${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"} flex flex-col md:flex-row items-center justify-center gap-2`}>
-                <Button className="bg-[#AB3B8C] text-white " onClick={() => { router.push('/contact'); toggleMobileMenu; }}>
-                    Contact Us
-                </Button>
-                <div><ThemeSwitcher /></div>
-            </div>
-        </motion.div>
-    );
+      <div className={`${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
+        }`}><ThemeSwitcher />
+         <Button
+           
+            className="
+                bg-[#AB3B8C] text-white "
+            onClick={() => {
+              router.push('/contact')
+              toggleMobileMenu;
+            }}
+          >Contact Us</Button>
+        
+
+      </div>
+    </motion.div>
+  );
 }
 
 export default HeaderFixed;

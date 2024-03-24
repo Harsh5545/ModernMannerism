@@ -27,7 +27,7 @@ const CardComponent = () => {
   ];
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center">
+    <div className="w-full dark:bg-[#06273A] h-full flex flex-col justify-center items-center">
       <div>
         <h1 className="py-10 text-4xl font-bold">
           Explore Course&apos;s <hr className="bg-[#d664b6] h-1" />{" "}

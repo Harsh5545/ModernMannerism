@@ -2,4 +2,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities; 
+/* Dark theme scrollbar */
+.dark::-webkit-scrollbar {
+    width: 10px;
+}
 
+.dark::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.dark::-webkit-scrollbar-thumb {
+    background: #06273A;
+    border-radius: 6px;
+}
+
+/* Light theme scrollbar */
+.light::-webkit-scrollbar {
+    width: 10px;
+}
+
+.light::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.light::-webkit-scrollbar-thumb {
+    background:rosybrown; /* Change this to your desired light theme color */
+    border-radius: 6px;
+}
