@@ -79,7 +79,7 @@ function HeaderFixed() {
           className={`flex flex-col-reverse text-[#0D0C22] dark:text-white md:flex-row font-poppins items-center gap-8 md:gap-4 h-[20rem] md:h-0 justify-center  font-medium ${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
             }`}
         >
-          <AllLinks session={session} />
+          <AllLinks />
         </div>
       </div>
 
