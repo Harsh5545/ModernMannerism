@@ -1,9 +1,6 @@
-"use client"
-
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { SunIcon } from "../Icons/SunIcon";
-import { MoonIcon } from "../Icons/MoonIcon";
+import { useTheme } from "next-themes";
+import style from "./theme.module.css";
 
 export function ThemeSwitcher() {
     const [mounted, setMounted] = useState(false);
@@ -20,10 +17,11 @@ export function ThemeSwitcher() {
     if (!mounted) return null;
 
     return (
-        <div className="">
-            <button onClick={toggleTheme} className={`text-${theme === "light" ? "[#0D0C22]" : "white"} text-2xl`}>
-                {theme === "light" ? <SunIcon /> : <MoonIcon />}
-            </button>
+        <div className={style.checkboxWrapper5}>
+            <div className={style.check}>
+                <input checked={theme === "light"} id="check-5" type="checkbox" />
+                <label htmlFor="check-5" onClick={toggleTheme}></label>
+            </div>
         </div>
     );
 }

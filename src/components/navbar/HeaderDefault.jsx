@@ -65,8 +65,8 @@ function HeaderDefault({session}) {
         <div
           className={`${
             isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
-          } flex flex-col md:flex-row items-center justify-center`}
-        >
+          } flex flex-col-reverse md:flex-row items-center justify-center`}
+        > <ThemeSwitcher />
           <Button
            
             className="
@@ -76,7 +76,7 @@ function HeaderDefault({session}) {
               toggleMobileMenu;
             }}
           >Contact Us</Button>
-          <ThemeSwitcher />
+         
         </div>
       </div>
     </div>
