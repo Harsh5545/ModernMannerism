@@ -19,7 +19,7 @@ const SinglePostPage = async ({ params }) => {
     const post = await getPost(slug);
 
     return (
-        <div className={styles.container}>
+        <div className={`styles.container mt-52 w-[90%] mx-auto`}>
             {post?.img && (
                 <div className={styles.imgContainer}>
                     <Image src={post.image} alt="" fill className={styles.img} />
