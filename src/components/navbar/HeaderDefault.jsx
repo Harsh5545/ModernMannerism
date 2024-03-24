@@ -27,7 +27,7 @@ function HeaderDefault({session}) {
     
   return (
     <div className="flex z-[999] absolute  w-full justify-center items-center ">
-      <div className="flex-col bg-white dark:bg-opacity-30 bg-opacity-30 dark:bg-[#0D0C22]  md:flex-row flex justify-between px-2 py-2 md:px-10 rounded-md w-[90%]  items-center backdrop-filter backdrop-blur-md  py-1 mt-4 ">
+      <div className="flex-col bg-white dark:bg-opacity-30 bg-opacity-30 dark:bg-[#06273A]  md:flex-row flex justify-between px-2 py-2 md:px-10 rounded-md w-[90%]  items-center backdrop-filter backdrop-blur-md  py-1 mt-4 ">
         <div className="flex justify-between items-center w-full md:w-0">
           <span className="text-xl ">
             <Image

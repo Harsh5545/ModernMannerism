@@ -8,10 +8,10 @@
 
 .darkActive{
   background-color:white;
-  color: black;
+  color: #06273A;
 }
 
 .lightActive{
- background-color: black;
+ background-color: #06273A;
   color: white;
 }
