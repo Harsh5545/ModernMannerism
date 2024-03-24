@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import AllLinks from "./links/AllLinks";
 import { ThemeSwitcher } from "../theme/ThemeSwitcher";
+import { Button } from "@nextui-org/react";
 
 const navVariants = {
   initial: {
@@ -29,7 +30,7 @@ const navVariants = {
   },
 };
 
-function HeaderFixed({ session }) {
+function HeaderFixed() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [navInput, setNavInput] = useState(false);
 
@@ -75,24 +76,24 @@ function HeaderFixed({ session }) {
 
       <div className="flex flex-col items-start">
         <div
-          className={`flex flex-col md:flex-row font-poppins items-center gap-8 md:gap-4 h-[20rem] md:h-0 justify-center text-black font-medium font-jakarta ${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
+          className={`flex flex-col text-[#0D0C22] dark:text-white md:flex-row font-poppins items-center gap-8 md:gap-4 h-[20rem] md:h-0 justify-center text-black font-medium font-jakarta ${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
             }`}
         >
-          <AllLinks session={session} />
+          <AllLinks  />
         </div>
       </div>
 
       <div className={`${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
         }`}>
-        <button
-          value={"Free Consultation"}
-          className="
-              buttonn "
-          onClick={() => {
-            router.push("/contact");
-            toggleMobileMenu;
-          }}
-        ></button>
+         <Button
+           
+            className="
+                bg-[#AB3B8C] text-white "
+            onClick={() => {
+              router.push('/contact')
+              toggleMobileMenu;
+            }}
+          >Contact Us</Button>
         <ThemeSwitcher />
 
       </div>

@@ -8,7 +8,7 @@ import { handleLogout } from "@/lib/action";
 
 
 
-const AllLinks =  ({session}) => {
+const AllLinks =  () => {
     const [open, setOpen] = useState(false);
 
     const links = [
@@ -19,6 +19,7 @@ const AllLinks =  ({session}) => {
     ];
     
     const isAdmin = true;
+    const session = false;
 
     return (
         <div >
