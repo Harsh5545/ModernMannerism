@@ -65,10 +65,9 @@ function HeaderDefault() {
         <div
           className={`${
             isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
-          } flex flex-col md:flex-row items-center justify-center`}
+          } flex flex-col md:flex-row items-center justify-center gap-2`}
         >
           <Button
-           
             className="
                 bg-[#AB3B8C] text-white "
             onClick={() => {
@@ -76,7 +75,7 @@ function HeaderDefault() {
               toggleMobileMenu;
             }}
           >Contact Us</Button>
-          <ThemeSwitcher />
+          <div className=""><ThemeSwitcher /></div>
         </div>
       </div>
     </div>

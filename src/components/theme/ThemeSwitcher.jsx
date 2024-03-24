@@ -20,9 +20,9 @@ export function ThemeSwitcher() {
     if (!mounted) return null;
 
     return (
-        <div className="">
-            <button onClick={toggleTheme} className={`text-${theme === "light" ? "[#0D0C22]" : "white"} text-2xl`}>
-                {theme === "light" ? <SunIcon /> : <MoonIcon />}
+        <div className="w-8 h-8">
+            <button onClick={toggleTheme} className={`text-${theme === "light" ? "[#0D0C22]" : "white"} `}>
+                {theme === "light" ? <SunIcon className="w-8 h-8"/> : <MoonIcon className="w-8 h-8" />}
             </button>
         </div>
     );
