@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import "./navbar.module.css";
 import "./Header.css";
@@ -12,7 +12,7 @@ import { ThemeSwitcher } from "../theme/ThemeSwitcher";
 import { Button } from "@nextui-org/react";
 
 function HeaderDefault({ session }) {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(true);
   const [navInput, setNavInput] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -20,11 +20,18 @@ function HeaderDefault({ session }) {
     setNavInput((prev) => !prev);
   };
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+ 
+ useEffect(() => {
+    // Close the mobile menu when switching from desktop to mobile view
+    if (isMobile) {
+      setMobileMenuOpen(false);
+    }
+  }, [isMobile]);
   const router = useRouter();
 
   return (
-    <div className="flex z-[999] absolute  w-full justify-center items-center ">
-      <div className="flex-col bg-white dark:bg-opacity-30 bg-opacity-30 dark:bg-[#06273A]  md:flex-row flex justify-between px-2 py-2 md:px-10 rounded-md w-[90%]  items-center backdrop-filter backdrop-blur-md  py-1 mt-4 ">
+    <div className="flex z-[999] absolute w-full justify-center items-center ">
+      <div className="flex-col bg-white dark:bg-opacity-30 bg-opacity-30 dark:bg-[#06273A]  md:flex-row flex justify-between px-2 md:px-10 rounded-md w-[90%]  items-center backdrop-filter backdrop-blur-md  py-1 mt-4 ">
         <div className="flex justify-between items-center w-full md:w-0">
           <span className="text-xl ">
             <Image
@@ -53,9 +60,10 @@ function HeaderDefault({ session }) {
           </div>
         </div>
 
-        <div className="flex   flex-col items-start">
+        <div className="flex flex-col items-start">
           <div
-            className={`flex flex-col text-[#0D0C22] dark:text-white font-poppins md:flex-row items-center gap-8 md:gap-10 h-[20rem] md:h-0 justify-center text-black ${
+            className={`flex flex-col text-[#0D0C22] dark:text-white font-poppins md:flex-row items-center gap-8 md:gap-10 h-[20rem] md:h-0 justify-center  
+            ${
               isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
             }`}
           >
@@ -66,9 +74,8 @@ function HeaderDefault({ session }) {
         <div
           className={`${
             isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
-          } flex flex-col-reverse md:flex-row items-center justify-center`}
+          } flex gap-2 flex-col-reverse md:flex-row items-center justify-center`}
         >
-          {" "}
           <ThemeSwitcher />
           <Button
             className="

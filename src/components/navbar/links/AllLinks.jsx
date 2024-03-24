@@ -3,6 +3,7 @@
 import { useState } from "react";
 import StyleSheet from "./links.module.css";
 import Navlink from "../navlink/Navlink";
+
 import Image from "next/image";
 import { handleLogout } from "@/lib/action";
 
@@ -22,7 +23,7 @@ const AllLinks =  ({session}) => {
 
     return (
         <div >
-            <div className="flex  md:flex-row flex-col" >
+            <div className="flex md:flex-row flex-col" >
                 {links.map((link, i) => (<Navlink item={link} key={i} />))}
                 {
                     session ?
