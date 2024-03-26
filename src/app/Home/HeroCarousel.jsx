@@ -49,9 +49,9 @@ const HeroCarosel = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} >
       <Swiper
-
+       
         onSlideChange={handleSlideChange}
         keyboard={{
           enabled: true,
