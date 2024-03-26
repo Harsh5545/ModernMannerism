@@ -3,6 +3,9 @@ import styles from "./home.module.css";
 import Hero from "./Home/Hero";
 import CardComponent from "./Home/CardComponent";
 import HomeAbout from "./Home/HomeAbout";
+import HomeSection from "./Home/HomeSection";
+import HomeTestimonial from "./Home/HomeTestimonial";
+import HomeConsultation from "./Home/HomeConsultation";
 
 const Home = () => {
 
@@ -11,7 +14,10 @@ const Home = () => {
 
         <Hero/>
         <CardComponent/>
+<HomeSection/>
 <HomeAbout/>
+    <HomeTestimonial/>
+<HomeConsultation/>
       {/* <div className={styles.textContainer}>
         <h1 className={styles.title}>Creative Thoughts Agency.</h1>
         <p className={styles.desc}>
