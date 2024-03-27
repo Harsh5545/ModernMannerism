@@ -11,7 +11,7 @@ import AllLinks from "./links/AllLinks";
 import { ThemeSwitcher } from "../theme/ThemeSwitcher";
 import { Button } from "@nextui-org/react";
 
-function HeaderDefault({ session }) {
+function HeaderDefault() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(true);
   const [navInput, setNavInput] = useState(false);
 
@@ -67,7 +67,7 @@ function HeaderDefault({ session }) {
               isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
             }`}
           >
-            <AllLinks session={session} />
+            <AllLinks  />
           </div>
         </div>
 

@@ -10,10 +10,7 @@ export async function POST(req) {
         console.log(userData)
         //Confirm data exists
         if (!userData?.email || !userData.password) {
-            return NextResponse.json(
-                { message: "All fields are required." },
-                { status: 400 }
-            );
+            return NextResponse.json({ message: "All fields are required." }, { status: 400 });
         }
 
         // check for duplicate emails
@@ -26,15 +23,15 @@ export async function POST(req) {
         }
 
         const hashPassword = await bcrypt.hash(userData.password, 10);
-        
-        let nameParts = userData?.name.split(" ");
-        const NewUser = {
-            firstName: nameParts[0],
-            lastName:nameParts[nameParts.length - 1],
-            email:userData.email,
-            password:hashPassword
-        }
 
+        const NewUser = {
+            firstName:userData.firstName,
+            lastName: userData.lastName,
+            email: userData.email,
+            mobileNumber:userData.mobileNumber,
+            password: hashPassword,
+            isAdmin:0
+        }
         await commonServices.createEntry('user', NewUser);
         return NextResponse.json({ message: "User Created." }, { status: 201 });
     } catch (error) {

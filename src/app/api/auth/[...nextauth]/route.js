@@ -1,5 +1,3 @@
-// export {GET,POST} from '@/lib/auth'
-
 
 import NextAuth from "next-auth";
 import { options } from "./options";
