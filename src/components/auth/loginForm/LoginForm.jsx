@@ -7,8 +7,8 @@ import { signIn, useSession } from 'next-auth/react';
 
 const LoginForm = () => {
     const router = useRouter();
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState("");
 
     const session = useSession();
@@ -47,7 +47,7 @@ const LoginForm = () => {
 
     return (
         <div className="pt-36">
-            <form onSubmit={handleSubmit}  method="post" className="flex flex-col gap-4 w-[50%] mx-auto">
+            <form onSubmit={handleSubmit} method="post" className="flex flex-col gap-4 w-[50%] mx-auto">
                 <h1>Login</h1>
 
                 <Input
@@ -59,6 +59,7 @@ const LoginForm = () => {
                     value={email}
                     label="Email"
                     placeholder="Enter your email"
+                    autoComplete="off"
                 />
 
                 <Input
@@ -70,8 +71,9 @@ const LoginForm = () => {
                     value={password}
                     label="Password"
                     placeholder="Enter your password"
+                    autoComplete="off"
                 />
-                <Button className="w-1/6 mx-auto" type="submit"> Register </Button>
+                <Button className="w-1/6 mx-auto" type="submit" > Login </Button>
 
             </form>
 
