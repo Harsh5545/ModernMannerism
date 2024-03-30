@@ -1,26 +1,22 @@
-"use client";
 
-import { useState } from "react";
 import StyleSheet from "./links.module.css";
 import Navlink from "../navlink/Navlink";
-
-import Image from "next/image";
-import { handleLogout } from "@/lib/action";
-
+import { getServerSession } from "next-auth";
+import { signOut, useSession } from 'next-auth/react'
 
 
-const AllLinks =  () => {
-    const [open, setOpen] = useState(false);
+
+const AllLinks = () => {
+
+    const { data: session } = useSession();
+    console.log(session, 'session');
 
     const links = [
         { title: "Home", path: "/", },
         { title: "About", path: "/about", },
-        { title:"Course", path:"/course"},
+        { title: "Course", path: "/course" },
         { title: "Blog", path: "/blog", },
     ];
-    
-    const isAdmin = true;
-    const session = false;
 
     return (
         <div >
@@ -31,24 +27,21 @@ const AllLinks =  () => {
                         (
                             <>
                                 {
-                                    session.user?.isAdmin && (
+                                    session?.isAdmin ? (
                                         <Navlink item={{ title: "Admin", path: "/admin" }} />
-                                    )
-                                } 
-                                <form action={handleLogout}>  
-                                <button className={StyleSheet.logout}>Logout</button>
-                                </form>
+                                    ) : (<Navlink item={{ title: "Dashboard", path: "/member" }} />)
+                                }
+                                <button onClick={() => { signOut() }} className={StyleSheet.logout}>Logout {' '} {session?.name}</button>
                             </>
                         ) :
                         (
-                            <Navlink item={{ title: "Login", path: "/login" }} />
+                            <>
+                                <Navlink item={{ title: "Login", path: "/login" }} />
+                                <Navlink item={{ title: "Register", path: "/register" }} />
+                            </>
                         )
                 }
             </div>
-    
-    
-            
-
         </div>
     );
 };

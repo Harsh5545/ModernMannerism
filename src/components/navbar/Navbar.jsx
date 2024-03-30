@@ -1,12 +1,11 @@
 
-import { getServerSession } from "next-auth";
+
 import Header from "./Header";
-import { options } from "@/app/api/auth/[...nextauth]/options";
 
 
-const Navbar = async () => {
+
+const Navbar =  () => {
    
-
     return (
         <div>
             <Header  />

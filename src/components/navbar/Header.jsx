@@ -30,7 +30,7 @@ function Header() {
   return (
     <>
       <AnimatePresence>
-        {isScrollPast ? <HeaderFixed  key="navbar-fixed"  /> : <HeaderDefault  />}
+        {isScrollPast ? <HeaderFixed  key="navbar-fixed" /> : <HeaderDefault />}
       </AnimatePresence>
     </>
   );

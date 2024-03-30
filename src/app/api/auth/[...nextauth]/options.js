@@ -5,6 +5,10 @@ import bcrypt from "bcrypt";
 import { commonServices } from "@/lib/services/common";
 
 export const options = {
+    pages: {
+        signIn: '/login',
+        newUser: '/register'
+    },
     providers: [
         GitHubProvider({
             profile(profile) {
@@ -20,8 +24,8 @@ export const options = {
             profile(profile) {
                 console.log("Profile Google: ", profile);
             },
-            clientId: process.env.GOOGLE_ID,
-            clientSecret: process.env.GOOGLE_Secret,
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         }),
         CredentialsProvider({
             name: "Credentials",
@@ -42,10 +46,8 @@ export const options = {
                     const foundUser = await commonServices.readSingleData('user', '*', { email: credentials.email })
                     const hashedPassword = credentials.password;
                     if (foundUser) {
-                        console.log("User Exists", foundUser);
                         const match = await bcrypt.compare(hashedPassword, foundUser[0].password);
                         if (match) {
-                            console.log("Good Pass");
                             return foundUser[0];
                         }
                     }
@@ -56,23 +58,29 @@ export const options = {
             },
         }),
     ],
+    session: {
+        strategy: "jwt"
+    },
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
                 token.isAdmin = user.isAdmin;
                 token.name = user.firstName;
                 token.picture = user.profilePicture;
+                token.isAdmin = user.isAdmin
             }
-            console.log(token)
+
             return token;
         },
+
         async session({ session, token }) {
             if (session?.user) {
-                session.user.role = token.isAdmin;
-                session.user.name = token.firstName;
-                session.user.picture = token.profilePicture;
+                session.role = token.isAdmin;
+                session.name = token.firstName;
+                session.picture = token.profilePicture;
             }
-            return session;
+            return token;
         },
     },
+    secret: process.env.NEXTAUTH_SECRET
 };
