@@ -79,7 +79,7 @@ function HeaderDefault() {
           <ThemeSwitcher />
           <Button
             className="
-                bg-[#AB3B8C] text-white "
+                bg-[#910A67] text-white "
             onClick={() => {
               router.push("/contact");
               toggleMobileMenu;
