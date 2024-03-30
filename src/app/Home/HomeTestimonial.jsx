@@ -29,7 +29,7 @@ const HomeTestimonial = () => {
         <h1 className="p-1 font-semibold text-xl md:text-4xl w-[9%] md:w-[60%] text-center text-black">
           Testimonials
         </h1>
-        <div className="bg-white w-[70%] shadow-xl shadow-slate-400 dark:shadow-black dark:bg-[#06273A] relative p-2 md:p-24" style={{ maxWidth: "100%", overflowX: "hidden" }}>
+        <div className="bg-white w-[70%] shadow-xl shadow-slate-400 dark:shadow-black dark:bg-[#00001F] relative p-2 md:p-24" style={{ maxWidth: "100%", overflowX: "hidden" }}>
           <Swiper
             onSlideChange={handleSlideChange}
             autoplay={{

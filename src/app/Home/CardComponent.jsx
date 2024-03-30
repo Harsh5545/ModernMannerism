@@ -27,20 +27,20 @@ const CardComponent = () => {
   ];
 
   return (
-    <div className="w-full dark:bg-[#06273A] h-full flex flex-col justify-center items-center">
+    <div className="w-full dark:bg-[#00001F] h-full flex flex-col justify-center items-center">
       <div>
         <h1 className="py-10 text-4xl flex flex-col gap-2 font-bold">
-          Explore Course&apos;s <hr className="bg-[#933469] h-1" />{" "}
+          Our Services <hr className="bg-[#933469] h-1" />{" "}
         </h1>
       </div>
       <div className="flex flex-col justify-center items-center gap-10 py-16 w-full md:flex-row md:space-y-0 md:space-x-4">
         {courses.map((course, index) => (
           <div
             key={index}
-            className="relative w-[90%] md:w-[25%] bg-[#708090] bg-opacity-25 dark:bg-neutral-800 rounded-3xl text-black md:p-4 p-2 text-center flex flex-col items-center justify-center gap-3 dark:hover:bg-gray-900  shadow-2xl hover:shadow-lg hover:shadow-[#8c9c88]  dark:hover:shadow-pink-200 transition-shadow"
+            className="relative w-[90%] md:w-[25%] bg-[#708090] bg-opacity-25 dark:bg-[#1f2f40] rounded-3xl text-black md:p-4 p-2 text-center flex flex-col items-center justify-center gap-3 dark:hover:bg-gray-900  shadow-2xl hover:shadow-lg hover:shadow-[#8c9c88]  dark:hover:shadow-[#708090] transition-shadow"
           >
             {course.isBestSelling && (
-              <div className="absolute shadow-lg shadow-[#708090] top-2 left-2 bg-[#fff] text-[#5185c0] dark:text-white py-1 px-3 rounded-lg z-10">
+              <div className="absolute shadow-lg shadow-[#708090] dark:text-[#003b6d] top-2 left-2 bg-[#fff] text-[#5185c0] py-1 px-3 rounded-lg z-10">
                 Best Selling
               </div>
             )}
@@ -54,10 +54,10 @@ const CardComponent = () => {
               />
             </div>
             <div>
-              <p className="font-extrabold">{course.title}</p>
-              <p className="">{course.description}</p>
+              <p className="font-semibold dark:text-white ">{course.title}</p>
+              <p className="dark:text-white">{course.description}</p>
             </div>
-            <button className="bg-[#933469] text-center text-white font-extrabold p-2 px-6 rounded-xl hover:bg-[#d664b6]  transition-colors">
+            <button className="bg-[#933469] text-center text-white dark:text-white font-extrabold p-2 px-6 rounded-xl hover:bg-[#d664b6]  transition-colors">
               See more
             </button>
           </div>
