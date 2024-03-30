@@ -7,16 +7,16 @@ import FlagCircleIcon from '@mui/icons-material/FlagCircle';
 
 const HomeAbout = () => {
   return (
-    <div className="flex dark:bg-[#06273A] md:p-24 p-10  gap-6 justify-center flex-col md:flex-row items-center">
+    <div className="flex dark:bg-[#00001F] md:p-24 p-10  gap-6 justify-center flex-col md:flex-row items-center">
       <div className="flex-1 flex justify-center m-2 items-center">
-        <div className="bg-[#06273A]  pl-4 pb-4">
+        <div className="">
           <Image
             isZoomed
             width={500}
             height={400}
             alt="modern Mannerism image "
             src="/assets/course2.jpg"
-            className=""
+            className=" shadow-2xl p-1 shadow-[#859199]"
           />
         </div>
       </div>

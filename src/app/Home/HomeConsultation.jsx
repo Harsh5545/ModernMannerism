@@ -40,7 +40,7 @@ const HomeConsultation = () => {
 
   return (
     <div>
-      <div className="flex  dark:bg-[#06273A] p-10 gap-4 flex-col justify-center items-center">
+      <div className="flex  dark:bg-[#00001F] p-10 gap-4 flex-col justify-center items-center">
         <h1 className="text-xl md:text-4xl">
           FREE CONSULTATION <hr />
         </h1>
@@ -50,13 +50,13 @@ const HomeConsultation = () => {
         </p>
         <div className="flex rounded-sm md:flex-row flex-col justify-center items-center">
           <div className="">
-            <Image src="/assets/course2.jpg" width={500} height={500} />
+            <Image src="/assets/course2.jpg" width={400} height={400} />
           </div>
           <div className="">
             <form onSubmit={handleSubmit}>
-              <div className="flex gap-4 outline-none border-none">
+              <div className="flex gap-4 flex-col md:flex-row outline-none border-none">
                 {" "}
-                <div className="p-6">
+                <div className="md:p-6 p-2">
                   <input
                     type="text"
                     name="name"
@@ -67,7 +67,7 @@ const HomeConsultation = () => {
 className="p-3 w-56"
                   />
                 </div>
-                <div className="p-6">
+                <div className="md:p-6 p-2">
                   <input
                     type="tel"
                     name="phone"
@@ -80,8 +80,8 @@ className="p-3 w-56"
                   />
                 </div>
               </div >
-              <div className="flex gap-4 outline-none border-none">
-                <div className="p-6">
+              <div className="flex gap-4 flex-col md:flex-row outline-none border-none">
+                <div className="md:p-6 p-2">
                   <input
                     type="email"
                     name="email"
@@ -92,7 +92,7 @@ className="p-3 w-56"
 className="p-3 w-56"
                   />
                 </div>
-                <div className="p-6">
+                <div className="md:p-6 p-2">
                   <select
                     name="service"
                     value={formData.service}
