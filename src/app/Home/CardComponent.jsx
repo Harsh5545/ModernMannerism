@@ -37,7 +37,7 @@ const CardComponent = () => {
         {courses.map((course, index) => (
           <div
             key={index}
-            className="relative w-[90%] md:w-[25%] bg-[#708090] bg-opacity-25 dark:bg-[#1f2f40] rounded-3xl text-black md:p-4 p-2 text-center flex flex-col items-center justify-center gap-3 dark:hover:bg-gray-900  shadow-2xl hover:shadow-lg hover:shadow-[#8c9c88]  dark:hover:shadow-[#708090] transition-shadow"
+            className="relative w-[90%] md:w-[25%] bg-[#708090] bg-opacity-25 dark:bg-[#122031] rounded-3xl text-black md:p-4 p-2 text-center flex flex-col items-center justify-center gap-3 dark:hover:bg-[#000]  shadow-2xl hover:shadow-lg hover:shadow-[#8c9c88]  dark:hover:shadow-[#708090] transition-shadow"
           >
             {course.isBestSelling && (
               <div className="absolute shadow-lg shadow-[#708090] dark:text-[#003b6d] top-2 left-2 bg-[#fff] text-[#5185c0] py-1 px-3 rounded-lg z-10">
@@ -53,8 +53,8 @@ const CardComponent = () => {
                 width={300}
               />
             </div>
-            <div>
-              <p className="font-semibold dark:text-white ">{course.title}</p>
+            <div className="flex flex-col gap-4">
+              <p className="font-semibold text-lg md:text-xl dark:text-white ">{course.title}</p>
               <p className="dark:text-white">{course.description}</p>
             </div>
             <button className="bg-[#933469] text-center text-white dark:text-white font-extrabold p-2 px-6 rounded-xl hover:bg-[#d664b6]  transition-colors">
