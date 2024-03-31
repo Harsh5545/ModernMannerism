@@ -14,7 +14,7 @@ const AllLinks = () => {
     const links = [
         { title: "Home", path: "/", },
         { title: "About", path: "/about", },
-        { title: "Course", path: "/course" },
+        { title: "Services", path: "/service" },
         { title: "Blog", path: "/blog", },
     ];
 
