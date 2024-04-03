@@ -22,7 +22,7 @@ const HomeTestimonial = () => {
   return (
     <div className="relative w-full" style={{ backgroundImage: "url('/assets/image2.jpg')", backgroundAttachment: "fixed", backgroundSize: "cover", backgroundPosition: "center" }}>
       {/* Overlay */}
-      <div className="absolute inset-0 bg-opacity-25 dark:bg-opacity-25 dark:bg-[#06273A] bg-[#b3bdca]"></div>     
+      <div className="absolute inset-0 bg-opacity-25 dark:bg-opacity-60 dark:bg-[#060507] bg-[#b3bdca]"></div>     
 
       {/* Content */}
       <div className="flex h-[90vh] gap-5 flex-col p-5 justify-center items-center">
