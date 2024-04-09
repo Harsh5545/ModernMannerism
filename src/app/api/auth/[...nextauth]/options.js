@@ -67,19 +67,20 @@ export const options = {
                 token.isAdmin = user.isAdmin;
                 token.name = user.firstName;
                 token.picture = user.profilePicture;
-                token.isAdmin = user.isAdmin
+                token.isAdmin = user.isAdmin;
+                token.image  = user.profilePicture
             }
-
             return token;
         },
 
         async session({ session, token }) {
             if (session?.user) {
-                session.role = token.isAdmin;
-                session.name = token.firstName;
-                session.picture = token.profilePicture;
+                session.isAdmin = token.isAdmin;
+                session.picture = token.image;
+                session.email = token.email;
+                session.image = token.image;
             }
-            return token;
+            return session;
         },
     },
     secret: process.env.NEXTAUTH_SECRET
