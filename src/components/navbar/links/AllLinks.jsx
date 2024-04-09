@@ -1,7 +1,6 @@
 
 import StyleSheet from "./links.module.css";
 import Navlink from "../navlink/Navlink";
-import { getServerSession } from "next-auth";
 import { signOut, useSession } from 'next-auth/react'
 
 
@@ -21,7 +20,9 @@ const AllLinks = () => {
     return (
         <div >
             <div className="flex md:flex-row flex-col" >
-                {links.map((link, i) => (<Navlink item={link} key={i} />))}
+                {links.map((link, i) => (
+                    <Navlink item={link} key={i} />
+                ))}
                 {
                     session ?
                         (
