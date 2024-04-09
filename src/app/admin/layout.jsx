@@ -8,7 +8,7 @@ const layout = ({ children }) => {
             <body suppressHydrationWarning>
                 <div className="min-h-screen flex">
 
-                    <aside className=" text-black w-64 flex-shrink-0">
+                    <aside className="bg-gray-800 text-black w-64 flex-shrink-0">
                         <div className="p-4">
                             <Sidebar />
                         </div>
