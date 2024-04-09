@@ -1,33 +1,43 @@
-import Header from "@/components/admin/Header"
-import Sidebar from "@/components/admin/Sidebar"
+import Header from '@/components/admin/Header';
+import Sidebar from '@/components/admin/Sidebar';
+import AuthProvider from '../Providers/AuthProvider';
+import { getServerSession } from 'next-auth';
+import { redirect } from "next/navigation";
+import { options } from '../api/auth/[...nextauth]/options';
 
 
-const layout = ({ children }) => {
+const Layout = async ({ children }) => {
+    const session = await getServerSession(options);
+   
+
+    if (!session?.isAdmin) {
+        redirect('/');
+    };
+
     return (
-        <html lang="en" >
+        <html lang="en">
             <body suppressHydrationWarning>
-                <div className="min-h-screen flex">
+                <AuthProvider session={session}>
+                    <div className="min-h-screen flex">
+                        <aside className={` w-64 flex-shrink-0 border  flex`}>
+                            <div className="w-auto">
+                                <Sidebar />
+                            </div>
+                        </aside>
 
-                    <aside className="bg-gray-800 text-black w-64 flex-shrink-0">
-                        <div className="p-4">
-                            <Sidebar />
-                        </div>
-                    </aside>
-
-                    <main className="flex-1 p-5">
-
-                        <header className="mb-5">
-                            <Header />
-                        </header>
-
-                        <div className="bg-white rounded-lg shadow-md p-5">
-                            {children}
-                        </div>
-                    </main>
-                </div>
+                        <main className="flex-1 p-2">
+                            <header className="mb-5">
+                                <Header session={session}/>
+                            </header>
+                            <div className="bg-white rounded-lg shadow-md p-5 h-fit-screen">
+                                {children}
+                            </div>
+                        </main>
+                    </div>
+                </AuthProvider>
             </body>
         </html>
-    )
-}
+    );
+};
 
-export default layout
+export default Layout;
