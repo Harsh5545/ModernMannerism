@@ -8,7 +8,7 @@ import Image from "next/image";
 
 import { useRouter } from "next/navigation";
 import AllLinks from "./links/AllLinks";
-import { ThemeSwitcher } from "../theme/ThemeSwitcher";
+// import { ThemeSwitcher } from "../theme/ThemeSwitcher";
 import { Button } from "@nextui-org/react";
 
 function HeaderDefault() {
@@ -76,7 +76,7 @@ function HeaderDefault() {
             isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
           } flex gap-2 flex-col-reverse md:flex-row items-center justify-center`}
         >
-          <ThemeSwitcher />
+          {/* <ThemeSwitcher /> */}
           <Button
             className="
                 bg-[#910A67] text-white "

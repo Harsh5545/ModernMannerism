@@ -42,7 +42,7 @@ const HomeConsultation = () => {
     <div>
       <div className="flex  dark:bg-[#00001F] p-10 gap-4 flex-col justify-center items-center">
         <h1 className="text-xl md:text-4xl">
-          FREE CONSULTATION <hr />
+          Request Your Coaching Session<hr />
         </h1>
         <p>
           A tale of a fateful trip that started from this tropic port aboard

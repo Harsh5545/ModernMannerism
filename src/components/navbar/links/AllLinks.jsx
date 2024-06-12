@@ -23,7 +23,7 @@ const AllLinks = () => {
                 {links.map((link, i) => (
                     <Navlink item={link} key={i} />
                 ))}
-                {
+                {/* {
                     session ?
                         (
                             <>
@@ -41,7 +41,7 @@ const AllLinks = () => {
                                 <Navlink item={{ title: "Register", path: "/register" }} />
                             </>
                         )
-                }
+                } */}
             </div>
         </div>
     );
