@@ -13,6 +13,7 @@ module.exports = {
         nextui({
             addCommonColors: true,
             themes: {
+
                 light: {},
                 dark: {},
             }
