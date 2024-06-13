@@ -50,7 +50,7 @@ const HomeConsultation = () => {
         </p>
         <div className="flex rounded-sm md:flex-row flex-col justify-center items-center">
           <div className="">
-            <Image src="/assets/course2.jpg" width={400} height={400} />
+            <Image src="/assets/course2.jpg" alt="Modern Mannerism Consulation" width={400} height={400} />
           </div>
           <div className="">
             <form onSubmit={handleSubmit}>

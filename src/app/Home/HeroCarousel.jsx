@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
@@ -8,7 +8,6 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Pagination, Navigation, Autoplay } from "swiper/modules";
- // Import fonts.css where Lato is imported
 
 const HeroCarousel = () => {
   const swiperRef = useRef(null);
@@ -42,16 +41,33 @@ const HeroCarousel = () => {
   const styles = {
     container: `md:h-screen  w-full bg-cover z-0 relative`,
     slide: `md:h-screen h-[50vh] w-full relative`,
-    image: `object-cover w-full md:h-full h-[5
-.0vh]`,
-    overlay: `absolute inset-0 dark:bg-[#060507] bg-[#BEBEBE] dark:bg-opacity-60 bg-opacity-40`, // Overlay to darken the image
-    content: `absolute left-0 w-full z-10 p-4`, // Adjusted positioning
-    text: `md:text-2xl t font-bold sm:text-xl text-black lato-font`, // Adjusted font size
-    button: `px-8 py-4  bg-black  w-[50%] md:w-[25%] text-white rounded-full mt-4 sm:mt-10`, // Adjusted margin
+    image: `object-cover w-full md:h-full h-[50vh]`,
+    overlay: `absolute inset-0 dark:bg-[#060507] bg-[#BEBEBE] dark:bg-opacity-60 bg-opacity-40`,
+    content: `absolute left-0 w-full z-10 p-4`,
+    text: `md:text-2xl font-bold sm:text-xl text-black lato-font`,
+    button: `px-8 py-4 bg-black w-[50%] md:w-[25%] text-white rounded-full mt-4 sm:mt-10`,
   };
 
   return (
     <div className={styles.container}>
+      <style jsx>{`
+        @media (max-width: 767px) {
+          .swiper-button-next,
+          .swiper-button-prev {
+            display: none !important;
+          }
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+          color: #ff0000; /* Customize this color as needed */
+        }
+        .swiper-pagination-bullet {
+          background-color: #0000ff; /* Customize this color as needed */
+        }
+        .swiper-pagination-bullet-active {
+          background-color: #ff0000; /* Customize active dot color */
+        }
+      `}</style>
       <Swiper
         onSlideChange={handleSlideChange}
         keyboard={{
@@ -80,8 +96,8 @@ const HeroCarousel = () => {
                 className={styles.image}
                 layout="fill"
               />
-              <div className={styles.overlay}></div> {/* Overlay */}
-              <div className="absolute  flex flex-col md:w-[50%]  text-center items-center justify-center h-full z-10 p-8">
+              <div className={styles.overlay}></div>
+              <div className="absolute flex flex-col md:w-[50%] text-center items-center justify-center h-full z-10 p-8">
                 <h1 className={styles.text}>{slide.text}</h1>
                 <Button className={styles.button}>{slide.button}</Button>
               </div>

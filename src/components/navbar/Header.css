@@ -7,9 +7,7 @@
 }
 
 .hamburger svg {
-  /* The size of the SVG defines the overall size */
   height: 3em;
-  /* Define the transition for transforming the SVG */
   transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -19,7 +17,6 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3;
-  /* Define the transition for transforming the Stroke */
   transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
               stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -36,6 +33,7 @@
   stroke-dasharray: 20 300;
   stroke-dashoffset: -32.42;
 }
+
 .buttonn {
   padding: 0.8em 1.8em;
   border: none;
@@ -43,37 +41,44 @@
   overflow: hidden;
   color: #fff;
   border-radius: 4rem;
-   background: #e9414d;
+  background: #e9414d;
   text-align: center;
   text-transform: uppercase;
   font-size: 16px;
-  transition: .3s;
+  transition: 0.3s;
   z-index: 1;
   font-family: inherit;
- 
- }
- 
- .buttonn::before {
+}
+
+.buttonn::before {
   content: '';
   width: 0;
   height: 300%;
   position: absolute;
   top: 50%;
   left: 50%;
- background-color: transparent;
-
+  background-color: transparent;
   display: block;
   z-index: -1;
- }
- 
- .buttonn:hover::before {
-     transform: translate(-50%, -50%) rotate(45deg);
- transition: .5s ease;
- }
- 
- .buttonn:hover {
-  color: #E9414D;  
+}
+
+.buttonn:hover::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: 0.5s ease;
+}
+
+.buttonn:hover {
+  color: #e9414d;
   background-color: transparent;
- border:solid 2px #e9414d
- }
- 
+  border: solid 2px #e9414d;
+}
+
+/* .navbar-hidden {
+  display: none;
+}
+
+.navbar-visible {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+} */

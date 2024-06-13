@@ -30,3 +30,10 @@
     background:rosybrown; /* Change this to your desired light theme color */
     border-radius: 6px;
 }
+/* Global CSS file or module.css file */
+@media (max-width: 767px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+}
