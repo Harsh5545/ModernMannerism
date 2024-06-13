@@ -8,7 +8,7 @@ import { signOut, useSession } from 'next-auth/react'
 const AllLinks = () => {
 
     const { data: session } = useSession();
-    console.log(session, 'session');
+    // console.log(session, 'session');
 
     const links = [
         { title: "Home", path: "/", },

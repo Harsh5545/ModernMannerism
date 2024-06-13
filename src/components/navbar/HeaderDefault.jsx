@@ -5,41 +5,41 @@ import { useMediaQuery } from "react-responsive";
 import "./navbar.module.css";
 import "./Header.css";
 import Image from "next/image";
-
 import { useRouter } from "next/navigation";
 import AllLinks from "./links/AllLinks";
-// import { ThemeSwitcher } from "../theme/ThemeSwitcher";
 import { Button } from "@nextui-org/react";
 
 function HeaderDefault() {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(true);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [navInput, setNavInput] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
     setNavInput((prev) => !prev);
   };
+
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
- 
- useEffect(() => {
-    // Close the mobile menu when switching from desktop to mobile view
-    if (isMobile) {
+
+  useEffect(() => {
+    if (!isMobile) {
       setMobileMenuOpen(false);
+      setNavInput(false);
     }
   }, [isMobile]);
+
   const router = useRouter();
 
   return (
-    <div className="flex z-[999] absolute w-full justify-center items-center ">
-      <div className="flex-col bg-white dark:bg-opacity-30 bg-opacity-30 dark:bg-[#06273A]  md:flex-row flex justify-between px-2 md:px-10 rounded-md w-[90%]  items-center backdrop-filter backdrop-blur-md  py-1 mt-4 ">
+    <div className="flex z-[999] absolute w-full justify-center items-center">
+      <div className="flex-col bg-white dark:bg-opacity-30 bg-opacity-30 dark:bg-[#06273A] md:flex-row flex justify-between px-2 md:px-10 rounded-md w-[90%] items-center backdrop-filter backdrop-blur-md py-1 mt-4">
         <div className="flex justify-between items-center w-full md:w-0">
-          <span className="text-xl ">
+          <span className="text-xl">
             <Image
               src="/assets/logo.png"
               width={100}
               height={100}
               className="md:max-w-[6rem] max-w-[6rem]"
-              alt="HarikrushnaMultimedia institue logo"
+              alt="HarikrushnaMultimedia institute logo"
             />
           </span>
           <div className="md:hidden">
@@ -62,27 +62,24 @@ function HeaderDefault() {
 
         <div className="flex flex-col items-start">
           <div
-            className={`flex flex-col text-[#0D0C22] dark:text-white font-poppins md:flex-row items-center gap-8 md:gap-10 h-[20rem] md:h-0 justify-center  
-            ${
-              isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
-            }`}
+            className={`flex flex-col text-[#0D0C22] dark:text-white font-poppins md:flex-row items-center gap-8 md:gap-10 h-[20rem] md:h-0 justify-center ${
+              isMobileMenuOpen ? "block" : "hidden"
+            } md:flex`}
           >
-            <AllLinks  />
+            <AllLinks />
           </div>
         </div>
 
         <div
           className={`${
-            isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
-          } flex gap-2 flex-col-reverse md:flex-row items-center justify-center`}
+            isMobileMenuOpen ? "block" : "hidden"
+          } md:flex gap-2 flex-col-reverse md:flex-row items-center justify-center`}
         >
-          {/* <ThemeSwitcher /> */}
           <Button
-            className="
-                bg-[#910A67] text-white "
+            className="bg-[#910A67] text-white"
             onClick={() => {
               router.push("/contact");
-              toggleMobileMenu;
+              toggleMobileMenu();
             }}
           >
             Contact Us

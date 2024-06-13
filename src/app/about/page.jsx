@@ -1,4 +1,5 @@
 import AboutHero from "@/components/About/AboutHero";
+import AboutSection from "@/components/About/AboutSection";
 import Aboutpage from "@/components/About/Aboutpage";
 // import Image from "next/image";
 
@@ -20,6 +21,7 @@ const AboutPage = async () => {
 
       <AboutHero/>
 <Aboutpage/>
+<AboutSection/>
         </div>
     );
 };
