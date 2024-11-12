@@ -63,7 +63,7 @@ export default function AddBlog({ existingBlog }) {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6  sm:p-12">
-      <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 space-y-8">
+      <div className="max-w-8xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 space-y-8">
         <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">{isEditMode ? 'Edit Blog' : 'Add New Blog'}</h1>
         
         <form onSubmit={handleSubmit} className="space-y-6">

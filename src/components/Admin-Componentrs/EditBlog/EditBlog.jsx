@@ -54,7 +54,7 @@ const EditBlog = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6">
-            <div className="max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
+            <div className="max-w-8xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
                 <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">Manage Blogs</h1>
                 <table className="min-w-full mt-6">
                     <thead>
