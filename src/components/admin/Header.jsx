@@ -13,9 +13,9 @@ const Header = () => {
         <header className="bg-gray-800 text-white shadow-lg rounded-md">
             <div className="container mx-auto px-6 py-4">
                 <div className="flex items-center justify-between">
-                    <div className="text-lg font-semibold">Admin Dashboard</div>
+                    <div className="text-lg hidden md:visible font-semibold">Admin Dashboard</div>
                     <div className="flex items-center space-x-4">
-                        <Profile name={session?.user?.name} description={session?.user?.email} image={session?.user?.image} />
+                        {/* <Profile name={session?.user?.name} description={session?.user?.email} image={session?.user?.image} /> */}
                         <Button onClick={() => { signOut() }} color='primary'>Logout</Button>
                     </div>
                 </div>

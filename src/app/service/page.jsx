@@ -1,8 +1,11 @@
+import ServicesComponent from '@/components/services/ServicesComponent'
+import ServicesHero from '@/components/services/servicesHero'
 import React from 'react'
 
 function page() {
   return (
-    <div>page</div>
+    <div><ServicesHero/>
+<ServicesComponent/></div>
   )
 }
 

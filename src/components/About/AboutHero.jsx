@@ -8,7 +8,7 @@ function AboutHero() {
         {/* Content goes here */}
 <div className='absolute inset-0 dark:bg-[#060507] bg-[#BEBEBE] dark:bg-opacity-60 bg-opacity-80'></div>
         <div className="w-full px-16 relative z-50 dark:text-white text-black ">
-          <h1 className='p-1 font-bold text-5xl md:text-6xl'>About Us</h1>
+          {/* <h1 className='p-1 font-bold text-5xl md:text-6xl'>About Us</h1> */}
           <Breadcrumbs className=" text-black p-4">
             <BreadcrumbItem>Home</BreadcrumbItem>
             <BreadcrumbItem>About Us</BreadcrumbItem>

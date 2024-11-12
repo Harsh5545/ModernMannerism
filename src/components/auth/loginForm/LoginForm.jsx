@@ -1,86 +1,95 @@
-'use client';
-
-import React, { useState, useEffect } from "react";
-import { Button, Input } from '@nextui-org/react';
-import { useRouter } from 'next/navigation';
-import { signIn, useSession } from 'next-auth/react';
+// pages/admin-login.js
+"use client";
+import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation"; // Import useRouter
+import ForgotPasswordDropdown from "../ForgetPassword/ForgetPassword";// Adjust the path as necessary
 
 const LoginForm = () => {
-    const router = useRouter();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false); // State for modal visibility
+  const router = useRouter(); // Initialize useRouter
 
-    const session = useSession();
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
-    useEffect(() => {
-        if (session.status === 'authenticated') {
-            router.replace('/admin');
-        }
-    }, [session, router])
+    try {
+      // Replace this URL with your backend login API endpoint
+      const response = await axios.post("/api/admin/login", { email, password });
 
+      // Handle successful login (e.g., store token, redirect)
+      console.log(response.data); // Assuming response contains user data or a token
+      
+      // Redirect to dashboard
+      router.push("/dashboard"); // Adjust the path to your dashboard page
 
-    const handleChange = (e) => {
-        const value = e.target.value;
-        const name = e.target.name;
-        setFormData((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
-    };
+    } catch (err) {
+      console.error(err);
+      setError("Invalid email or password. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const res = await signIn("credentials", {
-            redirect: false,
-            email,
-            password
-        });
-        if (res?.error) {
-            setErrorMessage("Invalid Email Or Password.");
-            if (res?.url) router.replace('/admin')
-        } else {
-            setErrorMessage("")
-        }
-    };
-
-    return (
-        <div className="pt-36">
-            <form onSubmit={handleSubmit} method="post" className="flex flex-col gap-4 w-[50%] mx-auto">
-                <h1>Login</h1>
-
-                <Input
-                    id="email"
-                    name="email"
-                    type="text"
-                    onChange={(e) => setEmail(e.target.value)}
-                    required={true}
-                    value={email}
-                    label="Email"
-                    placeholder="Enter your email"
-                    autoComplete="off"
-                />
-
-                <Input
-                    id="password"
-                    name="password"
-                    type="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    required={true}
-                    value={password}
-                    label="Password"
-                    placeholder="Enter your password"
-                    autoComplete="off"
-                />
-                <Button className="w-1/6 mx-auto" type="submit" > Login </Button>
-
-            </form>
-
-            <p className="text-red-500">{errorMessage}</p>
-
+  return (
+    <div className="flex items-center justify-center h-screen ">
+      <div className="w-full max-w-md bg-white shadow-md rounded px-8 py-6">
+        <h2 className="text-2xl font-bold text-center text-black">Admin Login</h2>
+        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+        <form onSubmit={handleLogin} className="mt-4">
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="mt-1 block w-full border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+          >
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
+        <div className="mt-4 text-center">
+          <button
+            onClick={() => setIsForgotPasswordOpen(true)} // Open the dropdown
+            className="text-sm text-indigo-600 hover:underline"
+          >
+            Forgot Password?
+          </button>
         </div>
-    );
-}
+      </div>
 
-export default LoginForm
+      {/* Include the Forgot Password Dropdown */}
+      <ForgotPasswordDropdown isOpen={isForgotPasswordOpen} onClose={() => setIsForgotPasswordOpen(false)} />
+    </div>
+  );
+};
+
+export default LoginForm;

@@ -3,15 +3,16 @@ import { redirect } from "next/navigation";
 
 const AdminPage = async () => {
 
-  const session = await getServerSession();
-  console.log(session);
+  // const session = await getServerSession();
+  // console.log(session);
   
-  if (!session ) {
-    redirect('/');
-  };
+  // if (!session ) {
+  //   redirect('/');
+  // };
 
   return (
-    <div>AdminPage</div>
+    // <div>AdminPage</div><>
+<div>Dash board page</div>
   )
 }
 export default AdminPage

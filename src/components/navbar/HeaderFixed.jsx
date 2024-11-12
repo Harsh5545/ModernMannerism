@@ -58,7 +58,7 @@ function HeaderFixed() {
         >
             <div className="flex justify-between items-center w-full md:w-0">
                 <span className="text-xl">
-                    <Image width={100} height={100} src="/assets/logo.png" className="md:max-w-20 max-w-10" alt="HarikrushnaMultimedia institue logo" />
+                    <Image width={100} height={100} src="/assets/logo.png" className="md:max-w-20 max-w-10" alt="ModernMannerism institue logo" />
                 </span>
                 <div className="md:hidden">
                     <label className="hamburger">
