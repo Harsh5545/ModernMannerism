@@ -1,6 +1,7 @@
 import PostCard from "@/components/postCard/postCard";
 import styles from "./blog.module.css";
 import { getPosts } from "@/lib/data";
+import BlogPage from "@/components/Blog/BlogPage";
 
 
 
@@ -25,19 +26,21 @@ export const metadata = {
 //   return data;
 // };
 
-const BlogPage = async () => {
+const page = async () => {
 
   const posts = await getPosts();
 
   return (
     <div className={`styles.container mt-32 w-[90%] mx-auto`}>
-      {posts.map((post) => (
+      {/* {posts.map((post) => (
         <div className={styles.post} key={post.id}>
           <PostCard post={post} />
+
         </div>
-      ))}
+      ))} */}
+<BlogPage/>
     </div>
   );
 };
 
-export default BlogPage;
+export default page;

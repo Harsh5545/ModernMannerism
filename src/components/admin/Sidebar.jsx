@@ -1,6 +1,7 @@
 "use client";
+
 import React, { useState } from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, IconButton, Box } from '@mui/material';
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, IconButton, Box, Switch } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -9,9 +10,11 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useRouter } from 'next/navigation';
+import { useTheme } from 'next-themes';
 
 const SideBar = () => {
     const [open, setOpen] = useState(false);
+    const { theme, setTheme } = useTheme(); // Use next-themes
     const router = useRouter();
 
     const toggleDrawer = () => {
@@ -27,10 +30,19 @@ const SideBar = () => {
         { text: 'Dashboard', icon: <DashboardIcon />, path: '/admin' },
         { text: 'Users', icon: <GroupIcon />, path: '/admin/users' },
         { text: 'Add Blog', icon: <AddIcon />, path: '/admin/add-blog' },
-        { text: 'Add Services', icon: <AddIcon />, path: '/admin/add-services' },
-        { text: 'Edit Blog', icon: <EditIcon />, path: '/admin/edit-blog' },
+        { text: 'Category', icon: <AddIcon />, path: '/admin/category' },
+        { text: 'Manage Blog', icon: <EditIcon />, path: '/admin/edit-blog' },
         { text: 'Logout', icon: <ExitToAppIcon />, path: '/logout' },
     ];
+
+    const handleThemeChange = (event) => {
+        setTheme(event.target.checked ? 'dark' : 'light');
+    };
+
+    // Function to get the icon color based on the theme
+    const getIconColor = () => {
+        return theme === 'dark' ? 'white' : 'black'; // Change colors as needed
+    };
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -44,10 +56,16 @@ const SideBar = () => {
                 <List>
                     {menuItems.map((item, index) => (
                         <ListItem button key={index} onClick={() => handleNavigation(item.path)}>
-                            <ListItemIcon>{item.icon}</ListItemIcon>
+                            <ListItemIcon>
+                                {React.cloneElement(item.icon, { style: { color: getIconColor() } })}
+                            </ListItemIcon>
                             <ListItemText primary={item.text} />
                         </ListItem>
                     ))}
+                    <ListItem>
+                        <ListItemText primary="Toggle Theme" />
+                        <Switch checked={theme === 'dark'} onChange={handleThemeChange} />
+                    </ListItem>
                 </List>
             </Box>
 
@@ -60,10 +78,16 @@ const SideBar = () => {
                     <List>
                         {menuItems.map((item, index) => (
                             <ListItem button key={index} onClick={() => handleNavigation(item.path)}>
-                                <ListItemIcon>{item.icon}</ListItemIcon>
+                                <ListItemIcon>
+                                    {React.cloneElement(item.icon, { style: { color: getIconColor() } })}
+                                </ListItemIcon>
                                 <ListItemText primary={item.text} />
                             </ListItem>
                         ))}
+                        <ListItem>
+                            <ListItemText primary="Toggle Theme" />
+                            <Switch checked={theme === 'dark'} onChange={handleThemeChange} />
+                        </ListItem>
                     </List>
                 </div>
             </Drawer>

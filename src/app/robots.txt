@@ -1,4 +1,4 @@
-User-Agent: Googlebot
+c:\Users\harsh\Documents\CodeWithHarsh\ModernMa\ModernM\src\components\BlogUser-Agent: Googlebot
 Allow: /
 User-Agent: Applebot
 Allow: /

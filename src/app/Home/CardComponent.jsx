@@ -42,7 +42,7 @@
             {courses.map((course, index) => (
                 <div
                 key={index}
-                className={`relative ${styles.container} w-full md:w-[90%] bg-[#708090] bg-opacity-25 dark:bg-[#122031] rounded-3xl text-black p-4 text-center flex flex-col items-center justify-between gap-3 h-[500px] dark:hover:bg-[#0e1a2b] shadow-2xl hover:shadow-md hover:shadow-[#8c9c88] dark:hover:shadow-[#3a4e4f] transition-shadow transform hover:scale-105 transition-transform duration-300 ease-in-out`}>
+                className={`relative ${styles.container} w-full md:w-[90%] bg-[#708090] bg-opacity-25 dark:bg-[#122031] rounded-3xl text-black p-4 text-center flex flex-col items-center justify-between gap-3 h-[500px] dark:hover:bg-[#0e1a2b] shadow-2xl hover:shadow-md hover:shadow-[#8c9c88] dark:hover:shadow-[#3a4e4f]  transform hover:scale-105 transition-transform duration-300 ease-in-out`}>
                 {course.isBestSelling && (
     //                 <div className={`${styles.card_box} absolute flex items-center  top-3  left-3  text-white py-1 px-3 rounded-full z-10`} >
     //                   {/* <FaStar className="text-yellow-400" />
@@ -73,7 +73,7 @@
                     {course.description}
                     </p>
                 </div>
-                <button className="flex items-center justify-center bg-[#933469] text-white font-bold p-3 px-6 rounded-xl hover:bg-[#d664b6] transition-colors duration-300 ease-in-out">
+                <button className="flex items-center justify-center bg-[#933469] hover:bg-[#d664b6] text-white font-bold p-3 px-6 rounded-xl  transition-colors duration-300 ease-in-out">
                     See more <MdOutlineArrowForwardIos className="ml-2" />
                 </button>
                 </div>

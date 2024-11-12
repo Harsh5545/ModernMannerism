@@ -25,11 +25,11 @@ const Layout = async ({ children }) => {
                             </div>
                         </aside>
 
-                        <main className="flex-1 p-2">
+                        <main className="flex-1 p-0">
                             {/* <header className="mb-5">
                                 <Header session={session}/>
                             </header> */}
-                            <div className="bg-white rounded-lg shadow-md p-5 h-fit-screen">
+                            <div className="bg-white rounded-lg shadow-md p-2 h-fit-screen">
                                 {children}
                             </div>
                         </main>
