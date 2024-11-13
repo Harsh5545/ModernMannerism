@@ -7,6 +7,7 @@ import { AiOutlineCloudUpload, AiOutlineMobile, AiOutlineLaptop } from 'react-ic
 import { BsPlusCircle } from 'react-icons/bs';
 import Image from 'next/image';
 import { Button } from '@nextui-org/react';
+import Head from 'next/head';
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
@@ -62,6 +63,37 @@ export default function AddBlog({ existingBlog }) {
   };
 
   return (
+<><Head>
+        {/* Meta tags for SEO */}
+        <title>{title ? `${title} - Modern Mannerism` : 'Add New Blog - Modern Mannerism'}</title>
+        <meta name="description" content={content.substring(0, 160)} /> {/* Content preview for description */}
+        <meta name="keywords" content={tags.join(', ')} />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content={title ? title : 'Add New Blog - Modern Mannerism'} />
+        <meta property="og:description" content={content.substring(0, 160)} />
+        <meta property="og:image" content={image ? image : '/default-image.jpg'} />
+        <meta property="og:url" content={`https://yourwebsite.com/blog/${title}`} />
+        <meta property="og:type" content="article" />
+        
+        {/* Structured Data (JSON-LD) */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "headline": "${title}",
+              "description": "${content.substring(0, 160)}",
+              "author": {
+                "@type": "Person",
+                "name": "Manasi"
+              },
+              "image": "${image ? image : '/default-image.jpg'}",
+              "datePublished": "${new Date().toISOString()}"
+            }
+          `}
+        </script>
+      </Head>
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6  sm:p-12">
       <div className="max-w-8xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 space-y-8">
         <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">{isEditMode ? 'Edit Blog' : 'Add New Blog'}</h1>
@@ -189,6 +221,6 @@ export default function AddBlog({ existingBlog }) {
           </div>
         </div>
       </div>
-    </div>
+    </div></>
   );
 }
