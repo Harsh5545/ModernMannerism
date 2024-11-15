@@ -3,37 +3,45 @@ import { Button } from '@nextui-org/react';
 
 const HomeDinning = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full min-h-screen h-full bg-gray-100">
+    <div className="relative w-full min-h-screen bg-gray-100 dark:bg-gray-900">
+      {/* Full-screen background image */}
       <div
-        className="relative w-full flex flex-col md:flex-row justify-center md:justify-between items-center bg-fixed bg-cover bg-center"
+        className="absolute inset-0 bg-fixed bg-cover bg-center"
         style={{
           backgroundImage:
-            "linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('/assets/DiningSection.jpg')",
+            "    url('/assets/DiningSection.jpg')",
         }}
       >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-opacity-50 dark:bg-opacity-70 dark:bg-[#060507] bg-[#BEBEBE] z-0"></div>
+        {/* Overlay - covering only the right side */}
+        <div className="absolute inset-0 md:w-1/2 z-0"></div>
+      </div>
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-1 h-full gap-8 md:gap-24 flex-col p-8 md:p-16 justify-center items-center text-center">
-          <h2 className="text-2xl md:text-5xl font-semibold text-white font-tan-mon-cheri">
+      {/* Content */}
+      <div className="relative z-10 flex flex-col   md:flex-row justify-end items-center min-h-screen md:h-full text-center md:text-right p-2 gap-8">
+        {/* Empty Left Side for Larger Screens */}
+        <div className="hidden md:block md:w-1/2"></div>
+
+        {/* Content on the Right Side */}
+        <div className="md:w-1/2 w-full h-full bg-opacity-50 dark:bg-opacity-70 bg-[#BEBEBE] dark:bg-[#060507] ">
+<div className=' flex h-full gap-28 justify-between    items-center   text-center flex-col'>
+          <h2 className="text-2xl md:text-5xl font-semibold text-white dark:text-gray-300 font-tan-mon-cheri">
             Want to create a good impression during networking or business dinners?
           </h2>
 
-          <h1 className="text-3xl md:text-7xl font-bold text-white font-season-bold">
+          <h1 className="text-3xl md:text-7xl font-bold text-white dark:text-gray-100 font-season-bold">
             Fine Dining Etiquette Workshop
           </h1>
 
-          <p className="text-lg md:text-2xl text-white font-light font-mill-goudy max-w-[80%] md:max-w-[60%]">
+          <p className="text-lg md:text-2xl text-white dark:text-gray-300 font-light font-mill-goudy max-w-[80%] md:max-w-[60%]">
             Learn the dos and don’ts to create a lasting impression.
           </p>
 
           <Button
-            className="bg-[#910A67] text-white text-base md:text-2xl px-8 py-3 rounded-full hover:bg-white hover:text-[#910A67] transition-all duration-300 transform hover:scale-105"
+            className="bg-[#910A67] text-white text-base md:text-2xl px-8 py-3 rounded-full hover:bg-white hover:text-[#910A67] dark:hover:bg-[#910A67] dark:hover:text-white transition-all duration-300 transform hover:scale-105"
           >
             Learn More
           </Button>
-        </div>
+        </div></div>
       </div>
     </div>
   );

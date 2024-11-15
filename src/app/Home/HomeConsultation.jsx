@@ -35,7 +35,7 @@ const HomeConsultation = () => {
   return (
     <div className="flex flex-col items-center dark:bg-[#00001F] p-8 md:p-10 gap-6 justify-center">
       <h1 className="text-2xl md:text-4xl text-center font-semibold text-gray-800 dark:text-white">
-        Request Your Coaching Session
+        Book Your Consultation Now
         <hr className="border-t-2 border-[#910A67] w-1/4 mx-auto mt-2" />
       </h1>
       <p className="text-center text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mb-8">

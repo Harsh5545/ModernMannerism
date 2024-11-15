@@ -3,10 +3,10 @@ import React from "react";
 
 function Aboutpage() {
   return (
-    <div className='flex flex-col dark:bg-[#00001F] md:flex-row  items-center gap-5 justify-evenly px-3 w-full h-full py-24'>
-      <div className="md:w-[90%] w-full flex flex-col md:flex-row">
+    <div className='flex flex-col dark:bg-[#00001F] md:flex-row  items-center gap-5 justify-evenly px-3 w-full h-full py-40'>
+      <div className="md:w-[92%] w-full flex md:gap-0 gap-5 flex-col md:flex-row">
       <div className="flex-1 flex-col flex text-center gap-5 ">
-        <div className="px-2 md:w-[90%] w-full flex text-center flex-col gap-6">
+        <div className="px-2 md:w-[90%] w-full flex text-center flex-col gap-4">
           <div className="flex pb-10 flex-col items-center gap-2 justify-center">
             <h2 className=" text-black text-xl md:text-4xl font-semibold dark:text-white">
               ABOUT MODERN MANNERISM

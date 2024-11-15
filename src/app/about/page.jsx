@@ -15,7 +15,7 @@ export const metadata = {
 const AboutPage = async () => {
   return (
     <div className="dark:bg-[#00001F]">
-      <AboutHero />
+      {/* <AboutHero /> */}
       <Aboutpage />
       <AboutSection />
       <AboutManasi />

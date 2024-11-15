@@ -1,58 +1,49 @@
-// import styles from "./footer.module.css";
-
 import Image from "next/image";
 import SocialButtons from "./SocialIcons";
 
 const Footer = () => {
   return (
-
-  <>
-    <footer className="dark:bg-[#00001F] border-t-8 bg-white text-black dark:text-white py-8">
-      <div className="container mx-auto px-3">
-        <div className="flex flex-wrap justify-between">
+    <>
+      <footer className="dark:bg-[#00001F] bg-white text-black dark:text-white p-5 border-t-8 h-[92vh] flex flex-col relative">
         
-          <div className="w-full flex flex-col gap-8 items-center text-center  md:w-1/4 mb-6 md:mb-0">
-           <h2 className="text-center text-2xl font-semibold">Contact Us</h2>
-        <p className="text-center text-lg font-medium"> +91 9867831324</p>
-            {/* <p>
-              We provide top-notch image consulting, table etiquette, and personality development services to help you shine in your personal and professional life.
-            </p> */}
+        {/* "Contact Us" Header in Top Left */}
+        <div className="absolute top-8 left-8 text-4xl md:text-6xl font-semibold">
+          Contact Us
+        </div>
+
+        {/* Main Content - Centered Vertically and Horizontally */}
+        <div className="flex-1 flex justify-center items-center">
+          <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-12 md:gap-16 px-0 py-12">
             
-          </div>
-          {/* <div className="w-full flex flex-col gap-2 items-center text-center  md:w-1/4 mb-6 md:mb-0">
-            <span className="text-lg font-bold mb-2">Quick Links</span>
-            <ul>
-              <li className="mb-2"><a href="/service" className="hover:underline">Services</a></li>
-              <li className="mb-2"><a href="/about" className="hover:underline">About Us</a></li>
-              <li className="mb-2"><a href="/blog" className="hover:underline">Blog</a></li>
-              <li className="mb-2"><a href="/contact" className="hover:underline">Contact</a></li>
-            </ul>
-          </div> */}
-          <div className="w-full flex flex-col gap-8 items-center md:w-1/4 mb-6 md:mb-0">
-            <h5 className="text-lg text-center  font-bold mb-2">Email</h5>
-<p className="text-center text-lg font-medium">modernmannerism@gmail.com</p>
-            {/* <ul>
-              <li className="mb-3">Email: modernmannerism@gmail.com </li>
-              <li className="mb-3">Phone: +91 9867831324</li>
-              <li className="mb-3">Address: Thane, India</li>
-            </ul> */}
-          </div>
-          <div className="w-full text-center  md:w-1/4 mb-6 md:mb-0">
-            <span className="text-lg  text-center  font-bold mb-2">Follow Us</span>
-            <div className="flex justify-center items-center">
-              <SocialButtons/>    </div>
+            {/* Phone Section */}
+            <div className="text-center flex flex-col items-center md:w-1/4">
+              <h5 className="text-lg font-semibold mb-10">Phone</h5>
+              <p className="text-lg font-medium">+91 9867831324</p>
+            </div>
+            
+            {/* Email Section */}
+            <div className="text-center flex flex-col items-center md:w-1/4">
+              <h5 className="text-lg font-semibold mb-10">Email</h5>
+              <p className="text-lg font-medium">modernmannerism@gmail.com</p>
+            </div>  
+
+            {/* Social Media Section */}
+            <div className="text-center flex flex-col items-center md:w-1/4">
+              <h5 className="text-lg font-semibold mb-1">Social</h5>
+              <div className="flex justify-center mt-1">
+                <SocialButtons />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <h6 className="text-center mt-10">
-        &copy; 2024 ModernMannerism | Designed by HarshadKajale
-      </h6>
-    </footer></>
+
+        {/* Footer Bottom */}
+        <div className="text-center py-4 text-sm">
+          &copy; 2024 Modern Mannerism | Designed by Harsh
+        </div>
+      </footer>
+    </>
   );
 };
-
-
-
-
 
 export default Footer;

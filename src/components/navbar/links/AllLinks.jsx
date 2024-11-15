@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Navlink from "../navlink/Navlink";
+import { Button } from "@nextui-org/react";
 
 const AllLinks = () => {
     const [openDropdown, setOpenDropdown] = useState(false);
@@ -101,8 +102,8 @@ const AllLinks = () => {
                             onMouseEnter={!isMobile ? handleMouseEnter : undefined}
                             onMouseLeave={!isMobile ? handleMouseLeave : undefined}
                         >
-                            <button
-                                className="font-medium text-base cursor-pointer hover:text-[#933469] flex items-center"
+                            <Button
+                                className="font-medium bg-none text-base cursor-pointer hover:text-[#933469] flex items-center"
                                 onClick={isMobile ? () => setOpenDropdown((prev) => !prev) : undefined}
                             >
                                 {link.title}
@@ -115,7 +116,7 @@ const AllLinks = () => {
                                 >
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                 </svg>
-                            </button>
+                            </Button>
 
                             {openDropdown && (
                                 <div className="absolute mt-2 bg-white rounded-lg shadow-lg">
@@ -126,12 +127,12 @@ const AllLinks = () => {
                                             onMouseEnter={!isMobile ? () => handleSubLinkMouseEnter(subLink.title) : undefined}
                                         // onMouseLeave={!isMobile ? handleSubLinkMouseLeave : undefined}
                                         >
-                                            <button
-                                                className="block px-4 text-sm font-semibold py-2 text-left w-full max-w-full text-nowrap hover:bg-gray-100"
+                                            <Button
+                                                className="block px-4 text-sm font-semibold py-2 text-left w-full max-w-full bg-white text-nowrap hover:bg-gray-100"
                                                 onClick={isMobile ? () => setHoveredSubLink(subLink.title) : undefined}
                                             >
                                                 {subLink.title}
-                                            </button>
+                                            </Button>
 
                                             {hoveredSubLink === subLink.title && subLink.subLinks && (
                                                 <div

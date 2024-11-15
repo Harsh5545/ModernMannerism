@@ -23,7 +23,7 @@ style={{boxShadow: "black 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0
       </div>
       <div className="flex-1 flex flex-col gap-10">
         <div className="flex flex-col items-center gap-2 justify-center">
-          <h1 className="text-black dark:text-white text-center text-4xl font-bold  ">ABOUT OUR COMPANY</h1>
+          <h1 className="text-black dark:text-white text-center text-4xl font-bold  ">ABOUT ModernMannerism</h1>
           <hr className="h-1 bg-[#933469] w-16" />
         </div>
         <p className=" text-gray-800 dark:text-white p-2 text-center">
