@@ -1,6 +1,15 @@
+"use client"
+
 import React, { useState, useEffect, useRef } from "react";
 import Navlink from "../navlink/Navlink";
 import { Button } from "@nextui-org/react";
+import HomeIcon from "@mui/icons-material/Home";
+import InfoIcon from "@mui/icons-material/Info";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import WorkIcon from "@mui/icons-material/Work";
+import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
+import SchoolIcon from "@mui/icons-material/School";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const AllLinks = () => {
     const [openDropdown, setOpenDropdown] = useState(false);
@@ -9,45 +18,27 @@ const AllLinks = () => {
     const closeTimeoutRef = useRef(null);
 
     const links = [
-        { title: "Home", path: "/" },
-        { title: "About", path: "/about" },
+        { title: "Home", path: "/", icon: <HomeIcon /> },
+        { title: "About", path: "/about", icon: <InfoIcon /> },
         {
             title: "Services",
             path: "/service",
+            
             subLinks: [
-                { title: "Consultation", path: "/service/consultation" },
+                { title: "Consultation", path: "/service/consultation", icon: <EmojiPeopleIcon /> },
                 {
                     title: "Personality Transformation",
                     path: "/service/personality-transformation",
+                    icon: <SchoolIcon />,
                     subLinks: [
-                        { title: "Personality Transformation for Men", path: "/service/personality-transformation/Men" },
-                        { title: "Personality Transformation for Women", path: "/service/personality-transformation/Women" }
+                        { title: "For Men", path: "/service/personality-transformation/Men" },
+                        { title: "For Women", path: "/service/personality-transformation/Women" }
                     ]
                 },
-                {
-                    title: "Corporate Grooming",
-                    path: "/service/corporate-grooming",
-                    subLinks: [
-                        { title: "Bespoke Business Etiquette & Corporate Grooming", path: "/service/bespoke-business-etiquette-&-corporate-grooming" },
-                        { title: "In-house Corporate Training", path: "/service/In-house-Corporate-Training" }
-                    ]
-                },
-                { title: "Children's Etiquette", path: "/service/children's-etiquette" },
-                { title: "Young Adult Etiquette", path: "/service/young-adult-etiquette" },
-                {
-                    title: "Latest Workshop",
-                    path: "/service/latest workshop",
-                    subLinks: [
-                        { title: "Ladies Grooming & Social Etiquette Programme", path: "/service/Latest Workshop/Business Etiquette & Corporate Grooming Programme" },
-                        { title: "Young Adult-Grooming & Etiquette", path: "/service/Latest Workshop/Young Adult-Grooming & Etiquette" },
-                        { title: "Young Adult Training", path: "/service/Latest Workshop/young-adult" },
-                        { title: "Dining Etiquette Workshop", path: "/service/Latest Workshop/Dining Etiquette Workshop" }
-                    ]
-                },
-                { title: "Train the Trainer", path: "/service/train-the-trainer" }
+                { title: "Children's Etiquette", path: "/service/children's-etiquette", icon: <MenuBookIcon /> }
             ]
         },
-        { title: "Blog", path: "/blog" }
+        { title: "Blog", path: "/blog", icon: <MenuBookIcon /> }
     ];
 
     useEffect(() => {
@@ -55,7 +46,7 @@ const AllLinks = () => {
             setIsMobile(window.innerWidth <= 768);
         };
 
-        handleResize(); // Check on initial render
+        handleResize();
         window.addEventListener("resize", handleResize);
 
         return () => {
@@ -67,7 +58,7 @@ const AllLinks = () => {
         closeTimeoutRef.current = setTimeout(() => {
             setOpenDropdown(false);
             setHoveredSubLink(null);
-        }, 300); // Delay of 300ms to avoid flickering
+        }, 300);
     };
 
     const handleMouseEnter = () => {
@@ -82,12 +73,6 @@ const AllLinks = () => {
             clearTimeout(closeTimeoutRef.current);
         }
         setHoveredSubLink(title);
-    };
-
-    const handleSubLinkMouseLeave = () => {
-        closeTimeoutRef.current = setTimeout(() => {
-            // setHoveredSubLink(null);
-        }, 300); // Delay to prevent the flicker
     };
 
     return (
@@ -106,16 +91,9 @@ const AllLinks = () => {
                                 className="font-medium bg-none text-base cursor-pointer hover:text-[#933469] flex items-center"
                                 onClick={isMobile ? () => setOpenDropdown((prev) => !prev) : undefined}
                             >
-                                {link.title}
-                                <svg
-                                    className="ml-2 w-4 h-4"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
+                                {link.icon}
+                                <span className="ml-2">{link.title}</span>
+                                <ChevronRightIcon className="ml-2" />
                             </Button>
 
                             {openDropdown && (
@@ -123,32 +101,28 @@ const AllLinks = () => {
                                     {link.subLinks.map((subLink, j) => (
                                         <div
                                             key={j}
-                                            className="relative group"
+                                            className=" group"
                                             onMouseEnter={!isMobile ? () => handleSubLinkMouseEnter(subLink.title) : undefined}
-                                        // onMouseLeave={!isMobile ? handleSubLinkMouseLeave : undefined}
                                         >
                                             <Button
-                                                className="block px-4 text-sm font-semibold py-2 text-left w-full max-w-full bg-white text-nowrap hover:bg-gray-100"
+                                                className=" px-4 text-sm font-semibold py-2 text-left w-full max-w-full bg-white  hover:bg-gray-100 flex items-start"
                                                 onClick={isMobile ? () => setHoveredSubLink(subLink.title) : undefined}
                                             >
+                                                {subLink.icon && <span className="mr-2">{subLink.icon}</span>}
                                                 {subLink.title}
                                             </Button>
 
                                             {hoveredSubLink === subLink.title && subLink.subLinks && (
                                                 <div
-                                                    className={`absolute text-left left-60 text-sm font-semibold mt-0 top-0 max-w-full bg-white shadow-lg rounded-lg ${isMobile ? "w-full" : "w-60"}`}
-                                                    onMouseEnter={() => handleSubLinkMouseEnter(subLink.title)} // Ensure it stays open while hovered
-                                                // onMouseLeave={handleSubLinkMouseLeave} // commenting out for now in future if needed will check it again
+                                                    className={`absolute text-left left-64 text-sm font-semibold mt-0 top-0 max-w-full bg-white shadow-lg rounded-lg ${isMobile ? "w-full" : "w-60"}`}
                                                 >
                                                     <div className="flex flex-col">
                                                         {subLink.subLinks.map((nestedLink, k) => (
                                                             <Navlink key={k} item={nestedLink} />
                                                         ))}
                                                     </div>
-
                                                 </div>
                                             )}
-
                                         </div>
                                     ))}
                                 </div>

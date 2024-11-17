@@ -2,12 +2,11 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { AddCircle as AddCircleIcon, Add as AddIcon } from '@mui/icons-material'; // Import MUI icons
 
 export default function CategoryPage() {
   const [categories, setCategories] = useState([]);
   const [categoryName, setCategoryName] = useState("");
-  const [subcategoryName, setSubcategoryName] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState(null);
   const [isActive, setIsActive] = useState(true);
   const [includeSubcategories, setIncludeSubcategories] = useState(false);
 
@@ -34,7 +33,7 @@ export default function CategoryPage() {
         name: categoryName,
         isActive,
       });
-      setCategories([...categories, response.data]); // Update categories list
+      setCategories([...categories, response.data]); // Update table
       setCategoryName(""); // Clear form
       setIsActive(true);
     } catch (error) {
@@ -42,37 +41,10 @@ export default function CategoryPage() {
     }
   };
 
-  const handleAddSubcategory = async (e) => {
-    e.preventDefault();
-    if (!selectedCategory) {
-      alert("Please select a category to add a subcategory.");
-      return;
-    }
-    try {
-      const response = await axios.post("/api/category/add-subcategory", {
-        name: subcategoryName,
-        categoryId: selectedCategory.id,
-        isActive,
-      });
-      // Update the selected category with the new subcategory
-      const updatedCategories = categories.map((category) =>
-        category.id === selectedCategory.id
-          ? { ...category, subcategories: [...category.subcategories, response.data] }
-          : category
-      );
-      setCategories(updatedCategories); // Update categories list
-      setSubcategoryName(""); // Clear form
-      setIsActive(true);
-    } catch (error) {
-      console.error("Error adding subcategory:", error);
-    }
-  };
-
   return (
     <div className="p-6 bg-[#933469] bg-opacity-25 dark:bg-[#122031] min-h-screen">
       <h1 className="text-3xl font-semibold mb-8 text-white">Manage Categories</h1>
 
-      {/* Category Form */}
       <form onSubmit={handleAddCategory} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-8">
         <div className="mb-4">
           <label className="block text-gray-700 dark:text-gray-200 font-semibold mb-2">
@@ -101,73 +73,35 @@ export default function CategoryPage() {
 
         <button
           type="submit"
-          className="px-4 py-2 bg-[#933469] hover:bg-[#d664b6] text-white rounded-lg"
+          className="flex items-center px-4 py-2 bg-[#933469] hover:bg-[#d664b6] text-white rounded-lg"
         >
+          <AddCircleIcon className="h-5 w-5 mr-2" /> {/* MUI Icon */}
           Add Category
         </button>
       </form>
 
-      {/* Subcategory Form */}
-      <form onSubmit={handleAddSubcategory} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-8">
-        <div className="mb-4">
-          <label className="block text-gray-700 dark:text-gray-200 font-semibold mb-2">
-            Select Category to Add Subcategory
-          </label>
-          <select
-            value={selectedCategory ? selectedCategory.id : ""}
-            onChange={(e) =>
-              setSelectedCategory(
-                categories.find((category) => category.id === e.target.value)
-              )
-            }
-            className="w-full px-4 py-2 border rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
-            required
-          >
-            <option value="">-- Select a Category --</option>
-            {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-        </div>
+      {/* Toggle for Including Subcategories */}
+      <div className="mb-8">
+        <label className="text-gray-700 dark:text-gray-200 font-semibold mr-4">
+          Include Subcategories
+        </label>
+        <input
+          type="checkbox"
+          checked={includeSubcategories}
+          onChange={(e) => setIncludeSubcategories(e.target.checked)}
+          className="form-checkbox h-5 w-5 text-[#933469] dark:text-[#d664b6]"
+        />
+      </div>
 
-        <div className="mb-4">
-          <label className="block text-gray-700 dark:text-gray-200 font-semibold mb-2">
-            Subcategory Name
-          </label>
-          <input
-            type="text"
-            value={subcategoryName}
-            onChange={(e) => setSubcategoryName(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
-            required
-          />
-        </div>
+      {/* Add Subcategory Button */}
+      <button
+        type="button"
+        className="flex items-center px-4 py-2 bg-[#933469] hover:bg-[#d664b6] text-white rounded-lg mb-4"
+      >
+        <AddIcon className="h-5 w-5 mr-2" /> {/* MUI Icon */}
+        Add Subcategory
+      </button>
 
-        <div className="flex items-center mb-4">
-          <label className="text-gray-700 dark:text-gray-200 font-semibold mr-4">
-            Active
-          </label>
-          <input
-            type="checkbox"
-            checked={isActive}
-            onChange={(e) => setIsActive(e.target.checked)}
-            className="form-checkbox h-5 w-5 text-[#933469] dark:text-[#d664b6]"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="px-4 py-2 bg-[#933469] hover:bg-[#d664b6] text-white rounded-lg"
-        >
-          Add Subcategory
-        </button>
-      </form>
-
-   
-
-      {/* Category Table */}
       <table className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
         <thead>
           <tr>

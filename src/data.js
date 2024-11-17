@@ -28,9 +28,6 @@ const TestimonialData = [{
 export default TestimonialData;
 
 
-
-// data.js
-   // data.js
 export const servicesData = [
   {
     id: "1", // Ensure the ID matches what's in the URL
@@ -53,4 +50,71 @@ export const servicesData = [
     image: "/assets/Etiquettechildren.jpg",
     duration: "8 sessions"
   }
+];
+export const servicesDataPage = [
+  {
+    id: "3",
+    title: "Children’s Etiquette Programme",
+    headline: "Empowering Tomorrow's Leaders with Polished Etiquette and Essential Life Skills",
+    subheadline:
+      "Designed for children aged 10–15, this program instills confidence, communication skills, and impeccable manners, setting the foundation for their future success.",
+    overview:
+      "In today’s world, mastering the art of etiquette and social grace is just as important as academic excellence. The Children’s Etiquette Program by Modern Mannerism equips young learners with essential life skills, helping them build confidence, respect, and empathy while preparing them to thrive in social, school, and family environments.",
+    programOptions: [
+      "Group Workshops: Fun and interactive sessions in a collaborative setting.",
+      "Private Sessions: Personalized coaching tailored to your child’s unique needs.",
+    ],
+    learningPoints: [
+      { title: "The Importance of Etiquette", description: "Why good manners matter in life and how they shape a positive personality." },
+      { title: "Grooming and Personal Hygiene", description: "Basics of cleanliness and presentation for a polished appearance." },
+      { title: "Personality Development", description: "Exercises and activities to boost self-awareness and confidence." },
+      { title: "Etiquette – Fine Art & Fine Manners", description: "Social norms, politeness, and the art of being gracious in any setting." },
+      { title: "Communication Skills", description: "Effective verbal and non-verbal communication techniques." },
+      { title: "Conversation Skills", description: "How to start and maintain engaging conversations." },
+      { title: "Body Language", description: "Understanding posture, gestures, and expressions for a confident presence." },
+      { title: "Listening Skills", description: "The value of active listening in building meaningful relationships." },
+      { title: "Building Confidence and Self-Esteem", description: "Practical tips and activities to help children feel secure and self-assured." },
+      { title: "Meeting & Greeting", description: "How to introduce oneself, shake hands, and make a positive impression." },
+      { title: "Deportment", description: "Poise and posture for an elegant and confident demeanor." },
+      { title: "Dining Etiquette", description: "Table manners, cutlery usage, and navigating different dining scenarios." },
+      { title: "School Etiquette", description: "Respectful behavior towards teachers and peers. Proper use of gadgets and handling group projects." },
+      { title: "Life Skills", description: "Problem-solving, teamwork, and adaptability for everyday situations." },
+    ],
+    highlights: [
+      "Interactive Activities: Hands-on exercises that keep children engaged.",
+      "Role-Playing Scenarios: Real-life simulations to practice manners and etiquette.",
+      "Tailored Learning: Content adapted to suit group dynamics or individual needs.",
+      "Parental Involvement: Progress updates to help parents reinforce learning at home.",
+    ],
+    programDetails: {
+      ageGroup: "10–15 years",
+      format: ["Group Workshops", "Private Sessions"],
+      duration: "Group Workshops: 2–3 hours per session. Private Sessions: 1-hour sessions, scheduled as per convenience.",
+      location: ["In-person at designated venues", "Online options available upon request."],
+    },
+    testimonials: [
+      {
+        quote:
+          "The Children’s Etiquette Program was a game-changer for my daughter. She’s now confident in her interactions and has become more respectful towards everyone. Thank you, Modern Mannerism!",
+        author: "Priya Sharma, Parent",
+      },{
+        quote:
+          "The Children’s Etiquette Program was a game-changer for my daughter. She’s now confident in her interactions and has become more respectful towards everyone. Thank you, Modern Mannerism!",
+        author: "Priya Sharma, Parent",
+      },{
+        quote:
+          "The Children’s Etiquette Program was a game-changer for my daughter. She’s now confident in her interactions and has become more respectful towards everyone. Thank you, Modern Mannerism!",
+        author: "Priya Sharma, Parent",
+      },
+    ],
+    faqData: [
+      { question: "How many children are in a group workshop?", answer: "We keep group sizes small (6–10 children) to ensure personalized attention." },
+      { question: "Can my child attend online sessions?", answer: "Yes, online options are available for private sessions. Group workshops are primarily in-person." },
+      { question: "Are materials provided?", answer: "Yes, we provide workbooks and resources for practice at home." },
+    ],
+    contactDetails: {
+      email: "info@modernmannerism.com",
+      phone: "+1-800-555-ETIQ",
+    },
+  },
 ];

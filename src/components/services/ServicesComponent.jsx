@@ -42,7 +42,7 @@ function ServicesComponent() {
           {courses.map((course, index) => (
             <div
               key={index}
-              className="relative w-full bg-[#708090] bg-opacity-25 dark:bg-[#122031] rounded-3xl text-black p-4 text-center flex flex-col items-center justify-between gap-3 h-[500px] dark:hover:bg-[#0e1a2b] shadow-2xl transition-shadow hover:shadow-md hover:shadow-[#8c9c88] dark:hover:shadow-[#3a4e4f] transition-transform duration-300 ease-in-out"
+              className="relative w-full bg-[#708090] bg-opacity-25 dark:bg-[#122031] rounded-3xl text-black p-4 text-center flex flex-col items-center justify-between gap-3 h-[500px] dark:hover:bg-[#0e1a2b] shadow-2xl hover:shadow-md hover:shadow-[#8c9c88] dark:hover:shadow-[#3a4e4f] transition-transform duration-300 ease-in-out"
             >
               <div className="relative w-full mb-4 bg-[#003b6d] rounded-2xl overflow-hidden">
                 <Image
