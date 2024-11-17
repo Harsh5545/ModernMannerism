@@ -30,8 +30,9 @@ const SideBar = () => {
         { text: 'Dashboard', icon: <DashboardIcon />, path: '/admin' },
         { text: 'Users', icon: <GroupIcon />, path: '/admin/users' },
         { text: 'Add Blog', icon: <AddIcon />, path: '/admin/add-blog' },
-        {text:'Add Service', icon:"", path:"/admin/add-service"}
+        // {text:'Add Service', icon:<AddIcon />, path:"/admin/add-services"},
         { text: 'Category', icon: <AddIcon />, path: '/admin/category' },
+        { text: 'Manage Services', icon: <EditIcon />, path: '/admin/manage-services' },
         { text: 'Manage Blog', icon: <EditIcon />, path: '/admin/edit-blog' },
         { text: 'Logout', icon: <ExitToAppIcon />, path: '/logout' },
     ];
