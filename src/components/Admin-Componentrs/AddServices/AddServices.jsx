@@ -425,21 +425,21 @@ const CreateServices = () => {
           </Box>
 
           {/* Location Section */}
-          <Box key={index} className="mt-6">
+          <Box key={'jjjj'} className="mt-6">
             <Typography variant="h6">Location:</Typography>
             
           <TextField
-            label={`Location Name ${index + 1}`}
-            value={loc.name || ""}
+            label={`Location Name ${'jjjj' + 1}`}
+            value={loc?.name || ""}
             onChange={(e) =>
-              handleLocationChange(index, "name", e.target.value)
+              handleLocationChange('index', "name", e.target.value)
             }
           />
           <TextField
-            label={`Location Address ${index + 1}`}
-            value={loc.address || ""}
+            label={`Location Address ${'index' + 1}`}
+            value={loc?.address || ""}
             onChange={(e) =>
-              handleLocationChange(index, "address", e.target.value)
+              handleLocationChange('index', "address", e.target.value)
             }
           />
     

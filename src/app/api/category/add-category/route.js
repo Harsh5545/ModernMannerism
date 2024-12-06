@@ -5,20 +5,15 @@ import { commonServices } from "@/lib/services/common";
 export async function POST(req) {
   try {
     const data = await req.json();
-    console.log("Received raw data:", data); // Log received data
-
-    // Example: Assuming data contains 'category_name' and 'status'
-    const { category_name, status } = data;
-    console.log("Parsed data:", category_name, status); // Log parsed values
+    const { name, isActive } = data;
+    console.log("Parsed data:", name, isActive); 
     
     const new_category = {
-      category_name,  // Directly assigning without redefining
-      status,
+      name:name, 
+      status:isActive,
     };
 
-    const result = await commonServices.createEntry("category", new_category);
-    console.log("Inserted entry:", result);
-    
+    const result = await commonServices.createEntry("categories", new_category);
     return NextResponse.json({ success: true, data: result });
   } catch (error) {
     console.error('Error:', error);
