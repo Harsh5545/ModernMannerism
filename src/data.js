@@ -118,3 +118,22 @@ export const servicesDataPage = [
     },
   },
 ];
+const blogs = [
+  {
+    id: 1,
+    title: 'Mastering the Art of Personal Branding',
+    slug: 'mastering-personal-branding',
+    excerpt: 'Learn how to build your personal brand from scratch...',
+    image: '/images/blog1.jpg',
+    commentCount: 5
+  },
+  {
+    id: 2,
+    title: 'The Power of Communication Skills in Leadership',
+    slug: 'communication-skills-leadership',
+    excerpt: 'Discover the key communication techniques that every leader should know...',
+    image: '/images/blog2.jpg',
+    commentCount: 12
+  },
+  // Add more blog posts here...
+];

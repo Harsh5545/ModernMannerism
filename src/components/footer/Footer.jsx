@@ -39,7 +39,7 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <div className="text-center py-4 text-sm">
-          &copy; 2024 Modern Mannerism | Privacy-Policy | Terms & Condition | Designed by Harsh
+          &copy; 2024 Modern Mannerism | Privacy-Policy | Terms | Designed by Harsh
         </div>
       </footer>
     </>

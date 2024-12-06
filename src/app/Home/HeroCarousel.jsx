@@ -9,6 +9,12 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Lato } from "next/font/google";
+const dm_Sans = Lato({
+  subsets: ["latin"],
+  weight: ["400"], 
+    // Add weights if needed
+});
 const HeroCarousel = () => {
   const swiperRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -59,10 +65,10 @@ const HeroCarousel = () => {
     container: `md:h-screen  w-full bg-cover z-0 relative`,
     slide: `md:h-screen h-[65vh] w-full relative`,
     image: `md:object-cover   w-full md:h-full h-[65vh]`,
-    overlay: `absolute inset-0 dark:bg-[#060507] bg-[#b3bdca] dark:bg-opacity-60 bg-opacity-50`,
+    overlay: `absolute inset-0 dark:bg-[#060507]  bg-[#3a4e5d] dark:bg-opacity-60 bg-opacity-50`,
     content: `absolute left-0 w-full z-10 p-4`,
-    text: `md:text-4xl dark:text-white font-bold sm:text-xl text-black lato-font`,
-    button: `px-8 py-4 bg-black w-[50%] md:w-[25%] text-white rounded-full mt-4 sm:mt-10`,
+    text: `md:text-4xl dark:text-white text-white font-bold sm:text-xl text-black lato-font`,
+    button: `px-8 ${dm_Sans.className}  py-4 bg-[#cca26c] text-md w-[50%] md:w-[25%] text-white rounded-full mt-4 sm:mt-10`,
   };
 
   return (
@@ -94,7 +100,7 @@ const HeroCarousel = () => {
           clickable: true,
         }}
         autoplay={{
-          delay: 3000,
+          delay: 6000,
           disableOnInteraction: false,
         }}
         speed={100}
@@ -114,7 +120,7 @@ const HeroCarousel = () => {
                 layout="fill"
               />
               <div className={styles.overlay}></div>
-              <div className="absolute flex gap-3 md:gap-8 flex-col text-center items-center justify-center h-full z-10 p-8">
+              <div className="absolute text-white flex gap-3 md:gap-8 flex-col text-center items-center justify-center h-full z-10 p-8">
                 <h1 className={styles.text}>{slide.text}</h1>
                 <p className="md:w-[50%]  text-sm font-medium md:text-lg">{slide.description}</p>
                 <Button className={styles.button}>{slide.button}</Button>

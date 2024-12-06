@@ -12,7 +12,12 @@ import { useRouter } from "next/navigation";
 import AllLinks from "./links/AllLinks";
 import { ThemeSwitcher } from "../theme/ThemeSwitcher";
 import { Button } from "@nextui-org/react";
-
+import { Lato } from "next/font/google";
+const dm_Sans = Lato({
+  subsets: ["latin"],
+  weight: ["400"], 
+    // Add weights if needed
+});
 const navVariants = {
     initial: {
         y: "-50%",
@@ -53,12 +58,12 @@ function HeaderFixed() {
             animate="animate"
             exit="exit"
             variants={navVariants}
-            className="fixed z-[999] nav top-2 left-1/2 -translate-x-1/2 rounded-xl p-2 flex-col backdrop-blur-lg border justify-around flex md:flex-row items-center"
-            style={{ width: "85%" }}
+            className="fixed z-[999] bg-black bg-opacity-65  nav top-2 left-1/2 -translate-x-1/2 rounded-xl p-2 flex-col border justify-around flex md:flex-row items-center"
+            style={{ width: "90%" }}
         >
-            <div className="flex justify-between items-center w-full md:w-0">
+            <div className="flex justify-between  items-center w-full md:w-0">
                 <span className="text-xl">
-                    <Image width={100} height={100} src="/assets/logo.png" className="md:max-w-20 max-w-10" alt="ModernMannerism institue logo" />
+                    <Image width={200} height={200} src="/assets/MM.png" className="md:max-w-40 max-w-16" alt="ModernMannerism institue logo" />
                 </span>
                 <div className="md:hidden">
                     <label className="hamburger">
@@ -76,7 +81,7 @@ function HeaderFixed() {
 
             <div className="flex flex-col items-start">
                 <div
-                    className={`flex flex-col-reverse text-[#0D0C22] dark:text-white md:flex-row font-poppins items-center gap-8 md:gap-4 h-[20rem] md:h-0 justify-center  font-medium ${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"}`}
+                    className={`flex flex-col-reverse text-white md:flex-row font-poppins items-center gap-8 md:gap-4 h-[20rem] md:h-0 justify-center  font-medium ${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"}`}
                 >
                     <AllLinks />
                 </div>
@@ -86,8 +91,7 @@ function HeaderFixed() {
                 }`}>
                 <ThemeSwitcher />
                 <Button
-                    className="
-                bg-[#933469] text-white "
+                    className={`${dm_Sans.className} bg-[#cca26c] text-white`}
                     onClick={() => {
                         router.push('/contact')
                         toggleMobileMenu;

@@ -57,7 +57,7 @@ const ManageServices = () => {
 
   // Navigate to Add Service page
   const handleAddService = () => {
-    router.push("/admin/add-service"); // Replace with the actual path of your Add Service page
+    router.push("/admin/add-services"); // Replace with the actual path of your Add Service page
   };
 
   return (
@@ -73,7 +73,7 @@ const ManageServices = () => {
         <Button
           variant="contained"
           color="primary"
-          className="ml-4"
+          className="ml-4 bg-black"
           startIcon={<Add />}
           onClick={handleAddService} // Trigger navigation when clicked
         >

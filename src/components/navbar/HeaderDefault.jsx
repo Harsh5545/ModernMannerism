@@ -8,6 +8,12 @@
     import { useRouter } from "next/navigation";
     import AllLinks from "./links/AllLinks";
     import { Button } from "@nextui-org/react";
+import { Lato } from "next/font/google";
+const dm_Sans = Lato({
+  subsets: ["latin"],
+  weight: ["400"], 
+    // Add weights if needed
+});
 
     function HeaderDefault() {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -31,14 +37,14 @@
 
     return (
         <div className="flex z-[999] absolute w-full justify-center items-center">
-        <div className="flex-col bg-white dark:bg-opacity-30 bg-opacity-30 dark:bg-[#06273A] md:flex-row flex justify-between px-2 md:px-10 rounded-md w-[90%] items-center backdrop-filter backdrop-blur-md py-1 mt-4">
+        <div className="flex-col bg-black text-white dark:bg-opacity-30 bg-opacity-30 dark:bg-[#06273A] md:flex-row flex justify-between px-2 md:px-10 rounded-md w-[90%] items-center backdrop-filter backdrop-blur-md py-1 mt-4">
             <div className="flex justify-between items-center w-full md:w-0">
             <span className="text-xl">
                 <Image
-                src="/assets/logo.png"
-                width={100}
-                height={100}
-                className="md:max-w-[6rem] max-w-[6rem]"
+                src="/assets/MM.png"
+                width={300}
+                height={300}
+                className="md:max-w-[12rem] max-w-[6rem]"
                 alt="ModernMannerism logo"
                 />
             </span>
@@ -62,7 +68,7 @@
 
             <div className="flex flex-col items-start">
             <div
-                className={`flex flex-col text-[#0D0C22] dark:text-white font-poppins md:flex-row items-center gap-8 md:gap-10 h-[20rem] md:h-0 justify-center ${
+                className={`flex flex-col text-white dark:text-white font-poppins md:flex-row items-center gap-8 md:gap-10 h-[20rem] md:h-0 justify-center ${
                 isMobileMenuOpen ? "block" : "hidden"
                 } md:flex`}
             >
@@ -76,7 +82,7 @@
             } md:flex gap-2 flex-col-reverse md:flex-row items-center justify-center`}
             >
             <Button
-                className="bg-[#910A67] text-white"
+                className={`${dm_Sans.className} bg-[#cca26c] text-white`}
                 onClick={() => {
                 router.push("/contact");
                 toggleMobileMenu();

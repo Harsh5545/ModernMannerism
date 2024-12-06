@@ -4,6 +4,12 @@ import { Divider } from "@nextui-org/react";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import FlagCircleIcon from '@mui/icons-material/FlagCircle';
+import { Cormorant_Garamond, Lato } from "next/font/google";
+const dm_Sans = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400"], 
+    // Add weights if needed
+});
 
 const HomeAbout = () => {
   return (
@@ -15,7 +21,7 @@ const HomeAbout = () => {
             width={500}
             height={400}
             alt="modern Mannerism image "
-            src="/assets/course2.jpg"
+            src="/assets/AboutUsModernMannerism.webp"
             className=" shadow-2xl p-1 shadow-[#859199]"
 style={{boxShadow: "black 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(167, 20, 154) 10px -10px"}}
           />
@@ -23,7 +29,7 @@ style={{boxShadow: "black 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0
       </div>
       <div className="flex-1 flex flex-col gap-10">
         <div className="flex flex-col items-center gap-2 justify-center">
-          <h1 className="text-black dark:text-white text-center text-4xl font-bold  ">ABOUT ModernMannerism</h1>
+          <h1 className={`${dm_Sans.className} text-black dark:text-white text-center text-4xl font-bold  `}>About Modern Mannerism</h1>
           <hr className="h-1 bg-[#933469] w-16" />
         </div>
         <p className=" text-gray-800 dark:text-white p-2 text-center">
@@ -44,12 +50,7 @@ style={{boxShadow: "black 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0
             <WorkspacePremiumIcon style={{ fontSize: 40, color:'#933469' }} /> 
             <span className="font-semibold dark:text-white md:text-2xl text-xl text-[#06273A]">Missions</span>
           </div>
-          <Divider orientation="vertical" style={{ height: 100, width:2 }} /> 
-          <div className="p-1 flex items-center flex-col gap-4">
-            <FlagCircleIcon style={{ fontSize: 40, color:'#933469' }} /> 
-            <span className="font-semibold dark:text-white md:text-2xl text-xl text-[#06273A]">Goals</span>
-          </div>
-       
+          
         </div>
       </div>
     </div>

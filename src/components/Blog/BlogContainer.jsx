@@ -1,18 +1,21 @@
 import Image from 'next/image';
 import clsx from 'clsx';
 import { Playfair_Display, Montserrat, Cormorant_Garamond } from "next/font/google";
+import { AiOutlineComment } from 'react-icons/ai'; // Import for comment icon
 
 const playfair = Playfair_Display({ weight: '400', subsets: ['latin'] });
 const montserrat = Montserrat({ subsets: ['latin'] });
 const cormorant = Cormorant_Garamond({ weight: '500', subsets: ['latin'] }); // Specify weight here
 
-const BlogContainer = ({ title, description, imageSrc, reverse, categories = false }) => (
-  <div className={clsx(
-    "flex flex-col md:flex-row border-2 items-start py-10 px-6 md:px-10 gap-8 w-full md:max-w-5xl mx-auto border-b",
+const BlogContainer = ({ title, description, imageSrc, reverse, categories = false, commentCount = 0 }) => (
+  
+<div className=' flex flex-col justify-center items-center w-full'>
+<div className={clsx(
+    "flex flex-col md:flex-row border-2 items-start py-10 w-full px-12 mx-4 md:px-10 gap-8  md:max-w-5xl border-b",
     reverse && "md:flex-row-reverse",
-    "border-gray-300 dark:border-gray-600"
+    "border-gray-300 dark:border-gray-600",
+    "bg-white dark:bg-gray-800 shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
   )}>
-    
     {/* Title and Description Section */}
     <div className="md:w-1/2 flex items-center justify-center z-10">
       <div className="w-full space-y-4">
@@ -29,7 +32,7 @@ const BlogContainer = ({ title, description, imageSrc, reverse, categories = fal
         </div>
       </div>
     </div>
-    
+
     {/* Image Section */}
     <div className="md:w-1/2 relative w-full h-[200px] md:h-[300px]">
       <Image
@@ -40,7 +43,10 @@ const BlogContainer = ({ title, description, imageSrc, reverse, categories = fal
         className="rounded-lg bg-no-repeat shadow-md"
       />
     </div>
-  </div>
+
+    {/* Comment Section */}
+   
+  </div></div>
 );
 
 export default BlogContainer;

@@ -20,20 +20,33 @@ const CreateServices = () => {
     overview: "",
     programOptions: [""],
     learningPoints: [""],
+
     programDetails: {
       ageGroup: "",
-      format: [""],
-      duration: [""],
-      location: [""],
+      age_group_details: "",
+      format: [
+        {
+          fromatOption: "",
+          formatAns: "",
+        },
+      ],
+      duration: [
+        {
+          durationHeading: "",
+          durationDetail: "",
+        },
+      ],
+
+      location: [{ name: "", address: "" }],
     },
     testimonials: [{ author: "", quote: "" }],
+
     faqs: [{ question: "", answer: "" }],
     heroImage: null,
   });
-
-  const handleChange = (field, value) => {
-    setFormData({ ...formData, [field]: value });
-  };
+  //   const handleChange = (field, value) => {
+  //     setFormData({ ...formData, [field]: value });
+  //   };
 
   const handleArrayChange = (arrayField, index, value) => {
     const updatedArray = [...formData[arrayField]];
@@ -42,9 +55,25 @@ const CreateServices = () => {
   };
 
   const handleNestedArrayChange = (parentField, index, field, value) => {
-    const updatedArray = [...formData[parentField]];
-    updatedArray[index][field] = value;
-    setFormData({ ...formData, [parentField]: updatedArray });
+    const updatedNestedArray = [...formData[parentField]];
+    updatedNestedArray[index][field] = value;
+    setFormData({ ...formData, [parentField]: updatedNestedArray });
+  };
+
+  const handleProgramDetailsChange = (field, value) => {
+    setFormData({
+      ...formData,
+      programDetails: { ...formData.programDetails, [field]: value },
+    });
+  };
+
+  const handleNestedProgramDetailChange = (field, index, subField, value) => {
+    const updatedDetails = [...formData.programDetails[field]];
+    updatedDetails[index][subField] = value;
+    setFormData({
+      ...formData,
+      programDetails: { ...formData.programDetails, [field]: updatedDetails },
+    });
   };
 
   const addArrayField = (arrayField, defaultValue) => {
@@ -54,18 +83,51 @@ const CreateServices = () => {
     });
   };
 
+  const addNestedArrayField = (parentField, field, defaultValue) => {
+    const updatedField = [...formData.programDetails[field], defaultValue];
+    setFormData({
+      ...formData,
+      programDetails: { ...formData.programDetails, [field]: updatedField },
+    });
+  };
+
   const removeArrayField = (arrayField, index) => {
     const updatedArray = [...formData[arrayField]];
     updatedArray.splice(index, 1);
     setFormData({ ...formData, [arrayField]: updatedArray });
   };
 
+  const removeNestedArrayField = (parentField, field, index) => {
+    const updatedField = [...formData.programDetails[field]];
+    updatedField.splice(index, 1);
+    setFormData({
+      ...formData,
+      programDetails: { ...formData.programDetails, [field]: updatedField },
+    });
+  };
+
+//   const handleChange = (field, value) => {
+//     setFormData((prev) => ({
+//       ...prev,
+//       [field]: value ?? (field === "location" ? { name: "" } : {}),
+//     }));
+//   };
+ const handleLocationChange = (index, key, value) => {
+    const updatedLocations = [...formData.location];
+    updatedLocations[index][key] = value; // Update the specific field
+    setFormData({ ...formData, location: updatedLocations });
+  };
+
+  const addNewLocation = () => {
+    setFormData({
+      ...formData,
+      location: [...formData.location, { name: "", address: "" }],
+    });
+  };
   const handleSubmit = async () => {
     try {
       const formDataToSend = { ...formData };
-      if (formData.heroImage) {
-        // Handle image upload separately if required
-      }
+      // Handle heroImage upload logic if needed
       await axios.post("/api/services", formDataToSend);
       alert("Service created successfully!");
     } catch (error) {
@@ -114,10 +176,60 @@ const CreateServices = () => {
           value={formData.overview}
           onChange={(e) => handleChange("overview", e.target.value)}
         />
-
+        <Box>
+          <Typography className="font-bold">This Program Offers:</Typography>
+          {formData.programOptions.map((option, index) => (
+            <Box key={index} className="flex items-center gap-2 mb-2">
+              <TextField
+                value={option}
+                fullWidth
+                onChange={(e) =>
+                  handleArrayChange("programOptions", index, e.target.value)
+                }
+              />
+              <IconButton
+                onClick={() => removeArrayField("programOptions", index)}
+              >
+                <Delete />
+              </IconButton>
+            </Box>
+          ))}
+          <Button onClick={() => addArrayField("programOptions", "")}>
+            Add Option
+          </Button>
+        </Box>
+        {/* What They Learn Options */}
+        <TextField
+          label="Curriculum Heading"
+          fullWidth
+          value={formData.subheadline}
+          onChange={(e) => handleChange("subheadline", e.target.value)}
+        />
+        <Box>
+          <Typography className="font-bold">Curriculum Options</Typography>
+          {formData.programOptions.map((option, index) => (
+            <Box key={index} className="flex items-center gap-2 mb-2">
+              <TextField
+                value={option}
+                fullWidth
+                onChange={(e) =>
+                  handleArrayChange("programOptions", index, e.target.value)
+                }
+              />
+              <IconButton
+                onClick={() => removeArrayField("programOptions", index)}
+              >
+                <Delete />
+              </IconButton>
+            </Box>
+          ))}
+          <Button onClick={() => addArrayField("programOptions", "")}>
+            Add Option
+          </Button>
+        </Box>
         {/* Program Options */}
         <Box>
-          <Typography className="font-bold">Program Options</Typography>
+          <Typography className="font-bold">Course Highlights</Typography>
           {formData.programOptions.map((option, index) => (
             <Box key={index} className="flex items-center gap-2 mb-2">
               <TextField
@@ -139,28 +251,205 @@ const CreateServices = () => {
           </Button>
         </Box>
 
-        {/* Learning Points */}
+        {/* Program Details  */}
         <Box>
-          <Typography className="font-bold">Learning Points</Typography>
+          <Typography className="font-bold">Course details</Typography>
+
+          {/* Learning Points Section */}
           {formData.learningPoints.map((point, index) => (
-            <Box key={index} className="flex items-center gap-2 mb-2">
+            <Box key={index} className="flex items-center gap-2 mb-4">
               <TextField
                 value={point}
                 fullWidth
                 onChange={(e) =>
                   handleArrayChange("learningPoints", index, e.target.value)
                 }
+                className="bg-white dark:bg-gray-700"
               />
               <IconButton
                 onClick={() => removeArrayField("learningPoints", index)}
+                className="text-red-500"
               >
                 <Delete />
               </IconButton>
             </Box>
           ))}
-          <Button onClick={() => addArrayField("learningPoints", "")}>
+          <Button
+            onClick={() => addArrayField("learningPoints", "")}
+            className="text-yellow-600 mt-2"
+          >
             Add Learning Point
           </Button>
+
+          {/* Program Details: Age Group and Age Group Details */}
+          <Box className="mt-6">
+            <TextField
+              label="Age Group"
+              value={formData.programDetails.ageGroup}
+              onChange={(e) =>
+                handleChange("programDetails", {
+                  ...formData.programDetails,
+                  ageGroup: e.target.value,
+                })
+              }
+              fullWidth
+              className="bg-white dark:bg-gray-700 mb-4"
+            />
+
+            <TextField
+              label="Age Group Details"
+              value={formData.programDetails.age_group_details}
+              onChange={(e) =>
+                handleChange("programDetails", {
+                  ...formData.programDetails,
+                  age_group_details: e.target.value,
+                })
+              }
+              fullWidth
+              className="bg-white dark:bg-gray-700 mb-4"
+            />
+          </Box>
+
+          {/* Format Section */}
+          <Box className="mt-6">
+            <Typography variant="h6">Format:</Typography>
+            {formData.programDetails?.format?.map((formatItem, index) => (
+              <Box key={index} className="flex items-center gap-2 mb-2">
+                <TextField
+                  label="Format Option"
+                  value={formatItem.formatOption || ""}
+                  onChange={(e) =>
+                    handleNestedArrayChange(
+                      "programDetails",
+                      "format",
+                      index,
+                      "formatOption",
+                      e.target.value
+                    )
+                  }
+                  fullWidth
+                  className="bg-white dark:bg-gray-700"
+                />
+                <TextField
+                  label="Format Answer"
+                  value={formatItem.formatAns || ""}
+                  onChange={(e) =>
+                    handleNestedArrayChange(
+                      "programDetails",
+                      "format",
+                      index,
+                      "formatAns",
+                      e.target.value
+                    )
+                  }
+                  fullWidth
+                  className="bg-white dark:bg-gray-700"
+                />
+                <IconButton
+                  onClick={() =>
+                    removeArrayField("programDetails", "format", index)
+                  }
+                  className="text-red-500"
+                >
+                  <Delete />
+                </IconButton>
+              </Box>
+            ))}
+            <Button
+              onClick={() =>
+                addNestedArrayField("programDetails", "format", {
+                  formatOption: "",
+                  formatAns: "",
+                })
+              }
+              className="text-yellow-600 mt-2"
+            >
+              Add Format Option
+            </Button>
+          </Box>
+
+          {/* Duration Section */}
+          <Box className="mt-6">
+            <Typography variant="h6">Duration Details:</Typography>
+            {formData.programDetails?.duration?.map((duration, index) => (
+              <Box key={index} className="flex items-center gap-2 mb-4">
+                <TextField
+                  label="Duration Heading"
+                  value={duration.durationHeading}
+                  onChange={(e) =>
+                    handleNestedProgramDetailChange(
+                      "duration",
+                      index,
+                      "durationHeading",
+                      e.target.value
+                    )
+                  }
+                  fullWidth
+                  className="bg-white dark:bg-gray-700"
+                />
+                <TextField
+                  label="Duration Detail"
+                  value={duration.durationDetail}
+                  onChange={(e) =>
+                    handleNestedProgramDetailChange(
+                      "duration",
+                      index,
+                      "durationDetail",
+                      e.target.value
+                    )
+                  }
+                  fullWidth
+                  className="bg-white dark:bg-gray-700"
+                />
+                <IconButton
+                  onClick={() =>
+                    removeNestedArrayField("programDetails", "duration", index)
+                  }
+                  className="text-red-500"
+                >
+                  <Delete />
+                </IconButton>
+              </Box>
+            ))}
+            <Button
+              onClick={() =>
+                addNestedArrayField("programDetails", "duration", {
+                  durationHeading: "",
+                  durationDetail: "",
+                })
+              }
+              className="text-yellow-600 mt-2"
+            >
+              Add Duration
+            </Button>
+          </Box>
+
+          {/* Location Section */}
+          <Box key={index} className="mt-6">
+            <Typography variant="h6">Location:</Typography>
+            
+          <TextField
+            label={`Location Name ${index + 1}`}
+            value={loc.name || ""}
+            onChange={(e) =>
+              handleLocationChange(index, "name", e.target.value)
+            }
+          />
+          <TextField
+            label={`Location Address ${index + 1}`}
+            value={loc.address || ""}
+            onChange={(e) =>
+              handleLocationChange(index, "address", e.target.value)
+            }
+          />
+    
+            <Button
+              onClick={() => handleAddLocation()}
+              className="text-yellow-600 mt-2"
+            >
+              Add Location
+            </Button>
+          </Box>
         </Box>
 
         {/* Testimonials */}
@@ -180,6 +469,7 @@ const CreateServices = () => {
                   )
                 }
               />
+
               <TextField
                 label="Quote"
                 value={testimonial.quote}
@@ -217,14 +507,24 @@ const CreateServices = () => {
                 label="Question"
                 value={faq.question}
                 onChange={(e) =>
-                  handleNestedArrayChange("faqs", index, "question", e.target.value)
+                  handleNestedArrayChange(
+                    "faqs",
+                    index,
+                    "question",
+                    e.target.value
+                  )
                 }
               />
               <TextField
                 label="Answer"
                 value={faq.answer}
                 onChange={(e) =>
-                  handleNestedArrayChange("faqs", index, "answer", e.target.value)
+                  handleNestedArrayChange(
+                    "faqs",
+                    index,
+                    "answer",
+                    e.target.value
+                  )
                 }
               />
               <IconButton onClick={() => removeArrayField("faqs", index)}>
@@ -244,9 +544,7 @@ const CreateServices = () => {
           <Typography className="font-bold">Header Image</Typography>
           <input
             type="file"
-            onChange={(e) =>
-              handleChange("heroImage", e.target.files[0])
-            }
+            onChange={(e) => handleChange("heroImage", e.target.files[0])}
           />
         </Box>
 

@@ -9,30 +9,35 @@ const blogData = [
     description: "Elevate Your Professional Image with These Essential Grooming Tips",
     categories: "Essential Grooming Tips",
     imageSrc: "/Blog/BLOG-1.jpg",
+    commentCount: 5,
   },
   {
     title: "Blog 2",
     description: "Social Etiquette 101: Your Guide to Thriving at Formal Events",
     categories: "Social Etiquette",
     imageSrc: "/Blog/BLOG-2.jpg",
+    commentCount: 12,
   },
   {
     title: "Blog 3",
     description: "Teaching Kids Manners: Why Etiquette is Vital in Today’s World?",
     categories: "Children Etiquette",
     imageSrc: "/Blog/BLOG-3.jpg",
+    commentCount: 8,
   },
   {
     title: "Blog 4",
     description: "Discovering Your Best Colors: A Simple Guide to Color Analysis",
     categories: "Color Analysis 101",
     imageSrc: "/Blog/BLOG-4.jpeg",
+    commentCount: 3,
   },
   {
     title: "Blog 5",
     description: "Workplace Etiquette: The Key to Building Professional Relationships",
     categories: "Workplace Etiquette",
     imageSrc: "/Blog/BLOG-5.jpg",
+    commentCount: 6,
   },
   // Add more blog entries here
 ];
@@ -50,7 +55,7 @@ export default function BlogPage() {
   });
 
   return (
-    <div className="bg-white dark:bg-[rgb(0,0,31)] py-24 px-4 md:px-8">
+    <div className="bg-white dark:bg-[rgb(0,0,31)]  py-24 px-4 md:px-8">
       <div className="md:max-w-6xL w-full mx-auto md:px-10 px-0">
         
         {/* Filter and Search Section */}
@@ -67,7 +72,7 @@ export default function BlogPage() {
             <option value="communication-skills">Communication Skills</option>
             <option value="corporate-etiquette">Corporate Etiquette</option>
             <option value="fine-dining-manners">Fine Dining Manners</option>
-            <option vlaue="children-etiquette">Children Etiquette</option>
+            <option value="children-etiquette">Children Etiquette</option>
           </select>
 
           {/* Search Input */}
@@ -88,6 +93,7 @@ export default function BlogPage() {
             description={blog.description}
             imageSrc={blog.imageSrc}
             categories={blog.categories}
+            commentCount={blog.commentCount}
             reverse={index % 2 !== 0}
           />
         ))}

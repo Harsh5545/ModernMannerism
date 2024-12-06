@@ -14,11 +14,11 @@ const HomeSection = () => {
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 dark:bg-[#060507] bg-[#BEBEBE] dark:bg-opacity-60 bg-opacity-40 z-0"></div>
+      <div className="absolute inset-0 bg-[#3a4e5d]  dark:bg-opacity-60 bg-opacity-40 z-0"></div>
 
       {/* Content */}
       <div className="relative z-10 flex h-72 gap-5 flex-col p-5 justify-center items-center">
-        <h1 className="p-1 font-semibold text-xl md:text-4xl w-[85%] md:w-[60%] text-center dark:text-white text-black">
+        <h1 className="p-1 font-semibold text-xl md:text-4xl w-[85%] md:w-[60%] text-center text-white">
           We provide high-quality services & innovative solutions for reliable
           growth.
         </h1>
