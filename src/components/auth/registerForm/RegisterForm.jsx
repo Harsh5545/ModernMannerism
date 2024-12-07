@@ -51,7 +51,7 @@ const UserForm = () => {
     return (
         <div className="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center py-12">
             <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 w-full max-w-md">
-                <h1 className="text-2xl font-bold text-center mb-6 text-gray-800 dark:text-gray-200">Create New User</h1>
+                <h1 className="text-2xl font-bold text-center mb-6 text-gray-700 dark:text-gray-200">Create New User</h1>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <div className="flex gap-4">
                         <Input
@@ -65,7 +65,7 @@ const UserForm = () => {
                             label="First Name"
                             placeholder="Enter your first name"
                             autoComplete="off"
-                            className="dark:bg-gray-700 dark:text-gray-200"
+                            className=" dark:text-gray-200"
                         />
                         <Input
                             id="lastName"
@@ -78,7 +78,7 @@ const UserForm = () => {
                             label="Last Name"
                             placeholder="Enter your last name"
                             autoComplete="off"
-                            className="dark:bg-gray-700 dark:text-gray-200"
+                            className=" dark:text-gray-200"
                         />
                     </div>
 
@@ -92,7 +92,7 @@ const UserForm = () => {
                         label="Email"
                         placeholder="Enter your email"
                         autoComplete="off"
-                        className="dark:bg-gray-700 dark:text-gray-200"
+                        className=" dark:text-gray-200"
                     />
 
                     <Input
@@ -105,7 +105,7 @@ const UserForm = () => {
                         label="Mobile"
                         placeholder="Enter your mobile"
                         autoComplete="off"
-                        className="dark:bg-gray-700 dark:text-gray-200"
+                        className=" dark:text-gray-200"
                     />
 
                     <Input
@@ -118,11 +118,11 @@ const UserForm = () => {
                         label="Password"
                         placeholder="Enter your password"
                         autoComplete="off"
-                        className="dark:bg-gray-700 dark:text-gray-200"
+                        className=" dark:text-gray-200"
                     />
 
-                    <Button className="w-full mt-4 bg-gold-500 hover:bg-yellow-400 text-black" type="submit">Register</Button>
-                    <Button onClick={() => { signIn('google') }} startContent={<GoogleIcon />} className="w-full mt-2 bg-gold-500 hover:bg-gold-600 text-black">Google</Button>
+                    <Button className="w-full mt-4 bg-gold-500 hover:bg-yellow-400 dark:bg-slate-400 text-black" type="submit">Register</Button>
+                    <Button onClick={() => { signIn('google') }} startContent={<GoogleIcon />} className="w-full dark:bg-slate-400 mt-2 bg-gold-500 hover:bg-gold-600 text-black">Google</Button>
                 </form>
                 {errorMessage && <p className="text-red-500 text-center mt-4">{errorMessage}</p>}
                 {session && (
