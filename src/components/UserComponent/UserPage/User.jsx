@@ -11,9 +11,9 @@ const User = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-300">
       <div className='flex flex-col items-center pt-24 justify-center'>
-        <img src="/assets/MM.png" alt="Logo" className="mb-6 w-32" />
+        <img src="/assets/MM.png" alt="Logo" className="mb-6 w-64" />
         <h1 className="text-3xl font-bold text-gray-800 mb-4">This Page is Under Development</h1>
         <p className="text-lg text-gray-600 mb-4">
           Please explore our website or contact our team for any issues. We are here to help you with any course-related inquiries you may have.

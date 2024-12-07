@@ -62,12 +62,12 @@ const SelfImprovementChallenge = () => {
     setScore(0);
     setCurrentQuestionIndex(0);
     setIsGameOver(false);
-    setTimer(30);
+    setTimer(60);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+    <div className="flex flex-col items-center justify-center  bg-gray-100">
+      <div className="bg-white rounded-lg shadow-md w-full max-w-md">
         <h1 className="text-3xl font-bold mb-4 text-center">Self-Improvement Challenge</h1>
         <div className="mb-4 text-center">
           <p className="text-lg">Time Left: {timer} seconds</p>
