@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Divider } from "@nextui-org/react";
+import { Button, Divider } from "@nextui-org/react";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import FlagCircleIcon from '@mui/icons-material/FlagCircle';
@@ -33,7 +33,7 @@ style={{boxShadow: "black 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0
           <hr className="h-1 bg-[#933469] w-16" />
         </div>
         <p className=" text-gray-800 dark:text-white p-2 text-center">
-          About Modern Mannerism Modern Mannerism provides professional-quality
+         Modern Mannerism provides professional-quality
           training and learning globally. We help professionals, corporates, and
           organizations to embrace transformation and accomplish breakthrough
           performance by becoming proficient at the skills.
@@ -42,15 +42,43 @@ style={{boxShadow: "black 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0
         <Divider className="my-4 " />
         <div className="flex justify-around items-center w-full">
           <div className="p-1 flex items-center flex-col gap-4">
-            <StarOutlineIcon style={{ fontSize: 40, color:'#933469' }} /> 
+            <section class="flex justify-center items-center">
+  <Button
+    href="/"
+    class="group flex bg-none justify-center p-2 rounded-md drop-shadow-xl from-gray-800 text-white font-semibold hover:translate-y-3 hover:rounded-[50%] transition-all duration-500 hover:from-[#331029] hover:to-[#310413]"
+  >
+   <StarOutlineIcon style={{ fontSize: 40, color:'#933469'}} /> 
+    
+    <span
+      class="absolute opacity-0 group-hover:opacity-100 group-hover:text-gray-700 group-hover:text-sm group-hover:-translate-y-10 duration-700"
+    >
+      Instagram
+    </span>
+  </Button>
+</section>
+
             <span className="font-semibold dark:text-white md:text-2xl text-xl text-[#06273A]">Vision</span>
           </div>
           <Divider orientation="vertical" style={{ height: 100, width:2 }} /> 
           <div className="p-1 flex items-center flex-col gap-4">
-            <WorkspacePremiumIcon style={{ fontSize: 40, color:'#933469' }} /> 
-            <span className="font-semibold dark:text-white md:text-2xl text-xl text-[#06273A]">Missions</span>
+             <section class="flex justify-center items-center">
+  <Button
+    href="/"
+    class="group flex bg-none justify-center p-2 rounded-md drop-shadow-xl from-gray-800  text-white font-semibold hover:translate-y-3 hover:rounded-[50%] transition-all duration-500 hover:from-[#331029] hover:to-[#310413]"
+  >
+   <WorkspacePremiumIcon style={{ fontSize: 40, color:'#933469' }} /> 
+    
+    <span
+      class="absolute opacity-0 group-hover:opacity-100 group-hover:text-gray-700 group-hover:text-sm group-hover:-translate-y-10 duration-700"
+    >
+      Instagram
+    </span>
+  </Button>
+</section> 
+            <span className="font-semibold dark:text-white md:text-2xl text-xl text-[#06273A]">Our Values</span>
           </div>
           
+
         </div>
       </div>
     </div>

@@ -1,35 +1,36 @@
 import React from "react";
 import { Button } from "@nextui-org/react";
-import { Cormorant_Garamond, Lato } from "next/font/google";
+import { Cormorant_Garamond } from "next/font/google";
+
 const dm_Sans = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400"],
-  // Add weights if needed
 });
+
 const HomeDinning = () => {
   return (
-    <div className="relative w-full h-full bg-gray-100 dark:bg-gray-900">
+    <div className="relative w-full h-screen bg-gray-100 dark:bg-gray-900">
       {/* Full-screen background image */}
       <div
         className="absolute inset-0 bg-fixed bg-cover bg-center"
         style={{
-          backgroundImage: "    url('/assets/DiningSection.jpg')",
+          backgroundImage: "url('/assets/DiningSection.jpg')",
         }}
       >
-        {/* Overlay - covering only the right side */}
-        <div className="absolute inset-0 md:w-1/2 z-0"></div>
+        {/* Overlay */}
+        <div className="absolute inset-0 md:w-1/2 "></div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col   md:flex-row justify-end items-center md:h-full text-center md:text-right gap-8">
+      <div className="relative z-10 flex flex-col md:flex-row justify-end items-center md:h-screen text-center md:text-right gap-8">
         {/* Empty Left Side for Larger Screens */}
         <div className="hidden md:block md:w-1/2"></div>
 
         {/* Content on the Right Side */}
-        <div className="md:w-1/2 w-full h-full bg-opacity-50 dark:bg-opacity-70 bg-[#793600] dark:bg-[#060507] ">
-          <div className=" flex h-full gap-14 py-24 md:gap-28 justify-between items-center   text-center flex-col">
+        <div className="md:w-1/2 w-full h-full bg-opacity-70 dark:bg-opacity-70 bg-[#793600] dark:bg-[#060507]">
+          <div className="flex h-full gap-8 py-8 md:py-24 md:gap-16 justify-between items-center text-center flex-col">
             <h2
-              className={`${dm_Sans.className} uppercase text-xl  md:text-4xl font-semibold text-white dark:text-gray-300 `}
+              className={`${dm_Sans.className} uppercase text-lg md:text-3xl font-semibold text-white dark:text-gray-300`}
             >
               Want to create a good
               <br /> impression during networking
@@ -37,18 +38,20 @@ const HomeDinning = () => {
             </h2>
 
             <h5
-              className={`${dm_Sans.className} text-3xl md:text-7xl font-bold text-white dark:text-gray-100 `}
+              className={`${dm_Sans.className} text-2xl md:text-6xl font-bold text-white dark:text-gray-100`}
             >
-              Fine Dining <br/> Etiquette Workshop
+              Fine Dining <br /> Etiquette Workshop
             </h5>
 
             <p
-              className={`${dm_Sans.className} text-lg md:text-2xl text-white dark:text-gray-300 font-light  max-w-[80%] md:max-w-[60%]`}
+              className={`${dm_Sans.className} text-base md:text-xl text-white dark:text-gray-300 font-light max-w-[90%] md:max-w-[70%]`}
             >
               Learn the dos and don’ts to create a lasting impression.
             </p>
 
-            <Button className={`${dm_Sans.className} bg-[#ffffff] text-[#793600] text-base md:text-2xl px-8 py-3 rounded-full hover:bg-white hover:text-[#910A67] dark:hover:bg-[#910A67] dark:hover:text-white transition-all duration-300 transform hover:scale-105`}>
+            <Button
+              className={`${dm_Sans.className} bg-white text-[#793600] text-sm md:text-lg px-6 py-3 rounded-full hover:bg-white hover:text-[#910A67] dark:hover:bg-[#910A67] dark:hover:text-white transition-all duration-300 transform hover:scale-105`}
+            >
               Learn More
             </Button>
           </div>

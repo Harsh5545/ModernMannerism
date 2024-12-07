@@ -44,11 +44,7 @@
                 key={index}
                 className={`relative ${styles.container} w-full md:w-[90%] bg-[#cca26c] bg-opacity-65 dark:bg-[#122031] rounded-3xl text-black p-4 text-center flex flex-col items-center justify-between gap-3 h-[500px] dark:hover:bg-[#0e1a2b] shadow-2xl hover:shadow-md hover:shadow-[#8c9c88] dark:hover:shadow-[#3a4e4f]  transform hover:scale-105 transition-transform duration-300 ease-in-out`}>
                 {course.isBestSelling && (
-    //                 <div className={`${styles.card_box} absolute flex items-center  top-3  left-3  text-white py-1 px-3 rounded-full z-10`} >
-    //                   {/* <FaStar className="text-yellow-400" />
-    //                   <span>Best Selling</span> */}
-    // <span></span>
-    //                 </div>
+
 
         <div className={`${styles.card_box}`}>
             <span></span>
