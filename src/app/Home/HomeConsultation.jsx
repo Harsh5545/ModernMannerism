@@ -33,14 +33,14 @@ const HomeConsultation = () => {
   };
 
   return (
-    <div className="flex flex-col items-center dark:bg-[#00001F] p-8 md:p-10 gap-6 justify-center">
+    <div className="flex flex-col items-center dark:bg-[#00001F] p-8 md:p-24 gap-10 justify-center">
       <h1 className="text-2xl md:text-4xl text-center font-semibold text-gray-800 dark:text-white">
         Book Your Consultation Now
         <hr className="border-t-2 border-[#910A67] w-1/4 mx-auto mt-2" />
       </h1>
-      <p className="text-center text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mb-8">
+      {/* <p className="text-center text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mb-8">
         A tale of a fateful trip that started from this tropic port aboard this tiny ship today stillers
-      </p>
+      </p> */}
 
       <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-4xl gap-8">
         <Image
