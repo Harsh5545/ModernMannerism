@@ -55,7 +55,7 @@ export default function BlogPage() {
   });
 
   return (
-    <div className="bg-white dark:bg-[rgb(0,0,31)]  py-24 px-4 md:px-8">
+    <div className="bg-white dark:bg-[rgb(0,0,31)] py-32 px-8 md:px-8">
       <div className="md:max-w-6xL w-full mx-auto md:px-10 px-0">
         
         {/* Filter and Search Section */}
