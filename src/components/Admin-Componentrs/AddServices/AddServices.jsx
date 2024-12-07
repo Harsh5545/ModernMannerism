@@ -37,7 +37,7 @@ const CreateServices = () => {
         },
       ],
 
-      location: [{ name: "", address: "" }],
+      location: [""],
     },
     testimonials: [{ author: "", quote: "" }],
 
@@ -425,10 +425,31 @@ const CreateServices = () => {
           </Box>
 
           {/* Location Section */}
-          <Box key={'jjjj'} className="mt-6">
-            <Typography variant="h6">Location:</Typography>
-            
-          <TextField
+           <Box key={'jjjj'} className="mt-6">
+      <Typography variant="h6">Location:</Typography>
+      <Box>
+        {formData.programDetails.location.map((location, index) => (
+          <Box key={index} className="flex items-center gap-2 mb-2">
+            <TextField
+              value={location}
+              fullWidth
+              onChange={(e) =>
+                handleArrayChange("location", index, e.target.value)
+              }
+            />
+            <IconButton
+              onClick={() => removeArrayField("location", index)}
+            >
+              <Delete />
+            </IconButton>
+          </Box>
+        ))}
+        <Button onClick={() => addArrayField("location", "")}>
+          Add Location
+        </Button>
+      </Box>
+    </Box>
+          {/* <TextField
             label={`Location Name ${'jjjj' + 1}`}
             value={loc?.name || ""}
             onChange={(e) =>
@@ -442,7 +463,7 @@ const CreateServices = () => {
               handleLocationChange('index', "address", e.target.value)
             }
           />
-    
+     */}
             <Button
               onClick={() => handleAddLocation()}
               className="text-yellow-600 mt-2"
@@ -450,8 +471,8 @@ const CreateServices = () => {
               Add Location
             </Button>
           </Box>
-        </Box>
-
+        
+        
         {/* Testimonials */}
         <Box>
           <Typography className="font-bold">Testimonials</Typography>
