@@ -9,7 +9,7 @@ const dm_Sans = Cormorant_Garamond({
 
 const HomeDinning = () => {
   return (
-    <div className="relative w-full h-screen bg-gray-100 dark:bg-gray-300">
+    <div className="relative w-full h-full md:h-screen bg-gray-100 dark:bg-gray-300">
       {/* Full-screen background image */}
       <div
         className="absolute inset-0 bg-fixed bg-cover bg-center"
@@ -22,9 +22,9 @@ const HomeDinning = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col md:flex-row justify-end items-center md:h-screen text-center md:text-right gap-8">
+      <div className="relative h-full z-10 flex flex-col md:flex-row justify-end items-center md:h-screen text-center md:text-right gap-8">
         {/* Empty Left Side for Larger Screens */}
-        <div className="hidden md:block md:w-1/2"></div>
+        <div className="hidden md:block  md:w-1/2"></div>
 
         {/* Content on the Right Side */}
         <div className="md:w-1/2 w-full h-full bg-opacity-70 dark:bg-opacity-80 bg-[#793600] dark:bg-[#793600]">

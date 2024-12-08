@@ -16,14 +16,14 @@ const HomeAbout = () => {
       {/* Main Content */}
       <div className="flex dark:bg-[#00001F] gap-6  justify-center flex-col md:flex-row items-center">
         {/* Image Section */}
-        <div className="w-full md:w-2/5 flex justify-center m-2 items-center">
+        <div className="w-[90%] md:w-2/5 flex justify-center m-2 items-center">
           <div>
             <Image
               width={500}
               height={400}
               alt="modern Mannerism image"
               src="/assets/AboutUsModernMannerism.webp"
-              className="shadow-2xl p-1 shadow-[#859199]"
+              className="shadow-2xl object-contain p-1 shadow-[#859199]"
               style={{
                 boxShadow:
                   "black 0px 0px 0px 2px inset, rgba(255, 255, 255, 0.548) 10px -10px 0px -3px, #eabf91 10px -10px",

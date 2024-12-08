@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import Navlink from "../navlink/Navlink";
+import Link from "next/link";
 
 const AllLinks = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -44,33 +44,27 @@ const AllLinks = () => {
             },
           ],
         },
-        {
-          title: "Children's Etiquette",
-          path: "/service/children's-etiquette",
-        },
-        {
-          title: "Young Adult Etiquette",
-          path: "/service/young-adult-etiquette",
-        },
+        { title: "Children's Etiquette", path: "/service/3" },
+        { title: "Young Adult Etiquette", path: "/service/young-adult-etiquette" },
         {
           title: "Latest Workshop",
-          path: "/service/latest workshop",
+          path: "/service/latest-workshop",
           subLinks: [
             {
               title: "Ladies Grooming & Social Etiquette Programme",
-              path: "/service/Latest Workshop/Business Etiquette & Corporate Grooming Programme",
+              path: "/service/latest-workshop/ladies-grooming",
             },
             {
               title: "Young Adult-Grooming & Etiquette",
-              path: "/service/Latest Workshop/Young Adult-Grooming & Etiquette",
+              path: "/service/latest-workshop/young-adult-grooming",
             },
             {
               title: "Young Adult Training",
-              path: "/service/Latest Workshop/young-adult",
+              path: "/service/latest-workshop/young-adult",
             },
             {
               title: "Dining Etiquette Workshop",
-              path: "/service/Latest Workshop/Dining Etiquette Workshop",
+              path: "/service/latest-workshop/dining-etiquette",
             },
           ],
         },
@@ -81,12 +75,11 @@ const AllLinks = () => {
   ];
 
   useEffect(() => {
-    // Detect screen width for mobile view
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); // Check on initial render
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -94,7 +87,6 @@ const AllLinks = () => {
     };
   }, []);
 
-  // Close dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -112,18 +104,21 @@ const AllLinks = () => {
   const toggleDropdown = () => {
     setOpenDropdown((prev) => !prev);
   };
+
   const handleMouseLeave = () => {
     closeTimeoutRef.current = setTimeout(() => {
       setOpenDropdown(false);
       setHoveredSubLink(null);
-    }, 300); // Delay of 300ms
+    }, 300);
   };
+
   const handleMouseEnter = () => {
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
     }
     setOpenDropdown(true);
   };
+
   return (
     <div
       className={`flex ${
@@ -133,29 +128,19 @@ const AllLinks = () => {
       {links.map((link, i) => (
         <div key={i} className="relative" ref={dropdownRef}>
           {!link.subLinks ? (
-            <Navlink item={link} />
+            <Link
+              href={link.path}
+              className="font-medium text-base"
+            >
+              {link.title}
+            </Link>
           ) : (
             <div className="inline-block">
-              {/* Main Dropdown Button */}
               <button
                 className="font-medium text-base cursor-pointer flex items-center"
                 onClick={isMobile ? toggleDropdown : undefined}
-                onMouseEnter={
-                  !isMobile
-                    ? () => {
-                        setOpenDropdown(true);
-                        handleMouseEnter;
-                      }
-                    : undefined
-                } // Open on hover for desktop
-                onMouseLeave={
-                  !isMobile
-                    ? () => {
-                        setOpenDropdown(false);
-                        handleMouseLeave;
-                      }
-                    : undefined
-                } // Close on mouse leave for desktop
+                onMouseEnter={!isMobile ? handleMouseEnter : undefined}
+                onMouseLeave={!isMobile ? handleMouseLeave : undefined}
               >
                 {link.title}
                 <svg
@@ -174,53 +159,33 @@ const AllLinks = () => {
                 </svg>
               </button>
 
-              {/* Dropdown for Services */}
               {openDropdown && (
-                <div
-                  className={`absolute mt-2 bg-opacity-60  bg-black rounded-lg shadow-lg`}
-                >
+                <div className="absolute mt-2 bg-opacity-60 bg-black rounded-lg shadow-lg">
                   {link.subLinks.map((subLink, j) => (
                     <div
                       key={j}
                       className="relative group"
-                      onMouseEnter={
-                        !isMobile
-                          ? () => {
-                              setHoveredSubLink(subLink.title);
-                              setOpenDropdown(true);
-                            }
-                          : undefined
-                      }
-                      onMouseLeave={
-                        !isMobile
-                          ? () => {
-                              setHoveredSubLink(null);
-                              setOpenDropdown(false);
-                            }
-                          : undefined
-                      }
+                      onMouseEnter={() => setHoveredSubLink(subLink.title)}
+                      onMouseLeave={() => setHoveredSubLink(null)}
                     >
-                      <button
-                        className="block px-4 text-sm font-semibold py-2 text-left w-full max-w-full text-nowrap "
-                        onClick={
-                          isMobile
-                            ? () => setHoveredSubLink(subLink.title)
-                            : undefined
-                        }
+                      <Link
+                        href={subLink.path}
+                        className="block px-4 py-2 text-sm font-semibold text-left w-full text-nowrap"
                       >
                         {subLink.title}
-                      </button>
+                      </Link>
 
-                      {/* Sub-dropdown Content */}
                       {hoveredSubLink === subLink.title && subLink.subLinks && (
-                        <div
-                          className={`absolute text-left left-60 text-sm font-semibold mt-0 top-0 max-w-full bg-opacity-60  bg-black shadow-lg rounded-lg ${
-                            isMobile ? "w-full" : "w-60"
-                          }`}
-                        >
+                        <div className="absolute left-60 top-0 w-60 bg-opacity-60 bg-black shadow-lg rounded-lg">
                           <div className="flex flex-col">
                             {subLink.subLinks.map((nestedLink, k) => (
-                              <Navlink key={k} item={nestedLink} />
+                              <Link
+                                key={k}
+                                href={nestedLink.path}
+                                className="block px-4 py-2 text-sm font-semibold"
+                              >
+                                {nestedLink.title}
+                              </Link>
                             ))}
                           </div>
                         </div>
