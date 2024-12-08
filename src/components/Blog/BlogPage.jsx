@@ -49,18 +49,18 @@ export default function BlogPage() {
   // Filtered blog data based on filter and search term
   const filteredBlogs = blogData.filter((blog) => {
     const matchesFilter = filter ? blog.categories.toLowerCase().includes(filter.toLowerCase()) : true;
-    const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          blog.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      blog.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesFilter && matchesSearch;
   });
 
   return (
     <div className="bg-white dark:bg-[rgb(0,0,31)] py-32 px-8 md:px-8">
       <div className="md:max-w-6xL w-full mx-auto md:px-10 px-0">
-        
+
         {/* Filter and Search Section */}
         <div className="flex flex-col md:flex-row gap-4 mb-8 items-start md:items-center justify-between">
-          
+
           {/* Filter Dropdown */}
           <select
             value={filter}
@@ -84,20 +84,21 @@ export default function BlogPage() {
             className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-white"
           />
         </div>
+        <div className='flex flex-col gap-4'>
 
-        {/* Display Filtered Blogs */}
-        {filteredBlogs.map((blog, index) => (
-          <BlogContainer
-            key={index}
-            title={blog.title}
-            description={blog.description}
-            imageSrc={blog.imageSrc}
-            categories={blog.categories}
-            commentCount={blog.commentCount}
-            reverse={index % 2 !== 0}
-          />
-        ))}
-
+          {/* Display Filtered Blogs */}
+          {filteredBlogs.map((blog, index) => (
+            <BlogContainer
+              key={index}
+              title={blog.title}
+              description={blog.description}
+              imageSrc={blog.imageSrc}
+              categories={blog.categories}
+              commentCount={blog.commentCount}
+              reverse={index % 2 !== 0}
+            />
+          ))}
+        </div>
         {/* No Results Message */}
         {filteredBlogs.length === 0 && (
           <p className="text-center text-gray-500 dark:text-gray-400 mt-8">No blogs found matching your criteria.</p>
