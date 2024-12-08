@@ -74,8 +74,8 @@ const HeroCarousel = () => {
       text: "Online Courses & Webinars",
       description: "Our online offerings allow you to learn at your own pace or join live sessions to enhance your skills in image, etiquette, and communication.",
       button: "Know more",
-    },
-  ];
+    },
+  ];
   const styles = {
     container: `md:h-screen  w-full bg-cover z-0 relative`,
     slide: `md:h-screen h-[65vh] w-full relative`,
@@ -87,7 +87,8 @@ const HeroCarousel = () => {
   };
 
   return (
-    <> <Head>
+    <>
+      <Head>
         <title>Modern Mannerism - Enhance Your Professional & Personal Etiquette</title>
         <meta
           name="description"
@@ -108,8 +109,8 @@ const HeroCarousel = () => {
         <meta property="og:url" content="https://modernmannerism.com" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-    <div className={styles.container}>
-      <style jsx>{`
+      <div className={styles.container}>
+        <style jsx>{`
         @media (max-width: 767px) {
           .swiper-button-next,
           .swiper-button-prev {
@@ -127,53 +128,53 @@ const HeroCarousel = () => {
           background-color: #ff0000 !important; /* Customize active dot color */
         }
       `}</style>
-      <Swiper
-        onSlideChange={handleSlideChange}
-        keyboard={{
-          enabled: true,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        autoplay={{
-          delay: 6000,
-          disableOnInteraction: false,
-        }}
-        speed={100}
-        loop={true}
-        navigation={false}
-        modules={[Autoplay, Keyboard, Pagination, Navigation]}
-        className="mySwiper"
-        ref={swiperRef}
-      >
-        {slides.map((slide) => (
-          <SwiperSlide key={slide.id}>
-            <div className={styles.slide}>
-              <Image
-                src={slide.image}
-                alt={slide.text}
-                className={styles.image}
-                layout="fill"
-              />
-              <div className={styles.overlay}></div>
-              <div className="absolute text-white flex gap-3 md:gap-8 flex-col text-center items-center justify-center h-full z-10 p-8">
-                <h1 className={styles.text}>{slide.text}</h1>
-                <div className="flex flex-col md:w-[50%] text-xs font-medium md:text-lg">
-                  <p className="">
-                    {slide.description}
-                  </p>
-                  <p className="">
-                    {slide.description2}
-                  </p>
-                </div>
+        <Swiper
+          onSlideChange={handleSlideChange}
+          keyboard={{
+            enabled: true,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          autoplay={{
+            delay: 6000,
+            disableOnInteraction: false,
+          }}
+          speed={100}
+          loop={true}
+          navigation={false}
+          modules={[Autoplay, Keyboard, Pagination, Navigation]}
+          className="mySwiper"
+          ref={swiperRef}
+        >
+          {slides.map((slide) => (
+            <SwiperSlide key={slide.id}>
+              <div className={styles.slide}>
+                <Image
+                  src={slide.image}
+                  alt={slide.text}
+                  className={styles.image}
+                  layout="fill"
+                />
+                <div className={styles.overlay}></div>
+                <div className="absolute text-white flex gap-3 md:gap-8 flex-col text-center items-center justify-center w-full h-full z-10 p-8">
+                  <h1 className={styles.text}>{slide.text}</h1>
+                  <div className="flex flex-col md:w-[50%] text-xs font-medium md:text-lg">
+                    <p className="">
+                      {slide.description}
+                    </p>
+                    <p className="">
+                      {slide.description2}
+                    </p>
+                  </div>
 
-                <Button className={styles.button}>{slide.button}</Button>
+                  <Button className={styles.button}>{slide.button}</Button>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div></>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div></>
   );
 };
 
