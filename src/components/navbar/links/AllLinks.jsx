@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import Navlink from "../navlink/Navlink";
 
 const AllLinks = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [hoveredSubLink, setHoveredSubLink] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const dropdownRef = useRef(null);
   const closeTimeoutRef = useRef(null);
 
   const links = [
@@ -73,13 +72,12 @@ const AllLinks = () => {
     },
     { title: "Blog", path: "/blog" },
   ];
-
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize();
+    handleResize(); // Check on initial render
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -87,29 +85,11 @@ const AllLinks = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setOpenDropdown(false);
-        setHoveredSubLink(null);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownRef]);
-
-  const toggleDropdown = () => {
-    setOpenDropdown((prev) => !prev);
-  };
-
   const handleMouseLeave = () => {
     closeTimeoutRef.current = setTimeout(() => {
       setOpenDropdown(false);
       setHoveredSubLink(null);
-    }, 300);
+    }, 300); // Delay of 300ms to avoid flickering
   };
 
   const handleMouseEnter = () => {
@@ -119,28 +99,34 @@ const AllLinks = () => {
     setOpenDropdown(true);
   };
 
+  const handleSubLinkMouseEnter = (title) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    setHoveredSubLink(title);
+  };
+
+  const handleSubLinkMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      // setHoveredSubLink(null);
+    }, 300); // Delay to prevent the flicker
+  };
+
   return (
-    <div
-      className={`flex ${
-        isMobile ? "flex-col space-y-4" : "flex-row space-x-6"
-      } justify-center items-center`}
-    >
+    <div className={`flex ${isMobile ? "flex-col space-y-4" : "flex-row space-x-6"} justify-center items-center`}>
       {links.map((link, i) => (
-        <div key={i} className="relative" ref={dropdownRef}>
+        <div key={i} className="relative">
           {!link.subLinks ? (
-            <Link
-              href={link.path}
-              className="font-medium text-base"
-            >
-              {link.title}
-            </Link>
+            <Navlink item={link} />
           ) : (
-            <div className="inline-block">
+            <div
+              className="inline-block"
+              onMouseEnter={!isMobile ? handleMouseEnter : undefined}
+              onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+            >
               <button
                 className="font-medium text-base cursor-pointer flex items-center"
-                onClick={isMobile ? toggleDropdown : undefined}
-                onMouseEnter={!isMobile ? handleMouseEnter : undefined}
-                onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+                onClick={isMobile ? () => setOpenDropdown((prev) => !prev) : undefined}
               >
                 {link.title}
                 <svg
@@ -150,12 +136,7 @@ const AllLinks = () => {
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
 
@@ -165,31 +146,32 @@ const AllLinks = () => {
                     <div
                       key={j}
                       className="relative group"
-                      onMouseEnter={() => setHoveredSubLink(subLink.title)}
-                      onMouseLeave={() => setHoveredSubLink(null)}
+                      onMouseEnter={!isMobile ? () => handleSubLinkMouseEnter(subLink.title) : undefined}
+                    // onMouseLeave={!isMobile ? handleSubLinkMouseLeave : undefined}
                     >
-                      <Link
-                        href={subLink.path}
+                      <button
                         className="block px-4 py-2 text-sm font-semibold text-left w-full text-nowrap"
+                        onClick={isMobile ? () => setHoveredSubLink(subLink.title) : undefined}
                       >
                         {subLink.title}
-                      </Link>
+                      </button>
 
                       {hoveredSubLink === subLink.title && subLink.subLinks && (
-                        <div className="absolute left-60 top-0 w-60 bg-opacity-60 bg-black shadow-lg rounded-lg">
+                        <div
+                          className={`absolute left-60 top-0 w-60 bg-opacity-60 bg-black shadow-lg rounded-lg ${isMobile ? "w-full" : "w-60"}`}
+                          onMouseEnter={() => handleSubLinkMouseEnter(subLink.title)} // Ensure it stays open while hovered
+                        // onMouseLeave={handleSubLinkMouseLeave} // commenting out for now in future if needed will check it again
+                        >
                           <div className="flex flex-col">
                             {subLink.subLinks.map((nestedLink, k) => (
-                              <Link
-                                key={k}
-                                href={nestedLink.path}
-                                className="block px-4 py-2 text-sm font-semibold"
-                              >
-                                {nestedLink.title}
-                              </Link>
+                              <Navlink key={k} item={nestedLink}
+                                className="block px-4 py-2 text-sm font-semibold" />
                             ))}
                           </div>
+
                         </div>
                       )}
+
                     </div>
                   ))}
                 </div>
