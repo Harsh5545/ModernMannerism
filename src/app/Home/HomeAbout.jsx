@@ -26,7 +26,7 @@ const HomeAbout = () => {
               className="shadow-2xl p-1 shadow-[#859199]"
               style={{
                 boxShadow:
-                  "black 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(167, 20, 154) 10px -10px",
+                  "black 0px 0px 0px 2px inset, rgba(255, 255, 255, 0.548) 10px -10px 0px -3px, #eabf91 10px -10px",
               }}
             />
           </div>
@@ -41,7 +41,7 @@ const HomeAbout = () => {
             >
               About Modern Mannerism
             </h1>
-            <hr className="h-1 bg-[#933469] w-16" />
+            <hr className="h-1 bg-[#eabf91] w-16" />
           </div>
 
           {/* Description */}
@@ -54,7 +54,7 @@ const HomeAbout = () => {
  <div className="flex flex-col md:flex-row gap-8 justify-between items-stretch p-8">
         {/* Vision Section */}
         <div className="flex-1 flex flex-col items-center gap-4 bg-gray-50 dark:bg-[#1A1A3B] p-6 rounded-lg shadow-lg">
-          <StarOutlineIcon style={{ fontSize: 40, color: "#933469" }} />
+          <StarOutlineIcon style={{ fontSize: 40, color: "#eabf91" }} />
           <span className={`${dm_Sans.className} font-bold dark:text-white md:text-2xl text-xl text-[#06273A]`}>
             Vision
           </span>
@@ -73,7 +73,7 @@ const HomeAbout = () => {
 
         {/* Our Values Section */}
         <div className="flex-1 flex flex-col items-center gap-4 bg-gray-50 dark:bg-[#1A1A3B] p-6 rounded-lg shadow-lg">
-          <WorkspacePremiumIcon style={{ fontSize: 40, color: "#933469" }} />
+          <WorkspacePremiumIcon style={{ fontSize: 40, color: "#eabf91" }} />
           <span className={`${dm_Sans.className}  font-bold dark:text-white md:text-2xl text-xl text-[#06273A]`}  >
             Our Values
           </span>

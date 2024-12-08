@@ -9,7 +9,7 @@ const dm_Sans = Cormorant_Garamond({
 
 const HomeDinning = () => {
   return (
-    <div className="relative w-full h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="relative w-full h-screen bg-gray-100 dark:bg-gray-300">
       {/* Full-screen background image */}
       <div
         className="absolute inset-0 bg-fixed bg-cover bg-center"
@@ -27,7 +27,7 @@ const HomeDinning = () => {
         <div className="hidden md:block md:w-1/2"></div>
 
         {/* Content on the Right Side */}
-        <div className="md:w-1/2 w-full h-full bg-opacity-70 dark:bg-opacity-70 bg-[#793600] dark:bg-[#060507]">
+        <div className="md:w-1/2 w-full h-full bg-opacity-70 dark:bg-opacity-80 bg-[#793600] dark:bg-[#793600]">
           <div className="flex h-full gap-8 py-8 md:py-24 md:gap-16 justify-between items-center text-center flex-col">
             <h2
               className={`${dm_Sans.className} uppercase text-lg md:text-3xl font-semibold text-white dark:text-gray-300`}
@@ -44,7 +44,7 @@ const HomeDinning = () => {
             </h5>
 
             <p
-              className={`${dm_Sans.className} text-base md:text-xl text-white dark:text-gray-300 font-light max-w-[90%] md:max-w-[70%]`}
+              className={`${dm_Sans.className} text-base md:text-2xl text-white dark:text-gray-300 font-light max-w-[90%] md:max-w-[70%]`}
             >
               Learn the dos and don’ts to create a lasting impression.
             </p>

@@ -90,15 +90,15 @@ function HeaderFixed() {
             <div className={`${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
                 }`}>
                 <ThemeSwitcher />
-                <Button
-                    className={`${dm_Sans.className} bg-[#cca26c] text-white`}
-                    onClick={() => {
-                        router.push('/contact')
-                        toggleMobileMenu;
-                    }}
-                >
-                    Contact Us
-                </Button>
+                    <Button
+                        className={`${dm_Sans.className} tracking-widest  bg-gradient-to-r  from-[#c3965d] via-[#eabf91] to-[#c3965d] text-white`}
+                        onClick={() => {
+                            router.push('/contact')
+                            toggleMobileMenu;
+                        }}
+                    >
+                        Contact Us
+                    </Button>
             </div>
         </motion.div>
     );

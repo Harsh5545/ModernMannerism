@@ -14,10 +14,10 @@ function Header() {
   const handleScroll = () => {
     if (window.scrollY >= 200) {
       setIsScrollPast(true);
-      //console.log("Scrolled Past");
+      
     } else {
       setIsScrollPast(false);
-      //console.log("Not Past");
+      
     }
   };
 
