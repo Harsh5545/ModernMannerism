@@ -14,7 +14,7 @@ export async function POST(req) {
         }
 
         // check for duplicate emails
-        const duplicate = await commonServices.readSingleData('user', '*', { email: userData.email })
+        const duplicate = await commonServices.readSingleData('users', '*', { email: userData.email })
 
         console.log(duplicate);
 
@@ -25,14 +25,13 @@ export async function POST(req) {
         const hashPassword = await bcrypt.hash(userData.password, 10);
 
         const NewUser = {
-            firstName:userData.firstName,
-            lastName: userData.lastName,
+            full_name:`${userData.firstName} ${userData.lastName}`,
             email: userData.email,
-            mobileNumber:userData.mobileNumber,
-            password: hashPassword,
-            isAdmin:0
+            mobile_number:userData.mobileNumber,
+            password_hash: hashPassword,
+            username:userData.firstName
         }
-        await commonServices.createEntry('user', NewUser);
+        await commonServices.createEntry('users', NewUser);
         return NextResponse.json({ message: "User Created." }, { status: 201 });
     } catch (error) {
         console.log(error);

@@ -49,7 +49,7 @@ export const getUser = async (id) => {
 
     try {
 
-        const user = await commonServices.readSingleData('user', 'firstName,lastName,profilePicture,email', { "id": id })
+        const user = await commonServices.readSingleData('users', 'firstName,lastName,profilePicture,email', { "id": id })
         return user[0]
 
     } catch (error) {

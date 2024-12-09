@@ -7,7 +7,7 @@ import { commonServices } from "@/lib/services/common";
 export const options = {
     pages: {
         signIn: '/login',
-        newUser: '/register'
+        newUser:  '/register' 
     },
     providers: [
         GitHubProvider({
@@ -18,11 +18,14 @@ export const options = {
                 };
             },
             clientId: process.env.GITHUB_ID,
-            clientSecret: process.env.GITHUB_Secret,
+            clientSecret: process.env.GITHUB_SECRET,
         }),
         GoogleProvider({
             profile(profile) {
                 console.log("Profile Google: ", profile);
+                return {
+                    ...profile,
+                };
             },
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -31,22 +34,21 @@ export const options = {
             name: "Credentials",
             credentials: {
                 email: {
-                    label: "email:",
+                    label: "Email:",
                     type: "text",
                     placeholder: "your-email",
                 },
                 password: {
-                    label: "password:",
+                    label: "Password:",
                     type: "password",
                     placeholder: "your-password",
                 },
             },
             async authorize(credentials) {
                 try {
-                    const foundUser = await commonServices.readSingleData('user', '*', { email: credentials.email })
-                    const hashedPassword = credentials.password;
-                    if (foundUser) {
-                        const match = await bcrypt.compare(hashedPassword, foundUser[0].password);
+                    const foundUser  = await commonServices.readSingleData('users', '*', { email: credentials.email });
+                    if (foundUser  && foundUser.length > 0) {
+                        const match = await bcrypt.compare(credentials.password, foundUser[0].password_hash);
                         if (match) {
                             return foundUser[0];
                         }
@@ -64,24 +66,40 @@ export const options = {
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                token.isAdmin = user.isAdmin;
+                token.role = user.role;
                 token.name = user.firstName;
                 token.picture = user.profilePicture;
-                token.isAdmin = user.isAdmin;
-                token.image  = user.profilePicture
+                token.image = user.profilePicture;
             }
             return token;
         },
 
         async session({ session, token }) {
             if (session?.user) {
-                session.isAdmin = token.isAdmin;
+                session.role = token.role;
                 session.picture = token.image;
                 session.email = token.email;
                 session.image = token.image;
             }
             return session;
         },
+
+        async redirect({ url, baseUrl, token }) {
+            if (token?.role === 'admin') {
+                return `${baseUrl}/admin-dashboard`;
+            }
+            return baseUrl; 
+        },
     },
     secret: process.env.NEXTAUTH_SECRET
 };
+
+export async function registerUser (email, password, role = 'user') {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser  = {
+        email,
+        password: hashedPassword,
+        role, 
+    };
+    await commonServices.createEntry('users',newUser);
+}

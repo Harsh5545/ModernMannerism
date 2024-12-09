@@ -2,32 +2,32 @@
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation"; // Import useRouter
-import ForgotPasswordDropdown from "../ForgetPassword/ForgetPassword";// Adjust the path as necessary
+import { useRouter } from "next/navigation";
+import ForgotPasswordDropdown from "../ForgetPassword/ForgetPassword";
+import { signIn } from "next-auth/react";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false); // State for modal visibility
-  const router = useRouter(); // Initialize useRouter
+  const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
+  const router = useRouter();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
-
     try {
-      // Replace this URL with your backend login API endpoint
-      const response = await axios.post("/api/admin/login", { email, password });
-
-      // Handle successful login (e.g., store token, redirect)
-      console.log(response.data); // Assuming response contains user data or a token
-      
-      // Redirect to dashboard
-      router.push("/dashboard"); // Adjust the path to your dashboard page
-
+      const response = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+      console.log(response);
+      if (response.ok) {
+        router.push(response?.url);
+      }
     } catch (err) {
       console.error(err);
       setError("Invalid email or password. Please try again.");
