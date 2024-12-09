@@ -74,9 +74,9 @@ const HomeTestimonial = () => {
                     <h3 className="text-lg font-semibold text-center dark:text-white text-[#06273A]">
                       {testimonial.Name}
                     </h3>
-                    <h4 className="text-md font-medium text-center dark:text-white text-[#7f8c8d]">
+                    {/* <h4 className="text-md font-medium text-center dark:text-white text-[#7f8c8d]">
                       {testimonial.City}
-                    </h4>
+                    </h4> */}
                   </div>
                 </div>
               </SwiperSlide>

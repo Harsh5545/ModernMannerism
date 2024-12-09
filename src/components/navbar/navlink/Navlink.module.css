@@ -7,11 +7,11 @@
 }
 
 .darkActive{
-  background-color:white;
-  color: #06273A;
+ 
+  color: linear-gradient(to right, #c3965d 0%, #eabf91 50%, #c3965d 100%);
 }
 
 .lightActive{
- background-color: #06273A;
-  color: white;
+ 
+  color: linear-gradient(to right, #c3965d 0%, #eabf91 50%, #c3965d 100%);
 }

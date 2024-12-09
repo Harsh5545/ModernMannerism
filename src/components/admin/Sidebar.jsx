@@ -27,6 +27,7 @@ const SideBar = () => {
     };
 
     const menuItems = [
+        {text:'', icon:'/assets/MM.pmg', path:'/admin'},
         { text: 'Dashboard', icon: <DashboardIcon />, path: '/admin' },
         { text: 'Users', icon: <GroupIcon />, path: '/admin/users' },
         { text: 'Add Blog', icon: <AddIcon />, path: '/admin/add-blog' },

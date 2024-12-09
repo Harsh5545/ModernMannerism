@@ -33,14 +33,14 @@ const HomeConsultation = () => {
   };
 
   return (
-    <div className="flex flex-col items-center dark:bg-[#00001F] p-8 md:p-10 gap-6 justify-center">
+    <div className="flex flex-col items-center dark:bg-[#00001F] p-8 md:p-24 gap-10 justify-center">
       <h1 className="text-2xl md:text-4xl text-center font-semibold text-gray-800 dark:text-white">
         Book Your Consultation Now
-        <hr className="border-t-2 border-[#910A67] w-1/4 mx-auto mt-2" />
+        <hr className="border-t-2  border-[#eabf91] w-1/4 mx-auto mt-2" />
       </h1>
-      <p className="text-center text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mb-8">
+      {/* <p className="text-center text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mb-8">
         A tale of a fateful trip that started from this tropic port aboard this tiny ship today stillers
-      </p>
+      </p> */}
 
       <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-4xl gap-8">
         <Image
@@ -60,7 +60,7 @@ const HomeConsultation = () => {
               onChange={handleInputChange}
               placeholder="Name *"
               required
-              className="p-3 w-full border border-gray-300 dark:border-gray-700 outline-none rounded-lg focus:ring-2 focus:ring-[#910A67]"
+              className="p-3 w-full border border-gray-300 dark:border-gray-700 outline-none rounded-lg focus:ring-2 focus:ring-[#eabf91]"
             />
             <input
               type="tel"
@@ -70,7 +70,7 @@ const HomeConsultation = () => {
               placeholder="Phone *"
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               required
-              className="p-3 w-full border border-gray-300 outline-none dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#910A67]"
+              className="p-3 w-full border border-gray-300 outline-none dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#eabf91]"
             />
           </div>
           <div className="flex flex-col md:flex-row gap-4 mb-4">
@@ -81,16 +81,16 @@ const HomeConsultation = () => {
               onChange={handleInputChange}
               placeholder="Email *"
               required
-              className="p-3 w-full border border-gray-300 outline-none dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#910A67]"
+              className="p-3 w-full border border-gray-300 outline-none dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#eabf91]"
             />
             <select
               name="service"
               value={formData.service}
               onChange={handleInputChange}
               required
-              className="p-3 w-full border border-gray-300 outline-none dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#910A67]"
+              className="p-3 w-full border border-gray-300 outline-none dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#eabf91]"
             >
-              <option value="">Select Service</option>
+              <option className="hover:bg-[#eabf91] bg-[#eabf91] " value="">Select Service</option>
               <option>Personality Enhancement Programme</option>
               <option>Business Etiquette & Corporate Image Programme</option>
               <option>Children’s Etiquette Programme</option>
@@ -107,12 +107,12 @@ const HomeConsultation = () => {
               onChange={handleInputChange}
               placeholder="Message"
               required
-              className="p-3 w-full border outline-none border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#910A67]"
+              className="p-3 w-full border outline-none border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#eabf91]"
             ></textarea>
           </div>
           <Button
             type="submit"
-            className="w-full bg-[#910A67] text-white p-3 rounded-lg hover:bg-pink-600 transition-all duration-300"
+            className="w-full bg-gradient-to-r from-[#c3965d] via-[#eabf91] to-[#c3965d] text-white p-3 rounded-lg hover:bg-[#eabf91] transition-all duration-300"
           >
             Submit
           </Button>

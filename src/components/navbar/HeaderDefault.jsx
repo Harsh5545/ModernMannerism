@@ -82,7 +82,7 @@ const dm_Sans = Lato({
             } md:flex gap-2 flex-col-reverse md:flex-row items-center justify-center`}
             >
             <Button
-                className={`${dm_Sans.className} bg-[#cca26c] text-white`}
+                className={`${dm_Sans.className} tracking-widest  bg-gradient-to-r from-[#c3965d] via-[#eabf91] to-[#c3965d] font-extrabold text-white`}
                 onClick={() => {
                 router.push("/contact");
                 toggleMobileMenu();

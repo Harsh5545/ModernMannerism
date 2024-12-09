@@ -1,6 +1,6 @@
 import Image from "next/image";
 import SocialButtons from "./SocialIcons";
-
+    
 const Footer = () => {
   return (
     <>

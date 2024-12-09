@@ -5,7 +5,6 @@ const AllLinks = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [hoveredSubLink, setHoveredSubLink] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const dropdownRef = useRef(null);
   const closeTimeoutRef = useRef(null);
 
   const links = [
@@ -44,33 +43,27 @@ const AllLinks = () => {
             },
           ],
         },
-        {
-          title: "Children's Etiquette",
-          path: "/service/children's-etiquette",
-        },
-        {
-          title: "Young Adult Etiquette",
-          path: "/service/young-adult-etiquette",
-        },
+        { title: "Children's Etiquette", path: "/service/3" },
+        { title: "Young Adult Etiquette", path: "/service/young-adult-etiquette" },
         {
           title: "Latest Workshop",
-          path: "/service/latest workshop",
+          path: "/service/latest-workshop",
           subLinks: [
             {
               title: "Ladies Grooming & Social Etiquette Programme",
-              path: "/service/Latest Workshop/Business Etiquette & Corporate Grooming Programme",
+              path: "/service/latest-workshop/ladies-grooming",
             },
             {
               title: "Young Adult-Grooming & Etiquette",
-              path: "/service/Latest Workshop/Young Adult-Grooming & Etiquette",
+              path: "/service/latest-workshop/young-adult-grooming",
             },
             {
               title: "Young Adult Training",
-              path: "/service/Latest Workshop/young-adult",
+              path: "/service/latest-workshop/young-adult",
             },
             {
               title: "Dining Etiquette Workshop",
-              path: "/service/Latest Workshop/Dining Etiquette Workshop",
+              path: "/service/latest-workshop/dining-etiquette",
             },
           ],
         },
@@ -79,9 +72,7 @@ const AllLinks = () => {
     },
     { title: "Blog", path: "/blog" },
   ];
-
   useEffect(() => {
-    // Detect screen width for mobile view
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -94,68 +85,48 @@ const AllLinks = () => {
     };
   }, []);
 
-  // Close dropdown if clicked outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setOpenDropdown(false);
-        setHoveredSubLink(null);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownRef]);
-
-  const toggleDropdown = () => {
-    setOpenDropdown((prev) => !prev);
-  };
   const handleMouseLeave = () => {
     closeTimeoutRef.current = setTimeout(() => {
       setOpenDropdown(false);
       setHoveredSubLink(null);
-    }, 300); // Delay of 300ms
+    }, 300); // Delay of 300ms to avoid flickering
   };
+
   const handleMouseEnter = () => {
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
     }
     setOpenDropdown(true);
   };
+
+  const handleSubLinkMouseEnter = (title) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    setHoveredSubLink(title);
+  };
+
+  const handleSubLinkMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      // setHoveredSubLink(null);
+    }, 300); // Delay to prevent the flicker
+  };
+
   return (
-    <div
-      className={`flex ${
-        isMobile ? "flex-col space-y-4" : "flex-row space-x-6"
-      } justify-center items-center`}
-    >
+    <div className={`flex ${isMobile ? "flex-col space-y-4" : "flex-row space-x-6"} justify-center items-center`}>
       {links.map((link, i) => (
-        <div key={i} className="relative" ref={dropdownRef}>
+        <div key={i} className="relative">
           {!link.subLinks ? (
             <Navlink item={link} />
           ) : (
-            <div className="inline-block">
-              {/* Main Dropdown Button */}
+            <div
+              className="inline-block"
+              onMouseEnter={!isMobile ? handleMouseEnter : undefined}
+              onMouseLeave={!isMobile ? handleMouseLeave : undefined}
+            >
               <button
                 className="font-medium text-base cursor-pointer flex items-center"
-                onClick={isMobile ? toggleDropdown : undefined}
-                onMouseEnter={
-                  !isMobile
-                    ? () => {
-                        setOpenDropdown(true);
-                        handleMouseEnter;
-                      }
-                    : undefined
-                } // Open on hover for desktop
-                onMouseLeave={
-                  !isMobile
-                    ? () => {
-                        setOpenDropdown(false);
-                        handleMouseLeave;
-                      }
-                    : undefined
-                } // Close on mouse leave for desktop
+                onClick={isMobile ? () => setOpenDropdown((prev) => !prev) : undefined}
               >
                 {link.title}
                 <svg
@@ -165,66 +136,42 @@ const AllLinks = () => {
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
 
-              {/* Dropdown for Services */}
               {openDropdown && (
-                <div
-                  className={`absolute mt-2 bg-opacity-60  bg-black rounded-lg shadow-lg`}
-                >
+                <div className="absolute mt-2 bg-opacity-60 bg-black rounded-lg shadow-lg">
                   {link.subLinks.map((subLink, j) => (
                     <div
                       key={j}
                       className="relative group"
-                      onMouseEnter={
-                        !isMobile
-                          ? () => {
-                              setHoveredSubLink(subLink.title);
-                              setOpenDropdown(true);
-                            }
-                          : undefined
-                      }
-                      onMouseLeave={
-                        !isMobile
-                          ? () => {
-                              setHoveredSubLink(null);
-                              setOpenDropdown(false);
-                            }
-                          : undefined
-                      }
+                      onMouseEnter={!isMobile ? () => handleSubLinkMouseEnter(subLink.title) : undefined}
+                    // onMouseLeave={!isMobile ? handleSubLinkMouseLeave : undefined}
                     >
                       <button
-                        className="block px-4 text-sm font-semibold py-2 text-left w-full max-w-full text-nowrap "
-                        onClick={
-                          isMobile
-                            ? () => setHoveredSubLink(subLink.title)
-                            : undefined
-                        }
+                        className="block px-4 py-2 text-sm font-semibold text-left w-full text-nowrap"
+                        onClick={isMobile ? () => setHoveredSubLink(subLink.title) : undefined}
                       >
                         {subLink.title}
                       </button>
 
-                      {/* Sub-dropdown Content */}
                       {hoveredSubLink === subLink.title && subLink.subLinks && (
                         <div
-                          className={`absolute text-left left-60 text-sm font-semibold mt-0 top-0 max-w-full bg-opacity-60  bg-black shadow-lg rounded-lg ${
-                            isMobile ? "w-full" : "w-60"
-                          }`}
+                          className={`absolute left-60 top-0 w-60 bg-opacity-60 bg-black shadow-lg rounded-lg ${isMobile ? "w-full" : "w-60"}`}
+                          onMouseEnter={() => handleSubLinkMouseEnter(subLink.title)} // Ensure it stays open while hovered
+                        // onMouseLeave={handleSubLinkMouseLeave} // commenting out for now in future if needed will check it again
                         >
                           <div className="flex flex-col">
                             {subLink.subLinks.map((nestedLink, k) => (
-                              <Navlink key={k} item={nestedLink} />
+                              <Navlink key={k} item={nestedLink}
+                                className="block px-4 py-2 text-sm font-semibold" />
                             ))}
                           </div>
+
                         </div>
                       )}
+
                     </div>
                   ))}
                 </div>
