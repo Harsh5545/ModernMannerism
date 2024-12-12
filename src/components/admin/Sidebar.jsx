@@ -27,11 +27,10 @@ const SideBar = () => {
     };
 
     const menuItems = [
-        {text:'', icon:'/assets/MM.pmg', path:'/admin'},
+        { text: '', icon: <img src='/assets/MM.png' alt='Logo' style={{ width: '24px', height: '24px' }} />, path: '/admin' },
         { text: 'Dashboard', icon: <DashboardIcon />, path: '/admin' },
         { text: 'Users', icon: <GroupIcon />, path: '/admin/users' },
         { text: 'Add Blog', icon: <AddIcon />, path: '/admin/add-blog' },
-        // {text:'Add Service', icon:<AddIcon />, path:"/admin/add-services"},
         { text: 'Category', icon: <AddIcon />, path: '/admin/category' },
         { text: 'Manage Services', icon: <EditIcon />, path: '/admin/manage-services' },
         { text: 'Manage Blog', icon: <EditIcon />, path: '/admin/edit-blog' },
@@ -42,9 +41,8 @@ const SideBar = () => {
         setTheme(event.target.checked ? 'dark' : 'light');
     };
 
-    // Function to get the icon color based on the theme
     const getIconColor = () => {
-        return theme === 'dark' ? 'white' : 'black'; // Change colors as needed
+        return theme === 'dark' ? 'white' : 'black';
     };
 
     return (
@@ -58,9 +56,9 @@ const SideBar = () => {
             <Box sx={{ display: { xs: 'none', md: 'block' }, width: 250 }}>
                 <List>
                     {menuItems.map((item, index) => (
-                        <ListItem button key={index} onClick={() => handleNavigation(item.path)}>
+                        <ListItem key={index} onClick={() => handleNavigation(item.path)}>
                             <ListItemIcon>
-                                {React.cloneElement(item.icon, { style: { color: getIconColor() } })}
+                                {React.cloneElement(item.icon, { color: getIconColor() })}
                             </ListItemIcon>
                             <ListItemText primary={item.text} />
                         </ListItem>
@@ -82,7 +80,7 @@ const SideBar = () => {
                         {menuItems.map((item, index) => (
                             <ListItem button key={index} onClick={() => handleNavigation(item.path)}>
                                 <ListItemIcon>
-                                    {React.cloneElement(item.icon, { style: { color: getIconColor() } })}
+                                    {React.cloneElement(item.icon, { color: getIconColor() })}
                                 </ListItemIcon>
                                 <ListItemText primary={item.text} />
                             </ListItem>

@@ -1,9 +1,8 @@
-import Header from '@/components/admin/Header';
+
 import Sidebar from '@/components/admin/Sidebar';
-import AuthProvider from '../Providers/AuthProvider';
-import { getServerSession } from 'next-auth';
-import { redirect } from "next/navigation";
-import { options } from '../api/auth/[...nextauth]/options';
+
+
+
 
 
 const Layout = async ({ children }) => {
@@ -17,7 +16,7 @@ const Layout = async ({ children }) => {
     return (
         <html lang="en">
             <body suppressHydrationWarning>
-                <AuthProvider session={session}>
+           
                     <div className="min-h-screen flex">
                         <aside className={` flex-shrink-0 border  flex`}>
                             <div className="w-auto">
@@ -26,15 +25,12 @@ const Layout = async ({ children }) => {
                         </aside>
 
                         <main className="flex-1 p-0">
-                            {/* <header className="mb-5">
-                                <Header session={session}/>
-                            </header> */}
                             <div className="bg-white rounded-lg shadow-md p-2 h-fit-screen">
                                 {children}
                             </div>
                         </main>
                     </div>
-                </AuthProvider>
+           
             </body>
         </html>
     );

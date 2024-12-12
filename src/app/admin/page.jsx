@@ -6,14 +6,14 @@ const AdminPage = async () => {
 
   // const session = await getServerSession();
   // console.log(session);
-  
+
   // if (!session ) {
   //   redirect('/');
   // };
 
   return (
-  
-<div><Dashboard/></div>
+
+    <div><Dashboard /></div>
   )
 }
 export default AdminPage

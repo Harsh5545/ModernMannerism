@@ -10,21 +10,7 @@ export default function CategoryPage() {
   const [isActive, setIsActive] = useState(true);
   const [includeSubcategories, setIncludeSubcategories] = useState(false);
 
-  // Fetch categories on page load
-  useEffect(() => {
-    fetchCategories();
-  }, [includeSubcategories]);
-
-  const fetchCategories = async () => {
-    try {
-      const response = await axios.get("/api/categories", {
-        params: { includeSubcategories },
-      });
-      setCategories(response.data);
-    } catch (error) {
-      console.error("Error fetching categories:", error);
-    }
-  };
+ 
 
   const handleAddCategory = async (e) => {
     e.preventDefault();
@@ -33,9 +19,12 @@ export default function CategoryPage() {
         name: categoryName,
         isActive,
       });
-      setCategories([...categories, response.data]); // Update table
-      setCategoryName(""); // Clear form
+      setCategoryName(""); 
       setIsActive(true);
+      console.log(response);
+      if(response?.data?.success){
+        alert("Category Added Successfully");
+      }
     } catch (error) {
       console.error("Error adding category:", error);
     }
@@ -112,7 +101,7 @@ export default function CategoryPage() {
         </thead>
         <tbody>
           {categories.map((category) => (
-            <React.Fragment key={category.id}>
+            <div key={category.id}>
               <tr className="border-t border-gray-200 dark:border-gray-700">
                 <td className="px-6 py-4 text-gray-700 dark:text-gray-200">{category.id}</td>
                 <td className="px-6 py-4 text-gray-700 dark:text-gray-200">{category.name}</td>
@@ -140,7 +129,7 @@ export default function CategoryPage() {
                   </td>
                 </tr>
               )}
-            </React.Fragment>
+            </div>
           ))}
         </tbody>
       </table>

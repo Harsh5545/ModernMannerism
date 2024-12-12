@@ -122,7 +122,6 @@ const UserForm = () => {
                     />
 
                     <Button className="w-full mt-4 bg-gold-500 hover:bg-yellow-400 dark:bg-slate-400 text-black" type="submit">Register</Button>
-                    <Button onClick={() => { signIn('google') }} startContent={<GoogleIcon />} className="w-full dark:bg-slate-400 mt-2 bg-gold-500 hover:bg-gold-600 text-black">Google</Button>
                 </form>
                 {errorMessage && <p className="text-red-500 text-center mt-4">{errorMessage}</p>}
                 {session && (

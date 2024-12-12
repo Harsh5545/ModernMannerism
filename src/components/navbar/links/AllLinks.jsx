@@ -141,7 +141,7 @@ const AllLinks = () => {
               </button>
 
               {openDropdown && (
-                <div className="absolute mt-2 bg-opacity-60 bg-black rounded-lg shadow-lg">
+                <div className="absolute mt-2 bg-opacity-60 bg-black rounded-lg shadow-lg z-10">
                   {link.subLinks.map((subLink, j) => (
                     <div
                       key={j}
