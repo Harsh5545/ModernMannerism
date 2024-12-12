@@ -16,7 +16,6 @@ import Head from "next/head";
 const dm_Sans = Lato({
   subsets: ["latin"],
   weight: ["400"],
-  // Add weights if needed
 });
 
 const cormorant = Cormorant_Garamond({

@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Navlink from "../navlink/Navlink";
+import { useRouter } from "next/navigation";
 
 const AllLinks = () => {
+  const router = useRouter();
   const [openDropdown, setOpenDropdown] = useState(false);
   const [hoveredSubLink, setHoveredSubLink] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -151,7 +153,8 @@ const AllLinks = () => {
                     >
                       <button
                         className="block px-4 py-2 text-sm font-semibold text-left w-full text-nowrap"
-                        onClick={isMobile ? () => setHoveredSubLink(subLink.title) : undefined}
+                        onClick={isMobile ? () => setHoveredSubLink(subLink.title) :  () => {router.push(subLink.path) 
+                          console.log(subLink.path)} }
                       >
                         {subLink.title}
                       </button>

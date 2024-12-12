@@ -1,4 +1,4 @@
-import { Montserrat } from "next/font/google";
+import { Lato, Montserrat } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
@@ -6,7 +6,10 @@ import { Providers } from "./Providers/UiProvider";
 const inter = Montserrat({ subsets: ["latin"] });
 import { getServerSession } from "next-auth";
 import AuthProvider from "./Providers/AuthProvider";
-
+const dm_Sans = Lato({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 export const metadata = {
     manifest: "/manifest.json",
@@ -32,7 +35,7 @@ export default async function RootLayout({ children }) {
     const session = await getServerSession();
     return (
         <html lang="en" >
-            <body className={inter.className}>
+            <body className={dm_Sans.className}>
                 <Providers>
                     <AuthProvider session={session}>
                         <Navbar session={session}/>

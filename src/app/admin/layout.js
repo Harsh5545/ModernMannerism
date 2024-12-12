@@ -1,5 +1,7 @@
 
 import Sidebar from '@/components/admin/Sidebar';
+import { getServerSession } from 'next-auth';
+import { options } from '../api/auth/[...nextauth]/options';
 
 
 

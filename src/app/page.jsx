@@ -1,5 +1,4 @@
-import Image from "next/image";
-import styles from "./home.module.css";
+
 import Hero from "./Home/Hero";
 import CardComponent from "./Home/CardComponent";
 import HomeAbout from "./Home/HomeAbout";
