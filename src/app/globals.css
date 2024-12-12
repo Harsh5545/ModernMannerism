@@ -7,7 +7,9 @@
 .dark::-webkit-scrollbar {
     width: 10px;
 }
-
+:root{
+    --swiper-theme-color:#c3965d !important
+}
 .dark::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
