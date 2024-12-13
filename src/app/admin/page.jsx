@@ -1,15 +1,13 @@
-// import { Dashboard } from "@mui/icons-material";
+import { auth } from "@/auth";
 import Dashboard from "@/components/Admin-Componentrs/Dashboard/Dashboard";
 
 
 const AdminPage = async () => {
 
-  // const session = await getServerSession();
-  // console.log(session);
+  const session = await auth();
+  const loggedInUser = session?.user;
+  console.log(loggedInUser);
 
-  // if (!session ) {
-  //   redirect('/');
-  // };
 
   return (
 

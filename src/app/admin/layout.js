@@ -1,19 +1,15 @@
 
+
+import { authConfig } from '@/auth.config';
+import Header from '@/components/admin/Header';
 import Sidebar from '@/components/admin/Sidebar';
-import { getServerSession } from 'next-auth';
-import { options } from '../api/auth/[...nextauth]/options';
-
-
-
+import NextAuth from 'next-auth';
 
 
 const Layout = async ({ children }) => {
-    const session = await getServerSession(options);
-   
+    const {auth} = NextAuth(authConfig);
+    const session = await auth();
 
-    // if (!session?.isAdmin) {
-    //     redirect('/');
-    // };
 
     return (
         <html lang="en">
@@ -22,7 +18,7 @@ const Layout = async ({ children }) => {
                     <div className="min-h-screen flex">
                         <aside className={` flex-shrink-0 border  flex`}>
                             <div className="w-auto">
-                                <Sidebar />
+                                <Sidebar/>
                             </div>
                         </aside>
 

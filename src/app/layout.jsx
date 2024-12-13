@@ -3,8 +3,6 @@ import "./globals.css";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 import { Providers } from "./Providers/UiProvider";
-const inter = Montserrat({ subsets: ["latin"] });
-import { getServerSession } from "next-auth";
 import AuthProvider from "./Providers/AuthProvider";
 const dm_Sans = Lato({
   subsets: ["latin"],
@@ -32,13 +30,13 @@ export const viewport = {
 };
 
 export default async function RootLayout({ children }) {
-    const session = await getServerSession();
+
     return (
         <html lang="en" >
             <body className={dm_Sans.className}>
                 <Providers>
-                    <AuthProvider session={session}>
-                        <Navbar session={session}/>
+                    <AuthProvider >
+                        <Navbar />
                         <div>{children}</div>
                         <Footer />
                     </AuthProvider>

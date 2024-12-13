@@ -31,14 +31,14 @@ const UserForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrorMessage("");
-        const res = await fetch("/api/user", {
+        const res = await fetch("/api/register", {
             method: "POST",
-            body: JSON.stringify({ formData }),
+            body: JSON.stringify(formData),
             headers: {
                 "Content-Type": "application/json",
             },
         });
-
+        console.log(res)
         if (!res.ok) {
             const response = await res.json();
             setErrorMessage(response.message);

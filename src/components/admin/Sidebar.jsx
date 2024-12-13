@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, IconButton, Box, Switch } from '@mui/material';
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, IconButton, Box, Switch, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -14,7 +14,7 @@ import { useTheme } from 'next-themes';
 
 const SideBar = () => {
     const [open, setOpen] = useState(false);
-    const { theme, setTheme } = useTheme(); // Use next-themes
+    const { theme, setTheme } = useTheme(); 
     const router = useRouter();
 
     const toggleDrawer = () => {
@@ -23,7 +23,7 @@ const SideBar = () => {
 
     const handleNavigation = (path) => {
         router.push(path);
-        setOpen(false); // Close the drawer after navigation
+        setOpen(false);
     };
 
     const menuItems = [
