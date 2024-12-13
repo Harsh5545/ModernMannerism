@@ -13,12 +13,12 @@ const getUserRole = (req) => {
             console.error('Error decoding token:', error);
         }
     }
-    return null;
+    return 'user';
 };
 
 const linkData = {
     Admin: [
-        { href: "/dashboard", text: "Dashboard", icon: "Home" },
+        { href: "/admin", text: "Admin", icon: "Home" },
         { href: "/categories", text: "Categories", icon: "Package" },
         { href: "/sub-categories", text: "SubCategories", icon: "Package" },
         { href: "/customers", text: "Customers", icon: "Users" },
@@ -32,10 +32,11 @@ const linkData = {
         { href: "/customers", text: "Customers", icon: "Users" },
         { href: "/analytics", text: "Analytics", icon: "LineChart" },
     ],
-    Member: [
-        { href: "/home", text: "home", icon: "Home" },
-        { href: "/products", text: "Products", icon: "Package" },
-        { href: "/checkout", text: "Checkout", icon: "LineChart" },
+    user: [
+        { href: "/", text: "home", icon: "Home" },
+        { href: "/user", text: "user", icon: "Home" },
+        { href: "/services", text: "service", icon: "Package" },
+        { href: "/about", text: "about", icon: "LineChart" },
     ],
     common: [
         { href: "/booking", text: "Booking", icon: "BookImageIcon" },
@@ -46,8 +47,8 @@ const linkData = {
 
 const roleRedirection = {
     Admin: '/dashboard',
-    Member: '/home',
-    Partner: '/customers'
+    user: '/user',
+    // Partner: '/customers'
 };
 
 export function middleware(req) {
@@ -79,7 +80,6 @@ export function middleware(req) {
 
     // Check if the requested path starts with any allowed path
     const isAllowed = allowedPaths.some((allowedPath) => urlPath.startsWith(allowedPath));
-
     if (!isAllowed) {
         if (roleRedirection[role]) {
             if (urlPath !== roleRedirection[role] && !urlPath.startsWith(roleRedirection[role])) {
