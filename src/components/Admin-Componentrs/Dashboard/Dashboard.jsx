@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import React, { useState, useEffect } from 'react';
 import {
   Box,
@@ -10,22 +10,26 @@ import {
   Card,
   CardContent,
   Button,
-  Switch,
   List,
   ListItem,
   ListItemText,
   Paper,
+  useMediaQuery,
 } from '@mui/material';
 import { useTheme } from 'next-themes';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 const Dashboard = () => {
   const { theme, setTheme } = useTheme();
+  const isMobile = useMediaQuery('(max-width:600px)');
   const [data, setData] = useState({
     totalVisitors: 1200,
     activeBlogs: 10,
     comments: 5,
-    blogList: [],
+    blogList: [
+      { id: 1, title: 'First Blog', comments: 3 },
+      { id: 2, title: 'Second Blog', comments: 2 },
+    ],
     trafficData: [
       { day: 'Mon', visitors: 300 },
       { day: 'Tue', visitors: 500 },
@@ -37,94 +41,141 @@ const Dashboard = () => {
     ],
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setData((prev) => ({
-        ...prev,
-        blogList: [
-          { id: 1, title: 'First Blog', comments: 3 },
-          { id: 2, title: 'Second Blog', comments: 2 },
-        ],
-      }));
-    };
-    fetchData();
-  }, []);
-
-  const handleThemeChange = (event) => {
-    setTheme(event.target.checked ? 'dark' : 'light');
+  const colors = {
+    light: {
+      background: '#FAF3E3',
+      card: '#FFF8F0',
+      textPrimary: '#333333',
+      textSecondary: '#6F4E37',
+      gradient: 'linear-gradient(to right, #c3965d, #DAB692)',
+    },
+    dark: {
+      background: '#2B2B2B',
+      card: '#3E3E3E',
+      textPrimary: '#FFFFFF',
+      textSecondary: '#C3965D',
+      gradient: 'linear-gradient(to right, #c3965d, #8C6D45)',
+    },
   };
 
+  const currentColors = theme === 'dark' ? colors.dark : colors.light;
+
   return (
-    <Box sx={{ display: 'flex', bgcolor: theme === 'dark' ? '#00001F' : '#FFFFFF' }}>
-      <Box sx={{ flexGrow: 1, padding: 2 }}>
-        <AppBar position="static" sx={{ bgcolor: theme === 'dark' ? '#933469' : '#D664B6' }}>
-          <Toolbar>
-            <Typography variant="h6" sx={{ color: '#FFFFFF' }}>Admin Dashboard</Typography>
-            <Box sx={{ ml: 'auto' }}>
-              {/* <Switch checked={theme === 'dark'} onChange={handleThemeChange} color="default" /> */}
-            </Box>
-          </Toolbar>
-        </AppBar>
+    <Box sx={{ minHeight: '100vh', bgcolor: currentColors.background, color: currentColors.textPrimary }}>
+      <AppBar
+          position="static"
+          sx={{
+            bgcolor: theme === "dark" ? "#333333" : "#EDE9E3",
+            background: theme === "dark" ? "linear-gradient(to right, #eabf91, #C3965D)" : "linear-gradient(to right, #eabf91, #C3965D)",
+          }}
+        >
+        <Toolbar>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            Admin Dashboard
+          </Typography>
+        </Toolbar>
+      </AppBar>
 
-        <Container>
-          <Grid container spacing={3} sx={{ marginTop: 2 }}>
-            <Grid item xs={12} md={4}>
-              <Card sx={{ bgcolor: theme === 'dark' ? '#1F1F3B' : '#F4F4F6', color: theme === 'dark' ? '#D664B6' : '#933469' }}>
-                <CardContent>
-                  <Typography variant="h6">Total Visitors</Typography>
-                  <Typography variant="h4">{data.totalVisitors}</Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Card sx={{ bgcolor: theme === 'dark' ? '#1F1F3B' : '#F4F4F6', color: theme === 'dark' ? '#D664B6' : '#933469' }}>
-                <CardContent>
-                  <Typography variant="h6">Active Blogs</Typography>
-                  <Typography variant="h4">{data.activeBlogs}</Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Card sx={{ bgcolor: theme === 'dark' ? '#1F1F3B' : '#F4F4F6', color: theme === 'dark' ? '#D664B6' : '#933469' }}>
-                <CardContent>
-                  <Typography variant="h6">Comments</Typography>
-                  <Typography variant="h4">{data.comments}</Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+      <Container sx={{ paddingY: 4 }}>
+        {/* Stat Cards */}
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={4}>
+            <Card sx={{ bgcolor: currentColors.card, boxShadow: 3, textAlign: 'center' }}>
+              <CardContent>
+                <Typography variant="h6">Total Visitors</Typography>
+                <Typography variant="h4" sx={{ color: currentColors.textSecondary }}>
+                  {data.totalVisitors}
+                </Typography>
+              </CardContent>
+            </Card>
           </Grid>
+          <Grid item xs={12} md={4}>
+            <Card sx={{ bgcolor: currentColors.card, boxShadow: 3, textAlign: 'center' }}>
+              <CardContent>
+                <Typography variant="h6">Active Blogs</Typography>
+                <Typography variant="h4" sx={{ color: currentColors.textSecondary }}>
+                  {data.activeBlogs}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Card sx={{ bgcolor: currentColors.card, boxShadow: 3, textAlign: 'center' }}>
+              <CardContent>
+                <Typography variant="h6">Comments</Typography>
+                <Typography variant="h4" sx={{ color: currentColors.textSecondary }}>
+                  {data.comments}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
 
-          {/* Traffic Data Graph */}
-          <Paper sx={{ mt: 4, p: 3, bgcolor: theme === 'dark' ? '#1F1F3B' : '#F4F4F6' }}>
-            <Typography variant="h6" sx={{ color: theme === 'dark' ? '#D664B6' : '#933469' }}>Weekly Traffic</Typography>
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={data.trafficData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="day" stroke={theme === 'dark' ? '#D664B6' : '#933469'} />
-                <YAxis stroke={theme === 'dark' ? '#D664B6' : '#933469'} />
-                <Tooltip />
-                <Line type="monotone" dataKey="visitors" stroke={theme === 'dark' ? '#933469' : '#D664B6'} strokeWidth={2} />
-              </LineChart>
-            </ResponsiveContainer>
-          </Paper>
+        {/* Traffic Data Chart */}
+        <Paper
+          sx={{
+            marginTop: 4,
+            padding: 3,
+            bgcolor: currentColors.card,
+            borderRadius: 2,
+          }}
+        >
+          <Typography variant="h6" sx={{ marginBottom: 2, color: currentColors.textSecondary }}>
+            Weekly Traffic
+          </Typography>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={data.trafficData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#cccccc" />
+              <XAxis dataKey="day" stroke={currentColors.textSecondary} />
+              <YAxis stroke={currentColors.textSecondary} />
+              <Tooltip />
+              <Line type="monotone" dataKey="visitors" stroke={currentColors.textSecondary} strokeWidth={2} />
+            </LineChart>
+          </ResponsiveContainer>
+        </Paper>
 
-          {/* Blog Management Section */}
-          <Typography variant="h5" sx={{ marginTop: 4, color: theme === 'dark' ? '#D664B6' : '#933469' }}>Manage Blogs</Typography>
-          <List>
-            {data.blogList.map((blog) => (
-              <ListItem key={blog.id} sx={{ bgcolor: theme === 'dark' ? '#1F1F3B' : '#F4F4F6', mb: 1, borderRadius: 1 }}>
-                <ListItemText
-                  primary={blog.title}
-                  secondary={`Comments: ${blog.comments}`}
-                  sx={{ color: theme === 'dark' ? '#FFFFFF' : '#333333' }}
-                />
-                <Button variant="contained" color="primary" sx={{ bgcolor: '#933469', mr: 1 }}>Edit</Button>
-                <Button variant="contained" color="secondary" sx={{ bgcolor: '#D664B6' }}>Delete</Button>
-              </ListItem>
-            ))}
-          </List>
-        </Container>
-      </Box>
+        {/* Blog Management Section */}
+        <Typography variant="h5" sx={{ marginTop: 4, color: currentColors.textSecondary }}>
+          Manage Blogs
+        </Typography>
+        <List>
+          {data.blogList.map((blog) => (
+            <ListItem
+              key={blog.id}
+              sx={{
+                bgcolor: currentColors.card,
+                mb: 1,
+                borderRadius: 2,
+                boxShadow: 1,
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              <ListItemText
+                primary={blog.title}
+                secondary={`Comments: ${blog.comments}`}
+                primaryTypographyProps={{ color: currentColors.textPrimary }}
+                secondaryTypographyProps={{ color: currentColors.textSecondary }}
+              />
+              <Box>
+                <Button
+                  variant="contained"
+                  sx={{
+                    bgcolor: currentColors.gradient,
+                    color: '#FFFFFF',
+                    marginRight: 1,
+                  }}
+                >
+                  Edit
+                </Button>
+                <Button variant="contained" color="error">
+                  Delete
+                </Button>
+              </Box>
+            </ListItem>
+          ))}
+        </List>
+      </Container>
     </Box>
   );
 };

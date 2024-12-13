@@ -1,7 +1,7 @@
 
 
 import { authConfig } from '@/auth.config';
-import Header from '@/components/admin/Header';
+
 import Sidebar from '@/components/admin/Sidebar';
 import NextAuth from 'next-auth';
 
@@ -18,6 +18,7 @@ const Layout = async ({ children }) => {
                     <div className="min-h-screen flex">
                         <aside className={` flex-shrink-0 border  flex`}>
                             <div className="w-auto">
+                                    
                                 <Sidebar/>
                             </div>
                         </aside>
