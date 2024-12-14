@@ -1,97 +1,16 @@
+import NextAuth from 'next-auth';
 import { NextResponse } from 'next/server';
-import { jwtDecode } from 'jwt-decode';
-import { parse } from 'cookie';
+import { authConfig } from './auth.config';
+import { PUBLIC_ROUTES, ADMIN_ROUTES, USER_ROUTES, LOGIN, ROOT } from './lib/routes';
+const { auth } = NextAuth(authConfig);
 
-const getUserRole = (req) => {
-    const cookies = parse(req.headers.get('cookie') || '');
-    const token = cookies.token;
-    if (token) {
-        try {
-            const user = jwtDecode(token);
-            return user.roleName;
-        } catch (error) {
-            console.error('Error decoding token:', error);
-        }
-    }
-    return 'user';
-};
-
-const linkData = {
-    Admin: [
-        { href: "/admin", text: "Admin", icon: "Home" },
-        { href: "/categories", text: "Categories", icon: "Package" },
-        { href: "/sub-categories", text: "SubCategories", icon: "Package" },
-        { href: "/customers", text: "Customers", icon: "Users" },
-        { href: "/partners", text: "Partners", icon: "Users" },
-        { href: "/analytics", text: "Analytics", icon: "LineChart" },
-        { href: "/faq", text: "Add Faq", icon: "Users" },
-        { href: "/sub-categories/add-service", text: "", icon: "" },
-    ],
-    Partner: [
-        { href: "/products", text: "Products", icon: "Package" },
-        { href: "/customers", text: "Customers", icon: "Users" },
-        { href: "/analytics", text: "Analytics", icon: "LineChart" },
-    ],
-    user: [
-        { href: "/", text: "home", icon: "Home" },
-        { href: "/user", text: "user", icon: "Home" },
-        { href: "/services", text: "service", icon: "Package" },
-        { href: "/about", text: "about", icon: "LineChart" },
-    ],
-    common: [
-        { href: "/booking", text: "Booking", icon: "BookImageIcon" },
-        { href: "/account", text: "Account", icon: "CircleUser" },
-        { href: "/orders", text: "Orders", icon: "ShoppingCart", badge: 6 },
-    ],
-};
-
-const roleRedirection = {
-    Admin: '/dashboard',
-    user: '/user',
-    // Partner: '/customers'
-};
-
-export function middleware(req) {
-    const role = getUserRole(req);
-    const urlPath = req.nextUrl.pathname;
-    // temporary fix for development
-    const ignoredPaths = ['/', '/firebase-messaging-sw.js', '/swe-worker-development.js', '/manifest.json', '/sw.js', '/icons/android-chrome-192x192.png', '/_next/', '/favicon.ico'];
-
-    // Allow static assets and certain paths
-    if (ignoredPaths.some((path) => urlPath.startsWith(path))) {
-        return NextResponse.next();
-    }
-
-    // If the user is not authenticated
-    if (!role) {
-        if (urlPath !== '/sign-in') {
-            return NextResponse.redirect(new URL('/sign-in', req.url)); // Redirect to login or home
-        }
-        return NextResponse.next();
-    }
-
-    // Handle role-based redirection
-
-    // Combine allowed paths for the role and common paths
-    const allowedPaths = [
-        ...linkData.common.map((link) => link.href),
-        ...(linkData[role] || []).map((link) => link.href),
-    ];
-
-    // Check if the requested path starts with any allowed path
-    const isAllowed = allowedPaths.some((allowedPath) => urlPath.startsWith(allowedPath));
-    if (!isAllowed) {
-        if (roleRedirection[role]) {
-            if (urlPath !== roleRedirection[role] && !urlPath.startsWith(roleRedirection[role])) {
-                return NextResponse.redirect(new URL(roleRedirection[role], req.url));
-            }
-        }
-        return NextResponse.redirect(new URL(urlPath, req.url)); // Redirect to the same page
-    }
-
-    return NextResponse.next();
+export async function middleware(request) {
+    const {nextUrl} = request;
+    const session = await auth();
+    console.log(session,"SESSION");
+    const isAuthenticate = !!session?.user;
+    console.log(isAuthenticate,nextUrl.pathname);
 }
-
 export const config = {
-    matcher: '/:path*',
+    matcher: '/api/:path*',
 };

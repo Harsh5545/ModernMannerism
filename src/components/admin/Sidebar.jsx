@@ -23,6 +23,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { Lato } from "next/font/google";
+import { doLogout } from '@/app/actions';
 
 // Import Lato font
 const lato = Lato({
@@ -123,6 +124,19 @@ const SideBar = () => {
                         />
                         <Switch checked={theme === 'dark'} onChange={handleThemeChange} />
                     </ListItem>
+                    <ListItem onClick={() => doLogout()}>
+                        <ListItemText
+                            primary={
+                                <Typography
+                                    variant="subtitle1"
+                                    sx={{ fontFamily: lato.style.fontFamily }}
+                                >
+                                    Logout
+                                </Typography>
+                            }
+                        />
+                        
+                    </ListItem>
                 </List>
             </Box>
 
@@ -137,7 +151,7 @@ const SideBar = () => {
                     <IconButton onClick={toggleDrawer} sx={{ float: 'right' }}>
                         <CloseIcon sx={{ color: getIconColor() }} />
                     </IconButton>
-                    <List>
+                    <List sx={{cursor:'pointer'}}>
                         {menuItems.map((item, index) => (
                             <ListItem
                                 button
@@ -148,6 +162,7 @@ const SideBar = () => {
                                         backgroundColor: theme === 'dark' ? '#333' : '#f5f5f5',
                                         transition: 'background-color 0.3s ease',
                                     },
+                                    cursor: 'pointer'
                                 }}
                             >
                                 <ListItemIcon>
@@ -160,6 +175,7 @@ const SideBar = () => {
                                             sx={{
                                                 fontFamily: lato.style.fontFamily,
                                                 color: getIconColor(),
+                                                cursor: 'pointer'
                                             }}
                                         >
                                             {item.text}

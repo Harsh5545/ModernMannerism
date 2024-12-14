@@ -10,6 +10,7 @@ export async function doSocialLogin(formData) {
 }
 
 export async function doLogout() {
+  console.log('RUNNING.......')
   await signOut({ redirectTo: "/" });
 }
 
