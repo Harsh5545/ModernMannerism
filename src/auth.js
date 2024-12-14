@@ -28,6 +28,7 @@ export const {
                         where: {
                             email: credentials.email,
                         },
+                        include: { role: true },
                     });
                     if (user) {
                         const isMatch = bcrypt.compare(
@@ -37,7 +38,7 @@ export const {
                         console.log(user)
 
                         if (isMatch) {
-                            return {...user};
+                            return user;
                         } else {
                             throw new Error("Email or Password is not correct");
                         }
@@ -48,7 +49,7 @@ export const {
                     throw new Error(error);
                 }
             },
-            
+
         }),
 
         GoogleProvider({
@@ -74,22 +75,17 @@ export const {
             },
         }),
     ],
-    callbacks:{
-    
+    callbacks: {
         async jwt({ token, user }) {
+            
             if (user) {
-                token.user = {...user};
-                token.role = user.roleId;
+                token = {...user, ...token}
             }
             return token;
         },
-
         async session({ session, token }) {
-            if (token?.user) {
-                session.user = {...token.user};
-                session.role = token?.user?.roleId;
-            }
-            return session;
+            console.log(token)
+            return token;
         },
-    }
+    },
 });

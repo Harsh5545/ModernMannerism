@@ -1,5 +1,4 @@
-import { NextResponse, userAgent } from "next/server";
-import bcrypt from "bcrypt";
+import { NextResponse } from "next/server";
 import { commonServices } from "@/lib/services/common";
 
 export async function POST(req) {
