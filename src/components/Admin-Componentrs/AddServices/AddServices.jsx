@@ -12,6 +12,9 @@ import {  Delete } from "@mui/icons-material";
 import axios from "axios";
 
 const CreateServices = () => {
+  const [isSuccess, setIsSuccess] = useState(false); // State to show the success box
+  const [isSubmitting, setIsSubmitting] = useState(false); // To handle loading state
+
   const [formData, setFormData] = useState({
     title: "",
     headline: "",
@@ -124,24 +127,38 @@ const CreateServices = () => {
     });
   };
   const handleSubmit = async () => {
+    if (!formData.title || !formData.headline) {
+      alert("Title and Headline are required!");
+      return;
+    }
+
     try {
+      setIsSubmitting(true); // Indicate that the form is submitting
       const formDataToSend = { ...formData };
-      // Handle heroImage upload logic if needed
+      // Handle file upload for heroImage if needed
       await axios.post("/api/services", formDataToSend);
-      alert("Service created successfully!");
+      setIsSuccess(true); // Set success to true after successful submission
+      setTimeout(() => setIsSuccess(false), 5000); // Hide the success box after 5 seconds
     } catch (error) {
       console.error("Error creating service:", error);
       alert("Failed to create service.");
+    } finally {
+      setIsSubmitting(false); // End the submitting state
     }
   };
-
+  const handleChange = (field, value) => {
+    setFormData({
+      ...formData,
+      [field]: value
+    });
+  };
   return (
     <Box className="p-4 md:p-8">
       <Typography variant="h4" className="font-bold text-center mb-6">
         Create New Service
       </Typography>
 
-      <form className="space-y-6">
+      <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
         {/* Title */}
         <TextField
           label="Title"
@@ -193,7 +210,7 @@ const CreateServices = () => {
               </IconButton>
             </Box>
           ))}
-          <Button onClick={() => addArrayField("programOptions", "")}>
+          <Button className="text-yellow-600 mt-1" onClick={() => addArrayField("programOptions", "")}>
             Add Option
           </Button>
         </Box>
@@ -222,7 +239,7 @@ const CreateServices = () => {
               </IconButton>
             </Box>
           ))}
-          <Button onClick={() => addArrayField("programOptions", "")}>
+          <Button className="text-yellow-600 mt-1" onClick={() => addArrayField("programOptions", "")}>
             Add Option
           </Button>
         </Box>
@@ -245,7 +262,7 @@ const CreateServices = () => {
               </IconButton>
             </Box>
           ))}
-          <Button onClick={() => addArrayField("programOptions", "")}>
+          <Button className="text-yellow-600 " onClick={() => addArrayField("programOptions", "")}>
             Add Option
           </Button>
         </Box>
@@ -443,7 +460,7 @@ const CreateServices = () => {
             </IconButton>
           </Box>
         ))}
-        <Button onClick={() => addArrayField("location", "")}>
+        <Button className="text-yellow-600 mt-2" onClick={() => addArrayField("location", "")}>
           Add Location
         </Button>
       </Box>
@@ -463,18 +480,13 @@ const CreateServices = () => {
             }
           />
      */}
-            <Button
-              onClick={() => handleAddLocation()}
-              className="text-yellow-600 mt-2"
-            >
-              Add Location
-            </Button>
+           
           </Box>
         
         
         {/* Testimonials */}
         <Box>
-          <Typography className="font-bold">Testimonials</Typography>
+          <Typography className="text-yellow-600 mt-2">Testimonials</Typography>
           {formData.testimonials.map((testimonial, index) => (
             <Box key={index} className="flex items-center gap-2 mb-2">
               <TextField
@@ -509,7 +521,7 @@ const CreateServices = () => {
               </IconButton>
             </Box>
           ))}
-          <Button
+          <Button className="text-yellow-600 mt-2"
             onClick={() =>
               addArrayField("testimonials", { author: "", quote: "" })
             }
@@ -552,7 +564,7 @@ const CreateServices = () => {
               </IconButton>
             </Box>
           ))}
-          <Button
+          <Button className="text-yellow-600 mt-2"
             onClick={() => addArrayField("faqs", { question: "", answer: "" })}
           >
             Add FAQ
@@ -571,13 +583,19 @@ const CreateServices = () => {
         {/* Submit Button */}
         <Button
           variant="contained"
-          color="primary"
+         
           onClick={handleSubmit}
-          className="mt-6"
+          className="mt-6  tracking-widest  bg-gradient-to-r from-[#c3965d] via-[#eabf91] to-[#c3965d] font-extrabold text-white"
         >
           Create Service
         </Button>
       </form>
+      {/* Dropdown for Success Message */}
+      {isSuccess && (
+        <div className="success-box">
+          <p>Service created successfully!</p>
+        </div>
+      )}
     </Box>
   );
 };

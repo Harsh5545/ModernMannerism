@@ -152,7 +152,7 @@ const EditBlog = () => {
                     <button 
                         onClick={() => handlePageChange(currentPage - 1)}
                         disabled={currentPage === 1}
-                        className="px-4 py-2 bg-gray-300 text-gray-700 rounded-l-lg"
+                        className="px-4 py-2 bg-gradient-to-r from-[#c3965d] via-[#eabf91] to-[#c3965d] text-white shadow-md hover:shadow-lg transition-transform transform hover:scale-105"
                     >
                         Previous
                     </button>
@@ -160,7 +160,7 @@ const EditBlog = () => {
                     <button 
                         onClick={() => handlePageChange(currentPage + 1)}
                         disabled={currentPage === totalPages}
-                        className="px-4 py-2 bg-gray-300 text-gray-700 rounded-r-lg"
+                        className="px-4 py-2 bg-gradient-to-r from-[#c3965d] via-[#eabf91] to-[#c3965d] text-white shadow-md hover:shadow-lg transition-transform transform hover:scale-105"
                     >
                         Next
                     </button>
