@@ -1,24 +1,47 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   TextField,
   Button,
   Typography,
   Box,
-  IconButton
+  IconButton,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
 } from "@mui/material";
-import {  Delete } from "@mui/icons-material";
+
+import { Delete } from "@mui/icons-material";
 import axios from "axios";
 
 const CreateServices = () => {
   const [isSuccess, setIsSuccess] = useState(false); // State to show the success box
-  const [isSubmitting, setIsSubmitting] = useState(false); // To handle loading state
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [categories, setCategories] = useState([]); // State to store fetched categories
+
+  // Fetch categories when component mounts
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get("/api/categories"); // Fetch the categories
+        setCategories(response.data); // Set the fetched categories in state
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+        alert("Failed to fetch categories.");
+      }
+    };
+
+    fetchCategories();
+  }, []); // Run this only once when the component mounts
+  // To handle loading state
 
   const [formData, setFormData] = useState({
     title: "",
     headline: "",
     subheadline: "",
+    category: "",
     overview: "",
     programOptions: [""],
     learningPoints: [""],
@@ -108,13 +131,13 @@ const CreateServices = () => {
     });
   };
 
-//   const handleChange = (field, value) => {
-//     setFormData((prev) => ({
-//       ...prev,
-//       [field]: value ?? (field === "location" ? { name: "" } : {}),
-//     }));
-//   };
- const handleLocationChange = (index, key, value) => {
+  //   const handleChange = (field, value) => {
+  //     setFormData((prev) => ({
+  //       ...prev,
+  //       [field]: value ?? (field === "location" ? { name: "" } : {}),
+  //     }));
+  //   };
+  const handleLocationChange = (index, key, value) => {
     const updatedLocations = [...formData.location];
     updatedLocations[index][key] = value; // Update the specific field
     setFormData({ ...formData, location: updatedLocations });
@@ -127,7 +150,7 @@ const CreateServices = () => {
     });
   };
   const handleSubmit = async () => {
-    if (!formData.title || !formData.headline) {
+    if (!formData.title || !formData.headline || !formData.category) {
       alert("Title and Headline are required!");
       return;
     }
@@ -149,11 +172,11 @@ const CreateServices = () => {
   const handleChange = (field, value) => {
     setFormData({
       ...formData,
-      [field]: value
+      [field]: value,
     });
   };
   return (
-    <Box className="p-4 md:p-8">
+    <Box className="bg-gray-100 dark:bg-gray-800 dark:text-white p-4 md:p-8">
       <Typography variant="h4" className="font-bold text-center mb-6">
         Create New Service
       </Typography>
@@ -174,7 +197,28 @@ const CreateServices = () => {
           value={formData.headline}
           onChange={(e) => handleChange("headline", e.target.value)}
         />
-
+        {/* MUI Category Dropdown */}
+        <FormControl fullWidth style={{ marginBottom: "20px" }}>
+          <InputLabel>Category</InputLabel>
+          <Select
+            value={formData.category}
+            onChange={(e) => handleChange("category", e.target.value)}
+            label="Category"
+            style={{
+              backgroundColor: "#fff",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              padding: "10px",
+            }}
+          >
+            <MenuItem value="">Select Category</MenuItem>
+            {categories.map((category) => (
+              <MenuItem key={category.id} value={category.name}>
+                {category.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         {/* Subheadline */}
         <TextField
           label="Subheadline"
@@ -210,7 +254,10 @@ const CreateServices = () => {
               </IconButton>
             </Box>
           ))}
-          <Button className="text-yellow-600 mt-1" onClick={() => addArrayField("programOptions", "")}>
+          <Button
+            className="text-yellow-600 mt-1"
+            onClick={() => addArrayField("programOptions", "")}
+          >
             Add Option
           </Button>
         </Box>
@@ -239,7 +286,10 @@ const CreateServices = () => {
               </IconButton>
             </Box>
           ))}
-          <Button className="text-yellow-600 mt-1" onClick={() => addArrayField("programOptions", "")}>
+          <Button
+            className="text-yellow-600 mt-1"
+            onClick={() => addArrayField("programOptions", "")}
+          >
             Add Option
           </Button>
         </Box>
@@ -262,7 +312,10 @@ const CreateServices = () => {
               </IconButton>
             </Box>
           ))}
-          <Button className="text-yellow-600 " onClick={() => addArrayField("programOptions", "")}>
+          <Button
+            className="text-yellow-600 "
+            onClick={() => addArrayField("programOptions", "")}
+          >
             Add Option
           </Button>
         </Box>
@@ -441,38 +494,41 @@ const CreateServices = () => {
           </Box>
 
           {/* Location Section */}
-           <Box key={'jjjj'} className="mt-6">
-      <Typography variant="h6">Location:</Typography>
-      <Box>
-        {formData.programDetails.location.map((location, index) => (
-          <Box key={index} className="flex items-center gap-2 mb-2">
-            <TextField
-              value={location}
-              fullWidth
-              onChange={(e) =>
-                handleArrayChange("location", index, e.target.value)
-              }
-            />
-            <IconButton
-              onClick={() => removeArrayField("location", index)}
-            >
-              <Delete />
-            </IconButton>
+          <Box key={"jjjj"} className="mt-6">
+            <Typography variant="h6">Location:</Typography>
+            <Box>
+              {formData.programDetails.location.map((location, index) => (
+                <Box key={index} className="flex items-center gap-2 mb-2">
+                  <TextField
+                    value={location}
+                    fullWidth
+                    onChange={(e) =>
+                      handleArrayChange("location", index, e.target.value)
+                    }
+                  />
+                  <IconButton
+                    onClick={() => removeArrayField("location", index)}
+                  >
+                    <Delete />
+                  </IconButton>
+                </Box>
+              ))}
+              <Button
+                className="text-yellow-600 mt-2"
+                onClick={() => addArrayField("location", "")}
+              >
+                Add Location
+              </Button>
+            </Box>
           </Box>
-        ))}
-        <Button className="text-yellow-600 mt-2" onClick={() => addArrayField("location", "")}>
-          Add Location
-        </Button>
-      </Box>
-    </Box>
-          {/* <TextField
+          {/* <TextField 
             label={`Location Name ${'jjjj' + 1}`}
             value={loc?.name || ""}
             onChange={(e) =>
               handleLocationChange('index', "name", e.target.value)
             }
           />
-          <TextField
+          <TextField 
             label={`Location Address ${'index' + 1}`}
             value={loc?.address || ""}
             onChange={(e) =>
@@ -480,10 +536,8 @@ const CreateServices = () => {
             }
           />
      */}
-           
-          </Box>
-        
-        
+        </Box>
+
         {/* Testimonials */}
         <Box>
           <Typography className="text-yellow-600 mt-2">Testimonials</Typography>
@@ -521,7 +575,8 @@ const CreateServices = () => {
               </IconButton>
             </Box>
           ))}
-          <Button className="text-yellow-600 mt-2"
+          <Button
+            className="text-yellow-600 mt-2"
             onClick={() =>
               addArrayField("testimonials", { author: "", quote: "" })
             }
@@ -564,7 +619,8 @@ const CreateServices = () => {
               </IconButton>
             </Box>
           ))}
-          <Button className="text-yellow-600 mt-2"
+          <Button
+            className="text-yellow-600 mt-2"
             onClick={() => addArrayField("faqs", { question: "", answer: "" })}
           >
             Add FAQ
@@ -583,7 +639,6 @@ const CreateServices = () => {
         {/* Submit Button */}
         <Button
           variant="contained"
-         
           onClick={handleSubmit}
           className="mt-6  tracking-widest  bg-gradient-to-r from-[#c3965d] via-[#eabf91] to-[#c3965d] font-extrabold text-white"
         >
