@@ -83,13 +83,15 @@ const SideBar = () => {
                     {menuItems.map((item, index) => (
                         <ListItem
                             key={index}
+                           
                             onClick={() => handleNavigation(item.path)}
                             sx={{
                                 borderRadius: '8px',
                                 '&:hover': {
-                                    backgroundColor: theme === 'dark' ? '#333' : '#f5f5f5',
+                                    backgroundColor: theme === 'dark' ? '#33333' : '#E5E7EB',
                                     transition: 'background-color 0.3s ease',
                                 },
+                            cursor: 'pointer',
                             }}
                         >
                             <ListItemIcon>
