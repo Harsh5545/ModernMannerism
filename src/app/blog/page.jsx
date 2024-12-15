@@ -1,6 +1,6 @@
 import PostCard from "@/components/postCard/postCard";
 import styles from "./blog.module.css";
-import { getPosts } from "@/lib/data";
+// import { getPosts } from "@/lib/data";
 import BlogPage from "@/components/Blog/BlogPage";
 
 
@@ -38,7 +38,7 @@ const page = async () => {
 
         </div>
       ))} */}
-<BlogPage/>
+      <BlogPage />
     </div>
   );
 };

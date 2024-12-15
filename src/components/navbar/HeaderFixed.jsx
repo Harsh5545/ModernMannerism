@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -14,8 +15,8 @@ import { ThemeSwitcher } from "../theme/ThemeSwitcher";
 import { Button } from "@nextui-org/react";
 import { Lato } from "next/font/google";
 const dm_Sans = Lato({
-  subsets: ["latin"],
-  weight: ["400"], 
+    subsets: ["latin"],
+    weight: ["400"],
     // Add weights if needed
 });
 const navVariants = {
@@ -87,18 +88,18 @@ function HeaderFixed() {
                 </div>
             </div>
 
-            <div className={`${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex"
+            <div className={`${isMobile ? (isMobileMenuOpen ? "block" : "hidden") : "flex items-center gap-2"
                 }`}>
                 <ThemeSwitcher />
-                    <Button
-                        className={`${dm_Sans.className} tracking-widest  bg-gradient-to-r  from-[#c3965d] via-[#eabf91] to-[#c3965d] text-white`}
-                        onClick={() => {
-                            router.push('/contact')
-                            toggleMobileMenu;
-                        }}
-                    >
-                        Contact Us
-                    </Button>
+                <Button
+                    className={`${dm_Sans.className} tracking-widest  bg-gradient-to-r  from-[#c3965d] via-[#eabf91] to-[#c3965d] text-white`}
+                    onClick={() => {
+                        router.push('/contact')
+                        toggleMobileMenu;
+                    }}
+                >
+                    Contact Us
+                </Button>
             </div>
         </motion.div>
     );
