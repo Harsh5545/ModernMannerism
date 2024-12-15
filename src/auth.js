@@ -38,7 +38,11 @@ export const {
                         console.log(user)
 
                         if (isMatch) {
-                            return user;
+                            return {
+                                name:"hasrh",
+                                email:"harsh@gmail.com",
+                                role:"admin",
+                            };
                         } else {
                             throw new Error("Email or Password is not correct");
                         }
@@ -75,17 +79,17 @@ export const {
             },
         }),
     ],
-    callbacks: {
-        async jwt({ token, user }) {
+    // callbacks: {
+    //     async jwt({ token, user }) {
             
-            if (user) {
-                token = {...user, ...token}
-            }
-            return token;
-        },
-        async session({ session, token }) {
-            console.log(token)
-            return token;
-        },
-    },
+    //         if (user) {
+    //             token = {...user, ...token}
+    //         }
+    //         return token;
+    //     },
+    //     async session({ session, token }) {
+    //         console.log(token)
+    //         return token;
+    //     },
+    // },
 });

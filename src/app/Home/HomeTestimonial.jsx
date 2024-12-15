@@ -31,7 +31,7 @@ const HomeTestimonial = () => {
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-opacity-50 dark:bg-opacity-70  bg-[#3a4e5d] "></div>
+      <div className="absolute inset-0 dark:bg-[#060507]  bg-[#3a4e5d] dark:bg-opacity-60 bg-opacity-50 "></div>
 
       {/* Content */}
       <div className="flex h-auto md:h-[90vh] gap-5 flex-col p-5 justify-center items-center z-10 relative">
