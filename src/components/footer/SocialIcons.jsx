@@ -22,7 +22,7 @@ const SocialButtons = () => {
 
   return (
     <div className="flex space-x-4 items-center justify-center mt-4">
-      <Tooltip title="@meoninsta" arrow>
+      <Tooltip title="@modernmannerism" arrow>
         <motion.div variants={iconVariants} whileHover="hover">
           <IconButton
             color="secondary"
