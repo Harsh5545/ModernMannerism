@@ -11,7 +11,7 @@ function Aboutpage() {
               <h2 className=" text-black text-xl md:text-4xl font-semibold dark:text-white">
                 ABOUT MODERN MANNERISM
               </h2>
-              <hr className="h-1 bg-[#933469]  w-16" />
+              <hr className="h-1 bg-gradient-to-r  from-[#c3965d] via-[#eabf91] to-[#c3965d] w-24" />
             </div>
 
             <p className="  text-base">

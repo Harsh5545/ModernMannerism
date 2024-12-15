@@ -1,5 +1,11 @@
 import { Button } from "@nextui-org/react";
 import React from "react";
+import { Lato } from "next/font/google";
+const dm_Sans = Lato({
+  subsets: ["latin"],
+  weight: ["400"], 
+    // Add weights if needed
+});
 
 function AboutSection() {
   return (
@@ -23,7 +29,7 @@ function AboutSection() {
             our courses, articles and news. Become a better,more confident and
             professional you!
           </h3>
-          <Button>GET A QUOTE</Button>
+          <Button className={`${dm_Sans.className} tracking-widest  bg-gradient-to-r from-[#c3965d] via-[#eabf91] to-[#c3965d] font-extrabold text-white`}>GET A QUOTE</Button>
         </div>
       </div>
     </div>

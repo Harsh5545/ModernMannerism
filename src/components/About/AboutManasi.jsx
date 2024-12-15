@@ -41,7 +41,7 @@ export const AboutManasi = () => {
               <h2 className="text-black text-center text-xl md:text-4xl font-semibold dark:text-white">
                 ABOUT HEAD CONSULTANT & FOUNDER
               </h2>
-              <hr className="h-1 bg-[#933469] w-40" />
+              <hr className="h-1 bg-gradient-to-r  from-[#c3965d] via-[#eabf91] to-[#c3965d]  w-40" />
             </div>
 
             <p className="text-center text-base">

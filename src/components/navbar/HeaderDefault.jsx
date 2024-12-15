@@ -36,7 +36,7 @@ const dm_Sans = Lato({
     const router = useRouter();
 
     return (
-        <div className="flex z-[999] absolute w-full justify-center items-center">
+        <div className="flex skeleton-navbar z-[999] absolute w-full justify-center items-center">
         <div className="flex-col bg-black text-white dark:bg-opacity-30 bg-opacity-30 dark:bg-[#06273A] md:flex-row flex justify-between px-2 md:px-10 rounded-md w-[90%] items-center backdrop-filter backdrop-blur-md py-1 mt-4">
             <div className="flex justify-between items-center w-full md:w-0">
             <span className="text-xl">
@@ -46,6 +46,7 @@ const dm_Sans = Lato({
                 height={300}
                 className="md:max-w-[12rem] max-w-[6rem]"
                 alt="ModernMannerism logo"
+                priority
                 />
             </span>
             <div className="md:hidden">
