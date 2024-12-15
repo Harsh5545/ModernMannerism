@@ -81,13 +81,13 @@ function HeaderDefault() {
                         } md:flex gap-2 flex-col-reverse md:flex-row items-center justify-center`}
                 >
                     <Button
-                        className={`${dm_Sans.className} tracking-widest  bg-gradient-to-r from-[#c3965d] via-[#eabf91] to-[#c3965d] font-extrabold text-white`}
+                        className={`${dm_Sans.className} tracking-wider  bg-gradient-to-r from-[#c3965d] via-[#eabf91] to-[#c3965d] font-extrabold text-white`}
                         onClick={() => {
                             router.push("/contact");
                             toggleMobileMenu();
                         }}
                     >
-                        Contact Us
+                        CONTACT US
                     </Button>
                 </div>
             </div>

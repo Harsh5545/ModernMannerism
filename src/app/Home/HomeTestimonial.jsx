@@ -24,22 +24,22 @@ const HomeTestimonial = () => {
       className="relative w-full"
       style={{
         backgroundImage:
-          "linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.1)), url('/assets/image2.jpg')",
+          "linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.1)), url('/assets/Website-Background.jpg')",
         backgroundAttachment: "fixed",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 dark:bg-[#060507]  bg-[#3a4e5d] dark:bg-opacity-60 bg-opacity-50 "></div>
-
+      
+      <div className="absolute inset-0 bg-opacity-25 dark:bg-opacity-60 dark:bg-[#060507] bg-[#FAE7F3]"></div>
       {/* Content */}
       <div className="flex h-auto md:h-[90vh] gap-5 flex-col p-5 justify-center items-center z-10 relative">
         <h5 className="p-1 font-semibold text-xl md:text-4xl w-[100%] md:w-[100%] text-center text-white">
-          What My Clients Say
+        Testimonials
         </h5>
         <div
-          className={`bg-white w-[95%] md:w-[60%] shadow-2xl shadow-slate-400 dark:shadow-black dark:bg-[#00001F] relative p-6 md:p-16 rounded-xl ${styles.testimonialContainer}`}
+          className={`bg-white w-[95%] md:w-[60%] shadow-2xl shadow-slate-400 dark:shadow-[#060507] dark:bg-[#00001F] relative p-6 md:p-16 rounded-xl ${styles.testimonialContainer}`}
           style={{ maxWidth: "100%", overflowX: "hidden" }}
         >
           <Swiper

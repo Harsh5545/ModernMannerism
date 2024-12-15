@@ -72,8 +72,8 @@ const CardComponent = () => {
                   {course.description}
                 </p>
               </div>
-              <button className="flex items-center justify-center tracking-wider bg-gradient-to-r  from-[#c3965d] via-[#eabf91] to-[#c3965d] dark:text-black text-white font-bold p-3 px-6 rounded-xl  transition-colors duration-300 ease-in-out">
-                See more <MdOutlineArrowForwardIos className="ml-2" />
+              <button className="flex items-center justify-center tracking-wider bg-black text-white font-bold p-3 px-6 rounded-xl  transition-colors duration-300 ease-in-out">
+                Read more <MdOutlineArrowForwardIos className="ml-2" />
               </button>
             </div>
           ))}

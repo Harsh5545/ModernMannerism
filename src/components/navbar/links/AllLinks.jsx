@@ -74,6 +74,7 @@ const AllLinks = () => {
     },
     { title: "Blog", path: "/blog" },
   ];
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -110,7 +111,7 @@ const AllLinks = () => {
 
   const handleSubLinkMouseLeave = () => {
     closeTimeoutRef.current = setTimeout(() => {
-      // setHoveredSubLink(null);
+      setHoveredSubLink(null);
     }, 300); // Delay to prevent the flicker
   };
 
@@ -128,53 +129,57 @@ const AllLinks = () => {
             >
               <button
                 className="font-medium text-base cursor-pointer flex items-center"
-                onClick={isMobile ? () => setOpenDropdown((prev) => !prev) : undefined}
+                onClick={() => {
+                  if (isMobile) {
+                    router.push(link.path); // Directly navigate on mobile
+                  } else {
+                    setOpenDropdown(!openDropdown);
+                  }
+                }}
               >
                 {link.title}
-                <svg
-                  className="ml-2 w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
+                {!isMobile && ( // Show dropdown arrow only for desktop view
+                  <svg
+                    className="ml-2 w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                )}
               </button>
 
-              {openDropdown && (
+              {!isMobile && openDropdown && (
                 <div className="absolute mt-2 bg-opacity-60 bg-black rounded-lg shadow-lg z-10">
                   {link.subLinks.map((subLink, j) => (
                     <div
                       key={j}
                       className="relative group"
-                      onMouseEnter={!isMobile ? () => handleSubLinkMouseEnter(subLink.title) : undefined}
-                    // onMouseLeave={!isMobile ? handleSubLinkMouseLeave : undefined}
+                      onMouseEnter={() => handleSubLinkMouseEnter(subLink.title)}
+                      onMouseLeave={handleSubLinkMouseLeave}
                     >
                       <button
                         className="block px-4 py-2 text-sm font-semibold text-left w-full text-nowrap"
-                        onClick={isMobile ? () => setHoveredSubLink(subLink.title) :  () => {router.push(subLink.path) 
-                          console.log(subLink.path)} }
+                        onClick={() => router.push(subLink.path)}
                       >
                         {subLink.title}
                       </button>
 
                       {hoveredSubLink === subLink.title && subLink.subLinks && (
                         <div
-                          className={`absolute left-60 top-0 w-60 bg-opacity-60 bg-black shadow-lg rounded-lg ${isMobile ? "w-full" : "w-60"}`}
-                          onMouseEnter={() => handleSubLinkMouseEnter(subLink.title)} // Ensure it stays open while hovered
-                        // onMouseLeave={handleSubLinkMouseLeave} // commenting out for now in future if needed will check it again
+                          className="absolute left-60 top-0 w-60 bg-opacity-60 bg-black shadow-lg rounded-lg"
+                          onMouseEnter={() => handleSubLinkMouseEnter(subLink.title)}
+                          onMouseLeave={handleSubLinkMouseLeave}
                         >
                           <div className="flex flex-col">
                             {subLink.subLinks.map((nestedLink, k) => (
-                              <Navlink key={k} item={nestedLink}
-                                className="block px-4 py-2 text-sm font-semibold" />
+                              <Navlink key={k} item={nestedLink} className="block px-4 py-2 text-sm font-semibold" />
                             ))}
                           </div>
-
                         </div>
                       )}
-
                     </div>
                   ))}
                 </div>
