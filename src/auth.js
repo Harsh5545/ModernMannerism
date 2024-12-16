@@ -79,17 +79,18 @@ export const {
             },
         }),
     ],
-    // callbacks: {
-    //     async jwt({ token, user }) {
+    callbacks: {
+        async jwt({ token, user }) {
             
-    //         if (user) {
-    //             token = {...user, ...token}
-    //         }
-    //         return token;
-    //     },
-    //     async session({ session, token }) {
-    //         console.log(token)
-    //         return token;
-    //     },
-    // },
+            if (user) {
+                token = {...user, ...token}
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            const newSession = {...session, ...token}
+            session = newSession
+            return session;
+        },
+    },
 });
