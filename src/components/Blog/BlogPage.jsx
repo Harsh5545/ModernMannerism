@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import BlogContainer from "./BlogContainer";
+import { Pagination, IconButton } from "@mui/material";
+import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import { Input } from "@nextui-org/react";
 
 const blogData = [
   {
@@ -39,12 +43,46 @@ const blogData = [
     imageSrc: "/Blog/BLOG-5.jpg",
     commentCount: 6,
   },
+  {
+    title: "Blog 6",
+    description: "Elevate Your Table Manners: Dining Etiquette Simplified",
+    categories: "Dining Etiquette",
+    imageSrc: "/Blog/BLOG-6.jpg",
+    commentCount: 9,
+  },
+  {
+    title: "Blog 7",
+    description: "The Art of Small Talk: Socializing with Confidence",
+    categories: "Social Skills",
+    imageSrc: "/Blog/BLOG-7.jpg",
+    commentCount: 7,
+  },
+  {
+    title: "Blog 8",
+    description: "Boost Your Career with Effective Communication",
+    categories: "Professional Communication",
+    imageSrc: "/Blog/BLOG-8.jpg",
+    commentCount: 10,
+  },
+  {
+    title: "Blog 9",
+    description: "Why Posture Matters: Body Language Basics",
+    categories: "Body Language",
+    imageSrc: "/Blog/BLOG-9.jpg",
+    commentCount: 4,
+  },
+  // Add more blogs for testing
 ];
 
 export default function BlogPage() {
   const [filter, setFilter] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
+  const blogsPerPage = 6;
+  const totalPages = Math.ceil(blogData.length / blogsPerPage);
+
+  // Filtered and paginated blog data
   const filteredBlogs = blogData.filter((blog) => {
     const matchesFilter = filter
       ? blog.categories.toLowerCase().includes(filter.toLowerCase())
@@ -55,12 +93,44 @@ export default function BlogPage() {
     return matchesFilter && matchesSearch;
   });
 
-  return (
-    <div className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 md:py-36 py-24  px-6 md:px-12">
-      <div className="max-w-6xl mx-auto">
+  const paginatedBlogs = filteredBlogs.slice(
+    (currentPage - 1) * blogsPerPage,
+    currentPage * blogsPerPage
+  );
 
-        {/* Filter and Search Section */}
-        <div className="flex flex-col md:flex-row gap-6 mb-10 items-center justify-between">
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
+
+  return (
+    <div className="dark:bg-[rgb(0,0,31)] py-24 md:py-36 px-6 md:px-12">
+      <div className="max-w-6xl mx-auto">
+        {/* Mobile Filter and Search */}
+        <div className="md:hidden flex items-center justify-between mb-6">
+          {/* Filter Icon */}
+          <IconButton
+            onClick={() => alert("Filter options opened")}
+            className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+          >
+            <FilterAltOutlinedIcon />
+          </IconButton>
+
+          {/* Compact Search */}
+          <div className="flex items-center gap-2 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-200 px-2 py-1 rounded-full">
+            <SearchOutlinedIcon />
+            <Input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search..."
+              className="bg-transparent outline-none text-sm"
+            />
+          </div>
+        </div>
+
+        {/* Desktop Filter and Search */}
+        <div className="hidden md:flex flex-col md:flex-row gap-6 mb-10 items-center justify-between">
+          {/* Filter Dropdown */}
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
@@ -73,6 +143,8 @@ export default function BlogPage() {
             <option value="fine-dining-manners">Fine Dining Manners</option>
             <option value="children-etiquette">Children Etiquette</option>
           </select>
+
+          {/* Search Input */}
           <input
             type="text"
             value={searchTerm}
@@ -84,7 +156,7 @@ export default function BlogPage() {
 
         {/* Display Filtered Blogs */}
         <div className="grid gap-10">
-          {filteredBlogs.map((blog, index) => (
+          {paginatedBlogs.map((blog, index) => (
             <BlogContainer
               key={index}
               title={blog.title}
@@ -98,11 +170,23 @@ export default function BlogPage() {
         </div>
 
         {/* No Results Message */}
-        {filteredBlogs.length === 0 && (
+        {paginatedBlogs.length === 0 && (
           <p className="text-center text-gray-500 dark:text-gray-400 mt-8">
             No blogs found matching your criteria.
           </p>
         )}
+
+        {/* Pagination */}
+        <div className="flex justify-center mt-8">
+          <Pagination
+            count={totalPages}
+            page={currentPage}
+            onChange={handlePageChange}
+            color="primary"
+            variant="outlined"
+            shape="rounded"
+          />
+        </div>
       </div>
     </div>
   );

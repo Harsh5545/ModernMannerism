@@ -69,7 +69,7 @@ const AllLinks = () => {
             },
           ],
         },
-        { title: "Train the Trainer", path: "/service/train-the-trainer" },
+        // { title: "Train the Trainer", path: "/service/train-the-trainer" },
       ],
     },
     { title: "Blog", path: "/blog" },

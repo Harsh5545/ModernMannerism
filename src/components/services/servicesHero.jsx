@@ -6,7 +6,7 @@ function ServicesHero() {
     <div className='w-full bg-cover'>
       <div className="bg-[url('/assets/ModernMannerismAbout.jpg')] bg-no-repeat bg-center w-full bg-cover min-h-[30vh] md:min-h-[40vh] flex items-center relative justify-center">
         {/* Overlay */}
-        <div className='absolute inset-0 dark:bg-[#060507] bg-[#BEBEBE] dark:bg-opacity-90 bg-opacity-90'></div>
+        <div className="absolute inset-0 bg-opacity-25 dark:bg-opacity-60 dark:bg-[#060507] bg-[#FAE7F3]"></div>
         <div className="w-full px-16 relative z-50 dark:text-white text-black">
           {/* <h1 className='p-1 font-bold text-5xl md:text-6xl'>Services</h1> */}
           <Breadcrumbs 

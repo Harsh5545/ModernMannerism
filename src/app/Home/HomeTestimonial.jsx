@@ -32,10 +32,10 @@ const HomeTestimonial = () => {
     >
       {/* Overlay */}
       
-      <div className="absolute inset-0 bg-opacity-25 dark:bg-opacity-60 dark:bg-[#060507] bg-[#FAE7F3]"></div>
+      <div className="absolute inset-0 bg-opacity-25 dark:bg-opacity-30 dark:bg-[#060507] bg-[#FAE7F3]"></div>
       {/* Content */}
       <div className="flex h-auto md:h-[90vh] gap-5 flex-col p-5 justify-center items-center z-10 relative">
-        <h5 className="p-1 font-semibold text-xl md:text-4xl w-[100%] md:w-[100%] text-center text-white">
+        <h5 className="font-semibold text-xl md:text-4xl w-[100%] md:w-[100%] text-center text-white">
         Testimonials
         </h5>
         <div
@@ -59,7 +59,7 @@ const HomeTestimonial = () => {
               <SwiperSlide key={index}>
                 <div className="flex flex-col justify-center mt-2 md:mt-0 items-center gap-8">
                   <p className="text-sm w-[90%] md:w-[90%] text-center dark:text-white text-[#06273A] leading-relaxed">
-                    "{testimonial.Description}"
+                    {testimonial.Description}
                   </p>
 
                   <div className="flex flex-col items-center gap-2">
@@ -68,7 +68,7 @@ const HomeTestimonial = () => {
                       width={80}
                       height={80}
                       alt={testimonial.Name}
-                      className="rounded-full border-4 border-white shadow-lg mb-3"
+                      className="rounded-full border-4 border-[#eabf91] shadow-lg mb-3"
                     />
 
                     <h3 className="text-lg font-semibold text-center dark:text-white text-[#06273A]">

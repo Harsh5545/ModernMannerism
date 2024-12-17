@@ -20,7 +20,7 @@ const HomeSection = () => {
         }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-opacity-25 dark:bg-opacity-60 dark:bg-[#060507] bg-[#FAE7F3]"></div>
+        <div className="absolute inset-0 bg-opacity-25 dark:bg-opacity-30 dark:bg-[#060507] bg-[#FAE7F3]"></div>
 
         {/* Content */}
         <div className="flex flex-col md:flex-row h-auto lg:h-72 gap-5 p-6 sm:p-10 md:p-16 lg:p-24 justify-center md:justify-evenly items-center">

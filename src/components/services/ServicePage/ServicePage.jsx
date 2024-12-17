@@ -241,7 +241,7 @@ const ServicePage = ({ params }) => {
                 key={index}
                 className="bg-gray-100 p-6 rounded-lg shadow-md mx-2"
               >
-                <p className="italic">"{testimonial.quote}"</p>
+                <p className="italic">{testimonial.quote}</p>
                 <footer className="text-right mt-4">- {testimonial.author}</footer>
               </Box>
             ))}
