@@ -1,32 +1,35 @@
-import React from 'react';
+"use client" 
+import React, { useState } from "react";
 import Link from "next/link";
-import styles from "./styles.module.css";
 import Image from "next/image";
-import { FaStar } from "react-icons/fa"; // Importing an icon from react-icons
-import { MdOutlineArrowForwardIos } from "react-icons/md"; // Importing another icon
+import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { Cormorant_Garamond } from "next/font/google";
 
 const dm_Sans = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["700"],
 });
+
 function ServicesComponent() {
-   const courses = [
-    {id: "1",
+  const courses = [
+    {
+      id: "1",
       image: "/assets/PD.jpg",
       title: "Personality Enhancement Programme",
       description:
         "Unlock your full potential with our Personality Enhancement Programme.",
       isBestSelling: false,
     },
-    { id: "2",
+    {
+      id: "2",
       image: "/assets/BusinessHandshake.jpg",
       title: "Business Etiquette & Corporate Image Programme",
       description:
         "Master the art of business etiquette and elevate your corporate image.",
       isBestSelling: true,
     },
-    { id: "3",
+    {
+      id: "3",
       image: "/assets/Etiquettechildren.jpg",
       title: "Children’s Etiquette Programme",
       description:
@@ -35,46 +38,83 @@ function ServicesComponent() {
     },
   ];
 
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Filtered courses based on search term
+  const filteredCourses = courses.filter(
+    (course) =>
+      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      course.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-     <div className="w-full dark:bg-[#00001F] h-full flex flex-col justify-center items-center py-10">
-      <div className="w-[90%]">
-        <div className="flex flex-col items-center justify-center">
-          <h4 className={`${dm_Sans.className} py-10 text-4xl flex flex-col gap-2 font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#000000] to-[#28425f] dark:from-[#eabf91] dark:to-[#c3965d]`}
-         >
-            Services
-            <hr className="bg-gradient-to-r from-[#28425f] to-[#76766b]  dark:from-[#eabf91] dark:to-[#c3965d]  h-1 rounded-full w-16 self-center" />
+    <div className="w-full min-h-screen bg-gradient-to-b from-[#f9f5f0] to-[#eae6e0] dark:from-[#00001F] dark:to-[#1a1a2e] py-16">
+      <div className="w-[90%] max-w-7xl mx-auto">
+        {/* Heading */}
+        <div className="text-center">
+          <h4
+            className={`${dm_Sans.className} text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#000000] to-[#28425f] dark:from-[#eabf91] dark:to-[#c3965d]`}
+          >
+            Our Services
           </h4>
+          <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
+            Explore our wide range of programs designed to empower you.
+          </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full px-4">
-          {courses.map((course, index) => (
-            <div
-              key={index}
-              className={`relative ${styles.container} w-full lg:w-[90%] bg-[#cca26c] bg-opacity-65 dark:bg-[#122031] rounded-3xl text-black p-4 text-center flex flex-col items-center justify-between gap-3 h-[500px] dark:hover:bg-[#0e1a2b] shadow-2xl hover:shadow-md hover:shadow-[#8c9c88] dark:hover:shadow-[#3a4e4f]  transform hover:scale-105 transition-transform duration-300 ease-in-out`}
+
+        {/* Search Bar */}
+        <div className="mt-8 flex justify-center">
+          <input
+            type="text"
+            placeholder="Search for a service..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full md:w-[50%] px-4 py-2 border-2 border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#28425f] dark:focus:ring-[#eabf91] dark:bg-[#1a1a2e] dark:text-white"
+          />
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          {filteredCourses.length > 0 ? (
+            filteredCourses.map((course) => (
+              <div
+                key={course.id}
+                className="group relative flex flex-col bg-white dark:bg-[#1a1a2e] rounded-3xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 ease-in-out"
               >
-              <div className="relative w-full mb-4 bg-[#003b6d] rounded-2xl overflow-hidden">
-                <Image
-                  alt={course.title}
-                  className="object-cover w-full"
-                  height={300}
-                  width={300}
-                  src={course.image}
-                />
+                {/* Image Section */}
+                <div className="relative w-full h-60">
+                  <Image
+                    alt={course.title}
+                    src={course.image}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Content Section */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <h5 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    {course.title}
+                  </h5>
+                  <p className="text-gray-700 dark:text-gray-400 mt-4 flex-grow">
+                    {course.description}
+                  </p>
+
+                  {/* Button */}
+                  <Link href={`/service/${course.id}`}>
+                    <button className="mt-6 flex items-center justify-center bg-[#28425f] text-white dark:bg-[#eabf91] dark:text-[#1a1a2e] py-2 px-6 rounded-full font-semibold shadow-md hover:bg-[#1e3346] dark:hover:bg-[#d4a971] transition-colors duration-300">
+                      See more
+                      <MdOutlineArrowForwardIos className="ml-2" />
+                    </button>
+                  </Link>
+                </div>
               </div>
-              <div className="flex flex-col gap-4 flex-grow">
-                <p className="font-semibold text-xl dark:text-white text-[#2c3e50]">
-                  {course.title}
-                </p>
-                <p className="dark:text-gray-400 text-gray-700">
-                  {course.description}
-                </p>
-              </div>
-              <Link href={`/service/${course.id}`}>
-                <button className="flex items-center justify-center tracking-wider bg-black text-[#DEC29F] font-bold p-3 px-6 rounded-xl  transition-colors duration-300 ease-in-out">
-                  See more <MdOutlineArrowForwardIos className="ml-2" />
-                </button>
-              </Link>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="col-span-full text-center text-gray-700 dark:text-gray-300 text-lg">
+              No services match your search.
+            </p>
+          )}
         </div>
       </div>
     </div>

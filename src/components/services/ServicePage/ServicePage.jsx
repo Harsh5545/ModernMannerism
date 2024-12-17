@@ -68,9 +68,7 @@ const ServicePage = ({ params }) => {
         <div className="relative flex flex-col justify-center items-center text-center text-white   ">
           <h1 className="text-2xl lg:text-4xl font-bold uppercase">{title}</h1>
            <h2
-          className={`${dm_Sans.className} mt-4 text-lg lg:text-xl`}
-         
-        >"{headline}"</h2>
+          className={`${dm_Sans.className} mt-4 text-lg lg:text-xl`}>{headline}</h2>
          </div>
       </div>
     <div className="w-full md:w-[60%] ">

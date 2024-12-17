@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState } from 'react';
-import BlogContainer from './BlogContainer';
+import { useState } from "react";
+import BlogContainer from "./BlogContainer";
 
 const blogData = [
   {
@@ -39,54 +39,51 @@ const blogData = [
     imageSrc: "/Blog/BLOG-5.jpg",
     commentCount: 6,
   },
-  // Add more blog entries here
 ];
 
 export default function BlogPage() {
-  const [filter, setFilter] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [filter, setFilter] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // Filtered blog data based on filter and search term
   const filteredBlogs = blogData.filter((blog) => {
-    const matchesFilter = filter ? blog.categories.toLowerCase().includes(filter.toLowerCase()) : true;
-    const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    const matchesFilter = filter
+      ? blog.categories.toLowerCase().includes(filter.toLowerCase())
+      : true;
+    const matchesSearch =
+      blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       blog.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesFilter && matchesSearch;
   });
 
   return (
-    <div className="bg-white dark:bg-[rgb(0,0,31)] py-32 px-8 md:px-8">
-      <div className="md:max-w-6xL w-full mx-auto md:px-10 px-0">
+    <div className="bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 md:py-36 py-24  px-6 md:px-12">
+      <div className="max-w-6xl mx-auto">
 
         {/* Filter and Search Section */}
-        <div className="flex flex-col md:flex-row gap-4 mb-8 items-start md:items-center justify-between">
-
-          {/* Filter Dropdown */}
+        <div className="flex flex-col md:flex-row gap-6 mb-10 items-center justify-between">
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-white"
+            className="w-full md:w-1/3 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-white focus:ring-2 focus:ring-indigo-500"
           >
-            <option value="" disabled>Select a Course</option>
+            <option value="" disabled>Select a Category</option>
             <option value="personal-branding">Personal Branding</option>
             <option value="communication-skills">Communication Skills</option>
             <option value="corporate-etiquette">Corporate Etiquette</option>
             <option value="fine-dining-manners">Fine Dining Manners</option>
             <option value="children-etiquette">Children Etiquette</option>
           </select>
-
-          {/* Search Input */}
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search blog..."
-            className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-white"
+            className="w-full md:w-1/3 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-white focus:ring-2 focus:ring-indigo-500"
           />
         </div>
-        <div className='flex flex-col gap-4'>
 
-          {/* Display Filtered Blogs */}
+        {/* Display Filtered Blogs */}
+        <div className="grid gap-10">
           {filteredBlogs.map((blog, index) => (
             <BlogContainer
               key={index}
@@ -99,9 +96,12 @@ export default function BlogPage() {
             />
           ))}
         </div>
+
         {/* No Results Message */}
         {filteredBlogs.length === 0 && (
-          <p className="text-center text-gray-500 dark:text-gray-400 mt-8">No blogs found matching your criteria.</p>
+          <p className="text-center text-gray-500 dark:text-gray-400 mt-8">
+            No blogs found matching your criteria.
+          </p>
         )}
       </div>
     </div>

@@ -28,7 +28,7 @@ export const metadata = {
 
 const page = async () => {
 
-  const posts = await getPosts();
+  // const posts = await getPosts();
 
   return (
     <div >
