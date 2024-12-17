@@ -1,4 +1,3 @@
-
 'use server'
 
 import { signIn, signOut } from "@/auth";
@@ -10,7 +9,14 @@ export async function doSocialLogin(formData) {
 }
 
 export async function doLogout() {
-  await signOut({ redirectTo: "/" });
+  try {
+
+    await signOut({ redirect: false });
+    revalidatePath("/");
+  } catch (err) {
+    console.error("Error during logout:", err);
+    throw err;
+  }
 }
 
 export async function doCredentialLogin(formData) {

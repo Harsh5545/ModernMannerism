@@ -77,16 +77,16 @@ export const {
     ],
     callbacks: {
         async jwt({ token, user }) {
-            
+
             if (user) {
-                token = {...user, ...token}
+                token = { ...user, ...token }
             }
             return token;
         },
         async session({ session, token }) {
-            const newSession = {...session, ...token}
+            const newSession = { ...session, ...token }
             session = newSession
             return session;
-        },
+        }
     },
 });

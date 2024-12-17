@@ -33,7 +33,7 @@ export default async function RootLayout({ children }) {
 
     return (
         <html lang="en" >
-            <body className={dm_Sans.className}>
+            <body className={dm_Sans.className} suppressHydrationWarning >
                 <Providers>
                     <AuthProvider >
                         <Navbar />
