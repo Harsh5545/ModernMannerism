@@ -38,11 +38,7 @@ export const {
                         console.log(user)
 
                         if (isMatch) {
-                            return {
-                                name:"hasrh",
-                                email:"harsh@gmail.com",
-                                role:"admin",
-                            };
+                            return user;
                         } else {
                             throw new Error("Email or Password is not correct");
                         }
