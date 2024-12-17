@@ -58,10 +58,10 @@ const ServicePage = ({ params }) => {
   };
 
   return (
-    <div className="flex items-center pb-4 md:pb-10 justify-center w-full flex-col  bg-gray-100">
+    <div className="flex dark:bg-[rgb(0,0,31)]  items-center pb-4 md:pb-10 justify-center w-full flex-col  bg-gray-100">
       {/* Hero Section */}
       <div
-        className=" h-[50vh] lg:h-[30vh] bg-[#8f7971]  w-full pb-5 bg-cover bg-center flex items-end justify-center"
+        className=" h-[50vh] lg:h-[30vh] bg-[#793600] dark:bg-opacity-20 opacity-50  w-full pb-5 bg-cover bg-center flex items-end justify-center"
         // style={{ backgroundImage: `url(${heroImage})` }}
       >
         {/* <div className="absolute inset-0 bg-black opacity-50"></div> */}
