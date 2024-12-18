@@ -22,6 +22,7 @@ const UserForm = () => {
         email: "",
         mobileNumber: "",
         password: "",
+        global: "", // Added global error state
     });
 
     const handleChange = (e) => {
@@ -40,36 +41,42 @@ const UserForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setErrorMessage({}); // Reset error messages
+        setErrorMessage({}); 
 
-        // Form validation
         const errors = {};
         if (!formData.firstName) errors.firstName = "First Name is required.";
         if (!formData.lastName) errors.lastName = "Last Name is required.";
         if (!formData.email.includes("@")) errors.email = "Please enter a valid email.";
         if (formData.password.length < 8) errors.password = "Password must be at least 8 characters.";
-        if (formData.mobileNumber.length < 10) errors.mobileNumber = "Phone number must be at least 10 digits.";
+        
+        const phoneRegex = /^[0-9]{10}$/;
+        if (!phoneRegex.test(formData.mobileNumber)) {
+            errors.mobileNumber = "Please enter a valid 10-digit phone number.";
+        }
 
         if (Object.keys(errors).length > 0) {
             setErrorMessage(errors);
             return;
         }
 
-        const res = await fetch("/api/register", {
-            method: "POST",
-            body: JSON.stringify(formData),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+        // Proceed to submit form
+        try {
+            const res = await fetch("/api/register", {
+                method: "POST",
+                body: JSON.stringify(formData),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
 
-        if (!res.ok) {
-            const response = await res.json();
-            setErrorMessage({ global: response.message });
-        } else {
-            // Reset form data after successful registration
-            setFormData(initialFormData);  // Clear form fields
-            router.push("/user"); // Redirect to home page after successful registration
+            if (!res.ok) {
+                const response = await res.json();
+                setErrorMessage({ global: response.Message || "User creation failed" });
+            } else {
+                setFormData(initialFormData);
+            }
+        } catch (error) {
+            setErrorMessage({ global: "Something went wrong. Please try again later." });
         }
     };
 
@@ -180,7 +187,6 @@ const UserForm = () => {
                                 name="password"
                                 label="Password"
                                 type="password"
-                               
                                 variant="outlined"
                                 fullWidth
                                 value={formData.password}
@@ -201,7 +207,6 @@ const UserForm = () => {
                             type="submit"
                             fullWidth
                             className=" tracking-widest  bg-gradient-to-r from-[#c3965d] via-[#eabf91] to-[#c3965d] font-extrabold text-white"
-             
                         >
                             Register
                         </Button>
