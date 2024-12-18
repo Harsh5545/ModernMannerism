@@ -154,7 +154,7 @@ const menuGroups = [
           </svg>
         ),
         label: "All Blogs",
-        route: "/admin/all-blog",
+        route: "/admin/all-blogs",
       },
       {
         icon: (
