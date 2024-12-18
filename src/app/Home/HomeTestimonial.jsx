@@ -68,7 +68,7 @@ const HomeTestimonial = () => {
                       width={80}
                       height={80}
                       alt={testimonial.Name}
-                      className="rounded-full border-4 border-[#eabf91] shadow-lg mb-3"
+                      className="rounded-full  shadow-lg mb-3"
                     />
 
                     <h3 className="text-lg font-semibold text-center dark:text-white text-[#06273A]">
