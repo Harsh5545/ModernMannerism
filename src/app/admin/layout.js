@@ -1,35 +1,32 @@
 
-
+'use client'
 import { authConfig } from '@/auth.config';
-
-import Sidebar from '@/components/admin/Sidebar';
+import Loader from '@/components/common/Loader';
+import DefaultLayout from '@/components/layouts/DefaultLayout';
 import NextAuth from 'next-auth';
+import { useEffect, useState } from 'react';
 
 
-const Layout = async ({ children }) => {
-    const {auth} = NextAuth(authConfig);
-    const session = await auth();
+const Layout = ({ children }) => {
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [loading, setLoading] = useState(true);
+    // const { auth } = NextAuth(authConfig);
+    // const session = await auth();
 
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 1000);
+    }, []);
 
     return (
         <html lang="en">
             <body suppressHydrationWarning>
-           
-                    <div className="min-h-screen flex">
-                        <aside className={` flex-shrink-0 border  flex`}>
-                            <div className="w-auto">
-                                    
-                                <Sidebar/>
-                            </div>
-                        </aside>
 
-                        <main className="flex-1 p-0">
-                            <div className="bg-white rounded-lg shadow-md p-2 h-fit-screen">
-                                {children}
-                            </div>
-                        </main>
-                    </div>
-           
+                <div className="dark:bg-boxdark-2 dark:text-bodydark">
+                    <DefaultLayout>
+                        {children}
+                    </DefaultLayout>
+                </div>
+
             </body>
         </html>
     );

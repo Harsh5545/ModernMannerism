@@ -4,8 +4,10 @@ import React from 'react'
 
 function page() {
   return (
-    <div><ServicesHero/>
-<ServicesComponent/></div>
+    <div>
+      <ServicesHero />
+      <ServicesComponent />
+    </div>
   )
 }
 
