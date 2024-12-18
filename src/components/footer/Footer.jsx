@@ -8,7 +8,7 @@ const Footer = () => {
         
         {/* "Contact Us" Header in Top Left */}
         <div className="absolute top-8 left-8 text-4xl md:text-6xl font-semibold">
-          Contact Us
+        Get in Touch
         </div>
 
         {/* Main Content - Centered Vertically and Horizontally */}
