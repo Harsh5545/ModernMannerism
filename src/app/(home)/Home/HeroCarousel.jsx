@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@nextui-org/react";
-import "../globals.css";
+import "../../globals.css";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 import "swiper/css";

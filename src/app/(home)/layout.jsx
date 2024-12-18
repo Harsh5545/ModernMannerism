@@ -1,12 +1,12 @@
 import { Lato, Montserrat } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
-import { Providers } from "./Providers/UiProvider";
-import AuthProvider from "./Providers/AuthProvider";
+import { Providers } from "../Providers/UiProvider";
+import AuthProvider from "../Providers/AuthProvider";
 const dm_Sans = Lato({
-  subsets: ["latin"],
-  weight: ["400"],
+    subsets: ["latin"],
+    weight: ["400"],
 });
 
 export const metadata = {
@@ -29,7 +29,7 @@ export const viewport = {
     themeColor: "#06273A",
 };
 
-export default async function RootLayout({ children }) {
+export default async function Layout({ children }) {
 
     return (
         <html lang="en" >
@@ -37,7 +37,7 @@ export default async function RootLayout({ children }) {
                 <Providers>
                     <AuthProvider >
                         <Navbar />
-                        <div>{children}</div>
+                        <main>{children}</main>
                         <Footer />
                     </AuthProvider>
                 </Providers>

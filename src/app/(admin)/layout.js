@@ -5,17 +5,14 @@ import Loader from '@/components/common/Loader';
 import DefaultLayout from '@/components/layouts/DefaultLayout';
 import NextAuth from 'next-auth';
 import { useEffect, useState } from 'react';
-
-
+import "../globals.css"
 const Layout = ({ children }) => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [loading, setLoading] = useState(true);
     // const { auth } = NextAuth(authConfig);
     // const session = await auth();
 
-    useEffect(() => {
-        setTimeout(() => setLoading(false), 1000);
-    }, []);
+ 
 
     return (
         <html lang="en">

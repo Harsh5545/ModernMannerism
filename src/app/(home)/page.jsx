@@ -12,11 +12,14 @@ const Home = () => {
   return (
     <div >
 
-        <Hero/>
-        <CardComponent/><HomeDinning/>
+      <Hero />
+      <CardComponent />
+      <HomeDinning />
+      <HomeAbout />
+      <HomeTestimonial />
+      <HomeConsultation />
+      <HomeSection />
 
-<HomeAbout/> <HomeTestimonial/>   <HomeConsultation/> <HomeSection/>
-    
 
       {/* <div className={styles.textContainer}>
         <h1 className={styles.title}>Creative Thoughts Agency.</h1>
