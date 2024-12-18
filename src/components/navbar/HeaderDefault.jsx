@@ -36,8 +36,8 @@ function HeaderDefault() {
     const router = useRouter();
 
     return (
-        <div className="flex skeleton-navbar z-[999] absolute w-full justify-center items-center">
-        <div className="flex-col bg-black text-white dark:bg-opacity-30 bg-opacity-30 dark:bg-[#06273A] md:flex-row flex justify-between px-2 md:px-10 rounded-md w-[90%] items-center backdrop-filter backdrop-blur-md py-1 mt-4">
+        <div className="flex skeleton-navbar z-[999] absolute w-full pb-5 justify-center items-center">
+        <div className="flex-col bg-black text-white dark:bg-opacity-30 bg-opacity-30 dark:bg-[#06273A] md:flex-row flex justify-between px-2 md:px-10  rounded-md w-[90%] items-center backdrop-filter backdrop-blur-md py-1 mt-4">
             <div className="flex justify-between items-center w-full md:w-0">
             <span className="text-xl">
                 <Image
@@ -80,15 +80,16 @@ function HeaderDefault() {
                     className={`${isMobileMenuOpen ? "block" : "hidden"
                         } md:flex gap-2 flex-col-reverse md:flex-row items-center justify-center`}
                 >
-                    <Button
-                        className={`${dm_Sans.className} tracking-wider  bg-gradient-to-r from-[#c3965d] via-[#eabf91] to-[#c3965d] font-extrabold text-white`}
-                        onClick={() => {
-                            router.push("/contact");
-                            toggleMobileMenu();
-                        }}
-                    >
-                        CONTACT US
-                    </Button>
+                   <Button
+  className={`${dm_Sans.className} tracking-wide rounded-full bg-gradient-to-r from-[#c3965d] via-[#eabf91] to-[#c3965d] font-extrabold text-white 
+              p-2 px-4 sm:px-6 sm:py-3 md:px-8 md:py-4 lg:px-8 lg:py-2 text-sm sm:text-base md:text-lg lg:text-xl shadow-lg`}
+  onClick={() => {
+    router.push("/contact");
+    toggleMobileMenu();
+  }}
+>
+  CONTACT US
+</Button>
                 </div>
             </div>
         </div>

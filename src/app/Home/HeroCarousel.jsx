@@ -82,7 +82,7 @@ const HeroCarousel = () => {
     overlay: `absolute inset-0 dark:bg-[#060507]  bg-[#3a4e5d] dark:bg-opacity-60 bg-opacity-50`,
     content: `absolute left-0 w-full z-10 p-4`,
     text: `md:text-4xl ${cormorant.className} dark:text-white text-white font-bold text-2xl  text-black lato-font`,
-    button: `px-8 ${dm_Sans.className}  py-4 tracking-widder bg-gradient-to-r  from-[#c3965d] via-[#eabf91] to-[#c3965d] text-md w-[50%] md:w-[25%] text-white rounded-full mt-4 sm:mt-10`,
+    button: `px-8 ${dm_Sans.className}  py-4 tracking-widder bg-gradient-to-r  from-[#c3965d] via-[#eabf91] to-[#c3965d] text-md w-[50%] md:w-[20%] text-white rounded-full mt-4 sm:mt-10`,
   };
 
   return (
