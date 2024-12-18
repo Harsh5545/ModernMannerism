@@ -19,17 +19,23 @@ import {
   Button,
 } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 export default function CategoryPage() {
   const [categories, setCategories] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [isCategory, setIsCategory] = useState(true); // Toggle between category and subcategory
+  const [isCategory, setIsCategory] = useState(true);
   const [categoryName, setCategoryName] = useState("");
   const [subcategoryName, setSubcategoryName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isActive, setIsActive] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
+
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+
 
   useEffect(() => {
     fetchCategories();
@@ -38,7 +44,9 @@ export default function CategoryPage() {
   const fetchCategories = async () => {
     try {
       const response = await axios.get("/api/category/list");
-      setCategories(response.data.categories);
+      if (response.data.success) {
+        setCategories(response?.data?.data);
+      }
     } catch (error) {
       console.error("Error fetching categories:", error);
     }
@@ -118,12 +126,14 @@ export default function CategoryPage() {
       <Dialog
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
-        className="backdrop-blur-md"
+        className="backdrop-blur-sm"
+         aria-labelledby="responsive-dialog-title"
+         fullScreen={fullScreen}
       >
         <DialogTitle className="text-gray-800 dark:text-gray-200">
           {isCategory ? "Add Category" : "Add Subcategory"}
         </DialogTitle>
-        <DialogContent className="bg-gray-50 dark:bg-gray-800">
+        <DialogContent className="bg-gray-50 dark:bg-gray-800" dividers>
           {isCategory ? (
             <>
               <label className="block mb-2 text-gray-700 dark:text-gray-200">Category Name</label>
@@ -170,7 +180,7 @@ export default function CategoryPage() {
             </>
           )}
         </DialogContent>
-        <DialogActions>
+        <DialogActions className="text-center">
           <Button onClick={() => setDialogOpen(false)} className="text-gray-600 dark:text-gray-400">
             Cancel
           </Button>
@@ -183,42 +193,60 @@ export default function CategoryPage() {
         </DialogActions>
       </Dialog>
 
-      <table className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-md mb-4">
-        <thead>
-          <tr className="bg-gray-200 dark:bg-gray-700">
-            <th className="px-6 py-3 text-left">ID</th>
-            <th className="px-6 py-3 text-left">Category Name</th>
-            <th className="px-6 py-3 text-left">Subcategories</th>
-            <th className="px-6 py-3 text-left">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {paginatedCategories.map((category, index) => (
-            <tr key={category.id} className={index % 2 === 0 ? "bg-gray-50 dark:bg-gray-800" : "bg-gray-100 dark:bg-gray-900"}>
-              <td className="px-6 py-4">{category.id}</td>
-              <td className="px-6 py-4">{category.name}</td>
-              <td className="px-6 py-4">
-                {category.subcategories?.map((sub) => sub.name).join(", ")}
-              </td>
-              <td className="px-6 py-4">
-                <button
-                  onClick={() => handleDeleteCategory(category.id)}
-                  className="text-red-500 hover:underline"
-                >
-                  <DeleteIcon />
-                </button>
-              </td>
+      {/* Category Table */}
+      {categories.length === 0 ? (
+        <div className="text-center text-gray-700 dark:text-gray-300 mt-6">
+          <h2>No categories available. Please add a category.</h2>
+        </div>
+      ) : (
+        <table className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-md mb-4">
+          <thead>
+            <tr className="bg-gray-200 dark:bg-gray-700">
+              <th className="px-6 py-3 text-left">ID</th>
+              <th className="px-6 py-3 text-left">Category Name</th>
+              {/* <th className="px-6 py-3 text-left">Subcategories</th> */}
+              <th className="px-6 py-3 text-left">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {paginatedCategories.map((category, index) => (
+              <tr
+                key={category.id}
+                className={index % 2 === 0 ? "bg-gray-50 dark:bg-gray-800" : "bg-gray-100 dark:bg-gray-900"}
+              >
+                {/* Calculate the "global" index based on the current page and items per page */}
+                <td className="px-6 py-4">{(currentPage - 1) * itemsPerPage + (index + 1)}</td>
+                <td className="px-6 py-4">{category.category_name}</td>
+                {/* <td className="px-6 py-4">
+          {category.subcategories?.map((sub) => sub.name).join(", ")}
+        </td> */}
+                <td className="px-6 py-4">
+                  <button
+                    onClick={() => handleDeleteCategory(category.id)}
+                    className="text-red-500 hover:underline"
+                  >
+                    <DeleteIcon />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-      <Pagination
-        count={Math.ceil(categories.length / itemsPerPage)}
-        page={currentPage}
-        onChange={handlePageChange}
-        className="mt-4"
-      />
+      )}
+
+      {/* Pagination */}
+      {categories.length > 10 && (
+        <div className="mx-auto w-auto">
+          <Pagination
+            count={Math.ceil(categories.length / itemsPerPage)}
+            page={currentPage}
+            onChange={handlePageChange}
+            className="mt-4 "
+          />
+        </div>
+
+      )}
     </div>
   );
 }

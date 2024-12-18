@@ -20,6 +20,7 @@
     "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",
     "caniuse-lite": "^1.0.30001687",
+    "formidable": "^3.5.2",
     "framer-motion": "^11.0.18",
     "jwt-decode": "^4.0.0",
     "mysql2": "^3.9.2",

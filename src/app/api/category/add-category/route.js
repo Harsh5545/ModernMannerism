@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { commonServices } from "@/lib/services/common";
+import prisma from "@/lib/prisma";
 
 export async function POST(req) {
   try {
@@ -8,11 +9,15 @@ export async function POST(req) {
     console.log("Parsed data:", name, isActive); 
     
     const new_category = {
-      name:name, 
-      status:isActive,
+      category_name:name, 
+      status:isActive ? "ACTIVE" : "INACTIVE",
     };
 
-    const result = await commonServices.createEntry("categories", new_category);
+    // const result = await commonServices.createEntry("categories", new_category);
+    const result = await prisma.category.create({
+      data: new_category,
+    });
+    console.log(result)
     return NextResponse.json({ success: true, data: result });
   } catch (error) {
     console.error('Error:', error);
