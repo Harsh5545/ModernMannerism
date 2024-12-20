@@ -35,8 +35,6 @@ export const {
                             credentials.password,
                             user.password
                         );
-                        console.log(user)
-
                         if (isMatch) {
                             return user;
                         } else {
@@ -84,9 +82,33 @@ export const {
             return token;
         },
         async session({ session, token }) {
+            console.log(token)
             const newSession = { ...session, ...token }
-            session = newSession
+            session = newSession;
+            if (session?.user) {
+                session.user = { ...session.user, ...token }
+            }
             return session;
-        }
+        },
+        authorized({request,auth}){
+            const isLoggedIn = !!auth?.user;
+            const isOnDashboard = request.url.startsWith("/admin");
+            const isOnLogin = request.url.startsWith("/login");
+            const isOnRegister = request.url.startsWith("/register");
+            if (isOnDashboard) {
+                if (isLoggedIn) {
+                    return true;
+                }
+                return false; // redirect unauthenticated users to login page
+            } else if (isOnLogin || isOnRegister) {
+                if (isLoggedIn) {
+                    return Response.redirect(new URL('/admin', request.url));
+                }
+                return true;
+            } else {
+                return true;
+            }
+        },
+        
     },
 });

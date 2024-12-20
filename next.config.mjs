@@ -6,13 +6,13 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'lh3.googleusercontent.com', // Gmail profile picture URL pattern
+                hostname: 'lh3.googleusercontent.com',
             },
             {
-                hostname: 'https://scontent.xx.fbcdn.net/*', // Facebook profile picture URL pattern
+                hostname: 'https://scontent.xx.fbcdn.net/*',
             },
             {
-                hostname: 'https://avatars.githubusercontent.com/*', // GitHub profile picture URL pattern
+                hostname: 'https://avatars.githubusercontent.com/*',
             },
         ],
     },

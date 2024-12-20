@@ -10,11 +10,12 @@ export async function middleware(request) {
     const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
     const { nextUrl } = request;
     const isAuthenticated = !!token;
-    console.log(token,"TOKEN")
     const isPublicRoute = PUBLIC_ROUTES.some(route => nextUrl.pathname.startsWith(route)) || nextUrl.pathname === ROOT;
     const isAuthRoute = nextUrl.pathname.startsWith(LOGIN);
-
+    
+    // If the user is authenticated
     if (isAuthenticated) {
+        // If the user tries to access the login page, redirect based on their role
         if (isAuthRoute) {
             const userRole = token?.role?.name;
 
@@ -28,16 +29,19 @@ export async function middleware(request) {
         }
     }
 
+    // If it's a public route, proceed normally
     if (isPublicRoute) {
         return NextResponse.next();
     }
 
+    // If the user is not authenticated and not trying to access login
     if (!isAuthenticated) {
         if (!isAuthRoute) {
             return NextResponse.redirect(new URL(LOGIN, nextUrl));
         }
     }
 
+    // If the user is logged in but not on their appropriate route, redirect based on their role
     const userRole = token?.role?.name; 
 
     if (userRole === 'Admin') {
@@ -56,5 +60,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-    matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"]
+    matcher: ["/((?!.+\\.[\\w]+$|_next|_next/image|_next/static|favicon.ico).*)", "/", "/(api|trpc)(.*)"]
 };

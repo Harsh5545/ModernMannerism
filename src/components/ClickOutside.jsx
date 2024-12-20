@@ -1,44 +1,36 @@
-'use client'
+'use client';
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from 'react';
 
-
-const ClickOutside = ({
-  children,
-  exceptionRef,
-  onClick,
-  className,
-}) => {
+const ClickOutside = ({ children, exceptionRef, onClick, className }) => {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
     const handleClickListener = (event) => {
-      let clickedInside = false;
-      if (exceptionRef) {
-        clickedInside =
-          (wrapperRef.current &&
-            wrapperRef.current.contains(event)) ||
-          (exceptionRef.current && exceptionRef.current === event.target) ||
-          (exceptionRef.current &&
-            exceptionRef.current.contains(event));
-      } else {
-        clickedInside =
-          wrapperRef.current &&
-          wrapperRef.current.contains(event);
-      }
+      // Check if the click happened outside the wrapper or exceptionRef (if provided)
+      const clickedInside =
+        wrapperRef.current && wrapperRef.current.contains(event.target);
 
-      if (!clickedInside) onClick();
+      const clickedException =
+        exceptionRef &&
+        exceptionRef.current &&
+        exceptionRef.current.contains(event.target);
+
+      // If clicked outside the wrapper and exceptionRef, execute the onClick callback
+      if (!clickedInside && !clickedException && onClick) {
+        onClick();
+      }
     };
 
-    document.addEventListener("mousedown", handleClickListener);
+    document.addEventListener('mousedown', handleClickListener);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickListener);
+      document.removeEventListener('mousedown', handleClickListener);
     };
   }, [exceptionRef, onClick]);
 
   return (
-    <div ref={wrapperRef} className={`${className || ""}`}>
+    <div ref={wrapperRef} className={className}>
       {children}
     </div>
   );

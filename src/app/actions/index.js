@@ -5,18 +5,12 @@ import { revalidatePath } from "next/cache";
 
 export async function doSocialLogin(formData) {
     const action = formData.get('action');
-    await signIn(action, { redirectTo: "/" });
+    await signIn(action, { redirect: true, callbackUrl: "/" });
+    revalidatePath("/");
 }
 
 export async function doLogout() {
-  try {
-
-    await signOut({ redirect: false });
-    revalidatePath("/");
-  } catch (err) {
-    console.error("Error during logout:", err);
-    throw err;
-  }
+  await signOut();
 }
 
 export async function doCredentialLogin(formData) {
